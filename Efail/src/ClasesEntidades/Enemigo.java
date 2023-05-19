@@ -10,8 +10,17 @@ public class Enemigo  extends Entidad{
 	protected String descripcion;
 	protected Ataque[] ataques;
 	protected Icon iconoEnemigo;
+	protected Ataque siguienteAccion;
 	
 	
+	public Ataque getSiguienteAccion() {
+		return siguienteAccion;
+	}
+
+	public void setSiguienteAccion(Ataque siguienteAccion) {
+		this.siguienteAccion = siguienteAccion;
+	}
+
 	public Icon getIconoEnemigo() {
 		return iconoEnemigo;
 	}
@@ -44,11 +53,15 @@ public class Enemigo  extends Entidad{
 		this.ataques = ataques;
 	}
 
-	public Enemigo(String nombre, Icon iconoEnemigo, int vida, int nivel, int velocidad, int ataque, int defensa, int bloqueo, int probCritico,
-			int dañoCritico,String elemento, String descripcion, Ataque[] ataques) {
-		super(nombre, vida, nivel, velocidad, ataque, defensa, bloqueo, probCritico, dañoCritico);
+	public Enemigo(String nombre, int vida, int velocidad, int ataque, int defensa, int bloqueo, int probCritico,
+			int dañoCritico, int nivel, String elemento, String descripcion, Ataque[] ataques, Icon iconoEnemigo,
+			Ataque siguienteAccion) {
+		super(nombre, vida, velocidad, ataque, defensa, bloqueo, probCritico, dañoCritico, nivel);
+		this.elemento = elemento;
 		this.descripcion = descripcion;
-		this.ataque = ataque;
+		this.ataques = ataques;
+		this.iconoEnemigo = iconoEnemigo;
+		this.siguienteAccion = siguienteAccion;
 	}
 	
 	//Falta la creación de enemigos y ver dónde se crean.
