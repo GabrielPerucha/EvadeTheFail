@@ -3,12 +3,12 @@
 ## **Indice**
 
 1. [Primer apartado](#id1)
-    *[Primer subapartado del primer apartado](#id1.1)
-2. [Segundo apartado](#id2)
-3. [Tercer apartado](#id3)
-4. [Cuarto apartado](#id4)
-5. [Quito apartado](#id5)
-6. [Sexto apartado](#id6)
+    2. [Primer subapartado del primer apartado](#id1.1)
+3. [Segundo apartado](#id2)
+4. [Tercer apartado](#id3)
+5. [Cuarto apartado](#id4)
+6. [Quito apartado](#id5)
+7. [Sexto apartado](#id6)
 
 
 1. Elemento de lista 1
