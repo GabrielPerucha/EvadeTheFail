@@ -1,3 +1,3 @@
-##Este es el encabezado uno
+## Este es el encabezado uno
 
-####Eeste es el ancabezado cuato
+#### Eeste es el ancabezado cuato
