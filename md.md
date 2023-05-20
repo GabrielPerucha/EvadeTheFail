@@ -3,9 +3,9 @@
 ## **Indice**
 
 1. [Primer apartado](#id1)
-    1. [Primer subapartado del primer apartado](#id11)
-    2. [Segundo subapartado del primer apartado](#id12)
-    3. [Tercer subapartado del primer apartado](#id13)
+    - [Primer subapartado del primer apartado](#id11)
+    - [Segundo subapartado del primer apartado](#id12)
+    - [Tercer subapartado del primer apartado](#id13)
 2. [Segundo apartado](#id2)
     - [Primer subapartado del segundo apartado](#id21)
     - [Segundo subapartado del segundo apartado](#id22)
