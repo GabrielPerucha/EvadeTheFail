@@ -10,9 +10,17 @@ public class Carta extends Movimiento {
 	protected int coste;
 	protected String clase;
 	protected int ID;
-	protected EfectoSobreEstadisticas efecto1;
-	protected EfectoSobreEstadisticas efecto2;
-	protected EfectoSobreEstadisticas efecto3;
+	protected EfectoSobreEstadisticas[] efectos;
+	
+	
+
+	public EfectoSobreEstadisticas[] getEfectos() {
+		return efectos;
+	}
+
+	public void setEfectos(EfectoSobreEstadisticas[] efectos) {
+		this.efectos = efectos;
+	}
 
 	public int getID() {
 		return ID;
@@ -46,37 +54,24 @@ public class Carta extends Movimiento {
 		this.coste = coste;
 	}
 
+	/**
+	 * 
+	 * @param ID
+	 * @param nombre
+	 * @param descripcion
+	 * @param elemento
+	 * @param coste
+	 * @param clase
+	 * @param efectos
+	 */
 	public Carta(int ID, String nombre, String descripcion, String elemento, int coste, String clase,
-			EfectoSobreEstadisticas efecto1) {
+			EfectoSobreEstadisticas[] efectos) {
 		super(descripcion, nombre);
 		this.ID = ID;
-		this.efecto1 = efecto1;
+		this.efectos = efectos;
 		this.elemento = elemento;
 		this.coste = coste;
 		this.clase = clase;
-	}
-
-	public Carta(int ID, String nombre, String descripcion, String elemento, int coste, String clase,
-			EfectoSobreEstadisticas efecto1, EfectoSobreEstadisticas efecto2) {
-		super(descripcion, nombre);
-		this.ID = ID;
-		this.efecto1 = efecto1;
-		this.elemento = elemento;
-		this.coste = coste;
-		this.clase = clase;
-		this.efecto2 = efecto2;
-	}
-
-	public Carta(int ID, String nombre, String descripcion, String elemento, int coste, String clase,
-			EfectoSobreEstadisticas efecto1, EfectoSobreEstadisticas efecto2, EfectoSobreEstadisticas efecto3) {
-		super(descripcion, nombre);
-		this.ID = ID;
-		this.efecto1 = efecto1;
-		this.elemento = elemento;
-		this.coste = coste;
-		this.clase = clase;
-		this.efecto2 = efecto2;
-		this.efecto3 = efecto3;
 	}
 
 	public static void ejecutarCarta(Carta carta) {

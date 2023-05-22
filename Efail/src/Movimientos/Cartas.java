@@ -27,8 +27,18 @@ public class Cartas {
 	
 	//Cartas de ejemplo, una de ataque y una de defensa.
 	
-	Carta ofensa = new Carta(id++, "Ofensa", "Ataca con fiereza al rival\nDaño: " + Combate.formulaDaño(jugador, enemigo) + 1, "Neutro", 1, "Neutro", new daño(Combate.formulaDaño(jugador, enemigo), 1));
-	Carta defensa = new Carta(id++, "Defensa", "Defiende la fiereza del rival\nBloqueo: " + jugador.getDefensa()/5 + 2, "Neutro", 1, "Neutro", new bloqueo((jugador.getDefensa()/5 + 2), 1));
+	Carta ofensa = new Carta(id++, "Ofensa", "Ataca con fiereza al rival\nDaño: " + Combate.formulaDaño(jugador, enemigo) + 1, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new daño(Combate.formulaDaño(jugador, enemigo), 1)});
+	Carta ofensa1 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDaño: " + Combate.formulaDaño(jugador, enemigo) + 1, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new daño(Combate.formulaDaño(jugador, enemigo), 1)});
+	Carta ofensa2 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDaño: " + Combate.formulaDaño(jugador, enemigo) + 1, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new daño(Combate.formulaDaño(jugador, enemigo), 1)});
+	Carta ofensa3 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDaño: " + Combate.formulaDaño(jugador, enemigo) + 1, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new daño(Combate.formulaDaño(jugador, enemigo), 1)});
+	Carta ofensa4 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDaño: " + Combate.formulaDaño(jugador, enemigo) + 1, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new daño(Combate.formulaDaño(jugador, enemigo), 1)});
+	
+	
+	Carta defensa = new Carta(id++, "Defensa", "Defiende la fiereza del rival\nBloqueo: " + jugador.getDefensa()/5 + 2, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new bloqueo((jugador.getDefensa()/5 + 2),1)});
+	Carta defensa1 = new Carta(id, "Defensa", "Defiende la fiereza del rival\nBloqueo: " + jugador.getDefensa()/5 + 2, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new bloqueo((jugador.getDefensa()/5 + 2),1)});
+	Carta defensa2 = new Carta(id, "Defensa", "Defiende la fiereza del rival\nBloqueo: " + jugador.getDefensa()/5 + 2, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new bloqueo((jugador.getDefensa()/5 + 2),1)});
+	Carta defensa3 = new Carta(id, "Defensa", "Defiende la fiereza del rival\nBloqueo: " + jugador.getDefensa()/5 + 2, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new bloqueo((jugador.getDefensa()/5 + 2),1)});
+	Carta defensa4 = new Carta(id, "Defensa", "Defiende la fiereza del rival\nBloqueo: " + jugador.getDefensa()/5 + 2, "Neutro", 1, "Neutro", new EfectoSobreEstadisticas[]{new bloqueo((jugador.getDefensa()/5 + 2),1)});
 	
 	//Añadir más cartas
 	//Pasable a otra clase si es necesario

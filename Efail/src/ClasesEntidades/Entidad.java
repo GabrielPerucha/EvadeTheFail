@@ -73,6 +73,18 @@ public class Entidad {
 		this.dañoCritico = dañoCritico;
 	}
 	
+	/**
+	 * 
+	 * @param nombre
+	 * @param nivel
+	 * @param vida
+	 * @param ataque
+	 * @param defensa
+	 * @param velocidad
+	 * @param probCritico
+	 * @param dañoCritico
+	 * @param bloqueo
+	 */
 	public Entidad(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int probCritico,
 			int dañoCritico, int bloqueo) {
 		Nombre = nombre;

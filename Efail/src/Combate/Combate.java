@@ -19,6 +19,12 @@ public class Combate {
 	 * el jugador y los enemigos, para poder utilizar una escala de estadisticas lógica y reducir el daño que hace el enemigo al jugador.
 	 */
 	
+	/**
+	 * 
+	 * @param objetivo
+	 * @param atacante
+	 * @return
+	 */
 	public static int formulaDaño(Jugable atacante, Enemigo objetivo) {
 		
 		int total;
@@ -29,12 +35,27 @@ public class Combate {
 		
 	}
 
-	public static void daño(Enemigo atacante, Jugable objetivo) {
+	/**
+	 * 
+	 * @param atacante
+	 * @param objetivo
+	 * @return
+	 */
+	public static int formulaDañoRival(Enemigo atacante, Jugable objetivo) {
 		
+		int total;
 		
+		total = atacante.getAtaque()*(atacante.getNivel()/(7*objetivo.getNivel())) + (atacante.getAtaque()- objetivo.getDefensa()) - objetivo.getBloqueo();
+		
+		return total;
 		
 	}
 	
+	/**
+	 * 
+	 * @param mazo
+	 * @return
+	 */
 	public static Carta[] barajeo(Carta[] mazo) {
 
 		Carta[] mazoAux = new Carta[mazo.length];
@@ -71,6 +92,10 @@ public class Combate {
 	}
 
 	// Método terminado
+	/**
+	 * 
+	 * @param NPC
+	 */
 	public static void inicioCombate(Enemigo NPC) {
 
 		JOptionPane.showMessageDialog(null, "¡Ha aparecido un " + NPC.getNombre() + " de nivel " + NPC.getNivel() + "!",
@@ -79,12 +104,17 @@ public class Combate {
 	}
 
 	// Falta duplicar el método para que sea tolerable a dos o tres enemigos.
+	/**
+	 * 
+	 * @param jugador
+	 * @param NPC
+	 */
 	public static void menuCombate(Jugable jugador, Enemigo NPC) {
 
 		boolean finCombate = false;
 		Carta[] mazoAux, mano;
 
-		Terreno terreno = new Terreno(null, null, null, null, jugador, NPC);
+		Terreno terreno = new Terreno(null, null, null, null, null, null, null, null, jugador, NPC, NPC, NPC);
 
 		terreno.setDescartes(new Carta[jugador.getMazo().length]);
 		terreno.setDestierro(new Carta[jugador.getMazo().length]);

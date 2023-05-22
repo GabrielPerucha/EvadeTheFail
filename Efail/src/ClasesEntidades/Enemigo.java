@@ -62,6 +62,25 @@ public class Enemigo  extends Entidad{
 		this.ataques = ataques;
 	}
 
+	
+	/**
+	 * 
+	 * @param nombre
+	 * @param nivel
+	 * @param vida
+	 * @param vidaRestante
+	 * @param ataque
+	 * @param defensa
+	 * @param velocidad
+	 * @param probCritico
+	 * @param dañoCritico
+	 * @param bloqueo
+	 * @param elemento
+	 * @param descripcion
+	 * @param ataques
+	 * @param iconoEnemigo
+	 * @param siguienteAccion
+	 */
 	public Enemigo(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int velocidad, int probCritico,
 			int dañoCritico, int bloqueo, String elemento, String descripcion, Ataque[] ataques, Icon iconoEnemigo,
 			Ataque siguienteAccion) {
@@ -72,6 +91,19 @@ public class Enemigo  extends Entidad{
 		this.ataques = ataques;
 		this.iconoEnemigo = iconoEnemigo;
 		this.siguienteAccion = siguienteAccion;
+	}
+	
+	public static void ajustaParametros(Enemigo enemigo, Enemigo enemigoBase) {
+		
+		for (int i = 0; i < enemigo.getNivel(); i++) {
+			
+			enemigo.setVida(enemigo.getVida()+enemigoBase.getVida());
+			enemigo.setAtaque(enemigo.getAtaque()+enemigoBase.getAtaque());
+			enemigo.setDefensa(enemigo.getDefensa()+enemigoBase.getDefensa());
+			enemigo.setVelocidad(enemigo.getVelocidad()+enemigoBase.getVelocidad());
+			
+		}
+		
 	}
 	
 	//Falta la creación de enemigos y ver dónde se crean.
