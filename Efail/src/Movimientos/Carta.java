@@ -1,16 +1,19 @@
 package Movimientos;
 
-public class Carta extends Movimiento{
+import Efectos.EfectoSobreEstadisticas;
 
-	//TO DO Creacion de cartas y establecer cuántas habrá y de que clase
+public class Carta extends Movimiento {
+
+	// TO DO Creacion de cartas y establecer cuántas habrá y de que clase
 
 	protected String elemento;
 	protected int coste;
 	protected String clase;
 	protected int ID;
-	
-	
-	
+	protected EfectoSobreEstadisticas efecto1;
+	protected EfectoSobreEstadisticas efecto2;
+	protected EfectoSobreEstadisticas efecto3;
+
 	public int getID() {
 		return ID;
 	}
@@ -43,26 +46,43 @@ public class Carta extends Movimiento{
 		this.coste = coste;
 	}
 
-	public Carta(int ID, String descripcion, String nombre, String elemento, int coste, String clase) {
+	public Carta(int ID, String nombre, String descripcion, String elemento, int coste, String clase,
+			EfectoSobreEstadisticas efecto1) {
 		super(descripcion, nombre);
 		this.ID = ID;
+		this.efecto1 = efecto1;
 		this.elemento = elemento;
 		this.coste = coste;
 		this.clase = clase;
 	}
-	
-	
-	public static void ejecutarCarta(Carta carta) {
-		
-		Cartas c = new Cartas();
-		
-		
-		
+
+	public Carta(int ID, String nombre, String descripcion, String elemento, int coste, String clase,
+			EfectoSobreEstadisticas efecto1, EfectoSobreEstadisticas efecto2) {
+		super(descripcion, nombre);
+		this.ID = ID;
+		this.efecto1 = efecto1;
+		this.elemento = elemento;
+		this.coste = coste;
+		this.clase = clase;
+		this.efecto2 = efecto2;
 	}
-	
-	
-	
-	
-	//Falta la creación de las cartas y ver dónde se crean.
+
+	public Carta(int ID, String nombre, String descripcion, String elemento, int coste, String clase,
+			EfectoSobreEstadisticas efecto1, EfectoSobreEstadisticas efecto2, EfectoSobreEstadisticas efecto3) {
+		super(descripcion, nombre);
+		this.ID = ID;
+		this.efecto1 = efecto1;
+		this.elemento = elemento;
+		this.coste = coste;
+		this.clase = clase;
+		this.efecto2 = efecto2;
+		this.efecto3 = efecto3;
+	}
+
+	public static void ejecutarCarta(Carta carta) {
+
+	}
+
+	// Falta la creación de las cartas y ver dónde se crean.
 
 }

@@ -56,8 +56,8 @@ public class Jugable extends Entidad {
 		Mazo = mazo;
 	}
 
-	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int velocidad, int ataque, int defensa, int bloqueo, int probCritico,
-			int dañoCritico, int mana, String clase, Icon iconoJugador, Carta[] mazo) {
+	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int velocidad, int probCritico,
+			int dañoCritico, int bloqueo, int mana, String clase, Icon iconoJugador, Carta[] mazo) {
 		super(nombre, vida, velocidad, ataque, defensa, bloqueo, probCritico, dañoCritico, nivel);
 		this.vidaRestante = vidaRestante;
 		this.mana = mana;

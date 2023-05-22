@@ -13,7 +13,28 @@ import Partida.Interfaz;
 //int eleccion = JOptionPane.showOptionDialog(null, "Contenido", "Título", 0, 0, null, opciones, "Preseleccionado");
 
 public class Combate {
+	
+	/*
+	 * Hay dos metodos de daño, uno para cuando el jugador ataca y otro para cuando defiende. Esto se debe al equilibrio entre
+	 * el jugador y los enemigos, para poder utilizar una escala de estadisticas lógica y reducir el daño que hace el enemigo al jugador.
+	 */
+	
+	public static int formulaDaño(Jugable atacante, Enemigo objetivo) {
+		
+		int total;
+		
+		total = atacante.getAtaque()*(atacante.getNivel()/(5*objetivo.getNivel())) + (atacante.getAtaque()- objetivo.getDefensa()) - objetivo.getBloqueo();
+		
+		return total;
+		
+	}
 
+	public static void daño(Enemigo atacante, Jugable objetivo) {
+		
+		
+		
+	}
+	
 	public static Carta[] barajeo(Carta[] mazo) {
 
 		Carta[] mazoAux = new Carta[mazo.length];

@@ -73,9 +73,8 @@ public class Entidad {
 		this.dañoCritico = dañoCritico;
 	}
 	
-	public Entidad(String nombre, int vida, int velocidad, int ataque, int defensa, int bloqueo, int probCritico,
-			int dañoCritico, int nivel) {
-		super();
+	public Entidad(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int probCritico,
+			int dañoCritico, int bloqueo) {
 		Nombre = nombre;
 		this.vida = vida;
 		this.velocidad = velocidad;

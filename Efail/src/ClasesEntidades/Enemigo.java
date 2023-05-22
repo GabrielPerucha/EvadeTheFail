@@ -62,8 +62,8 @@ public class Enemigo  extends Entidad{
 		this.ataques = ataques;
 	}
 
-	public Enemigo(String nombre, int nivel, int vida, int vidaRestante, int velocidad, int ataque, int defensa, int bloqueo, int probCritico,
-			int dañoCritico, String elemento, String descripcion, Ataque[] ataques, Icon iconoEnemigo,
+	public Enemigo(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int velocidad, int probCritico,
+			int dañoCritico, int bloqueo, String elemento, String descripcion, Ataque[] ataques, Icon iconoEnemigo,
 			Ataque siguienteAccion) {
 		super(nombre, vida, velocidad, ataque, defensa, bloqueo, probCritico, dañoCritico, nivel);
 		this.vidaRestante = vidaRestante;
