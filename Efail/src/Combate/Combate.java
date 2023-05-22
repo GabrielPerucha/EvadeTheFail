@@ -15,8 +15,8 @@ import Partida.Interfaz;
 public class Combate {
 	
 	/*
-	 * Hay dos metodos de daño, uno para cuando el jugador ataca y otro para cuando defiende. Esto se debe al equilibrio entre
-	 * el jugador y los enemigos, para poder utilizar una escala de estadisticas lógica y reducir el daño que hace el enemigo al jugador.
+	 * Hay dos metodos de dano, uno para cuando el jugador ataca y otro para cuando defiende. Esto se debe al equilibrio entre
+	 * el jugador y los enemigos, para poder utilizar una escala de estadisticas lógica y reducir el dano que hace el enemigo al jugador.
 	 */
 	
 	/**
@@ -25,7 +25,7 @@ public class Combate {
 	 * @param atacante
 	 * @return
 	 */
-	public static int formulaDaño(Jugable atacante, Enemigo objetivo) {
+	public static int formulaDano(Jugable atacante, Enemigo objetivo) {
 		
 		int total;
 		
@@ -41,7 +41,7 @@ public class Combate {
 	 * @param objetivo
 	 * @return
 	 */
-	public static int formulaDañoRival(Enemigo atacante, Jugable objetivo) {
+	public static int formulaDanoRival(Enemigo atacante, Jugable objetivo) {
 		
 		int total;
 		

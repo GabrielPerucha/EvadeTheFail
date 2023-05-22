@@ -7,31 +7,28 @@ import javax.swing.JOptionPane;
 
 import ClasesEntidades.*;
 import Combate.*;
-import Movimientos.Ataque;
-import Movimientos.Carta;
-import Movimientos.Cartas;
+import Movimientos.*;
 
 public class MainPrueba {
-
-	static Ataque golpe = new Ataque("Golpe con la mano abierta", "Caranchoa", 7, 0, 100);
 	static Ataque[] ataques = new Ataque[] { golpe };
 
 	Cartas c = new Cartas();
 
-	static Carta[] mazo = new Carta[] { c1, c2, c3, c4, c5 };
+	static Carta[] mazo = new Carta[] { Cartas.ofensa, c2, c3, c4, c5 };
+	
 	static Enemigo NPC1 = new Enemigo("Goblin", 20, 50, 40, 10, 20, 15, 0, 1, 5, "Agua", "Pruebadesc", ataques, null,
 			ataques[0]);
 	static Enemigo NPC2 = new Enemigo("Slime", 20, 50, 40, 10, 20, 15, 0, 1, 5, "Agua", "Pruebadesc", ataques, null,
 			ataques[0]);
 	static Enemigo NPC3 = new Enemigo("Wyvern", 20, 50, 40, 10, 20, 15, 0, 1, 5, "Agua", "Pruebadesc", ataques, null,
 			ataques[0]);
-	static Jugable jugador = new Jugable("Reux", 60, 30, 20, 10, 30, 20, 0, 1, 5, 5, "Caballero", null, mazo);
+	static Jugable jugador = new Jugable("HÈroe", 60, 30, 20, 10, 30, 20, 0, 1, 5, 5, "Caballero", null, mazo);
 
 	public static void main(String[] args) {
 
 		/*
 		 * public Jugable(String nombre, int vida, int velocidad, int ataque, int
-		 * defensa, int bloqueo, int probCritico, int da√±oCritico, int nivel, int mana,
+		 * defensa, int bloqueo, int probCritico, int danoCritico, int nivel, int mana,
 		 * String clase, Icon iconoJugador, Carta[] mazo) {
 		 * 
 		 */

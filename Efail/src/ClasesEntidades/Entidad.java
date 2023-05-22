@@ -14,7 +14,7 @@ public class Entidad {
 	protected int bloqueo;
 	
 	protected int probCritico;
-	protected int dañoCritico;
+	protected int danoCritico;
 	
 	
 	
@@ -66,11 +66,11 @@ public class Entidad {
 	public void setProbCritico(int probCritico) {
 		this.probCritico = probCritico;
 	}
-	public int getDañoCritico() {
-		return dañoCritico;
+	public int getDanoCritico() {
+		return danoCritico;
 	}
-	public void setDañoCritico(int dañoCritico) {
-		this.dañoCritico = dañoCritico;
+	public void setDanoCritico(int danoCritico) {
+		this.danoCritico = danoCritico;
 	}
 	
 	/**
@@ -82,11 +82,11 @@ public class Entidad {
 	 * @param defensa
 	 * @param velocidad
 	 * @param probCritico
-	 * @param dañoCritico
+	 * @param danoCritico
 	 * @param bloqueo
 	 */
 	public Entidad(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int probCritico,
-			int dañoCritico, int bloqueo) {
+			int danoCritico, int bloqueo) {
 		Nombre = nombre;
 		this.vida = vida;
 		this.velocidad = velocidad;
@@ -94,7 +94,7 @@ public class Entidad {
 		this.defensa = defensa;
 		this.bloqueo = bloqueo;
 		this.probCritico = probCritico;
-		this.dañoCritico = dañoCritico;
+		this.danoCritico = danoCritico;
 		this.nivel = nivel;
 	}
 	

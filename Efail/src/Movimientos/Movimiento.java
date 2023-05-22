@@ -5,7 +5,7 @@ public class Movimiento {
 	protected String descripcion;
 	protected String nombre;
 	
-	protected int daño;
+	protected int dano;
 	protected int curacion;
 	
 	
@@ -27,12 +27,12 @@ public class Movimiento {
 		this.nombre = nombre;
 	}
 
-	public int getDaño() {
-		return daño;
+	public int getDano() {
+		return dano;
 	}
 
-	public void setDaño(int daño) {
-		this.daño = daño;
+	public void setDano(int dano) {
+		this.dano = dano;
 	}
 
 	public int getCuracion() {
@@ -49,10 +49,10 @@ public class Movimiento {
 		this.nombre = nombre;
 	}
 
-	public Movimiento(String descripcion, String nombre, int daño, int curacion) {
+	public Movimiento(String descripcion, String nombre, int dano, int curacion) {
 		this.descripcion = descripcion;
 		this.nombre = nombre;
-		this.daño = daño;
+		this.dano = dano;
 		this.curacion = curacion;
 	}
 	
