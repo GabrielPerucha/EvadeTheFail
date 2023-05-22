@@ -5,9 +5,20 @@ public class Carta extends Movimiento{
 	//TO DO Creacion de cartas y establecer cuántas habrá y de que clase
 
 	protected String elemento;
-	protected String coste;
+	protected int coste;
 	protected String clase;
+	protected int ID;
 	
+	
+	
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	public String getClase() {
 		return clase;
 	}
@@ -24,20 +35,33 @@ public class Carta extends Movimiento{
 		this.elemento = elemento;
 	}
 
-	public String getCoste() {
+	public int getCoste() {
 		return coste;
 	}
 
-	public void setCoste(String coste) {
+	public void setCoste(int coste) {
 		this.coste = coste;
 	}
 
-	public Carta(String descripcion, String nombre, String elemento, String coste, String clase) {
+	public Carta(int ID, String descripcion, String nombre, String elemento, int coste, String clase) {
 		super(descripcion, nombre);
+		this.ID = ID;
 		this.elemento = elemento;
 		this.coste = coste;
 		this.clase = clase;
 	}
+	
+	
+	public static void ejecutarCarta(Carta carta) {
+		
+		Cartas c = new Cartas();
+		
+		
+		
+	}
+	
+	
+	
 	
 	//Falta la creación de las cartas y ver dónde se crean.
 

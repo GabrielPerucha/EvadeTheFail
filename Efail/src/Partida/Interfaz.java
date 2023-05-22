@@ -3,6 +3,7 @@ package Partida;
 import javax.swing.JOptionPane;
 
 import ClasesEntidades.*;
+import Combate.Terreno;
 
 public class Interfaz {
 
@@ -71,9 +72,9 @@ public class Interfaz {
 
 	}
 
-	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC) {
+	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Terreno terreno) {
 
-		String contenido = "", espacios1 = " ", espacios2 = "", espacios3=" ";
+		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ";
 		int longitudNombreJugador = jugador.getNombre().length();
 
 		if (jugador.getNivel() < 9) {
@@ -81,30 +82,36 @@ public class Interfaz {
 			espacios3 = espacios3.concat(" ");
 		}
 		if (jugador.getVida() < 3) {
-			espacios3 = espacios3.concat(" ");
+			espacios3 = espacios3.concat("  ");
 		}
-		
-		for (int i = 0; i < 26; i++) {
+
+		for (int i = 0; i < 25; i++) {
 
 			espacios3 = espacios3.concat(" ");
 
 		}
 		
+		espacios1 = espacios1.concat(espacios3);
+		
+		espacios3 = espacios3.concat(espacios3);
+
 		for (int i = 0; i < 16 - jugador.getNombre().length(); i++) {
 
 			espacios2 = espacios2.concat(" ");
 
 		}
 
-		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1 + "          "
-				+ "Nv: "+NPC.getNivel()+ " " +NPC.getNombre() +"\n\nHP: " +jugador.getVida() + espacios3 + NPC.getVida()+" " +NPC.getSiguienteAccion();
+		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
+				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
+				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
+				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n\n\n\n";
 
 		return contenido;
 	}
-	
-	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC1, Enemigo NPC2, Enemigo NPC3) {
 
-		String contenido = "", espacios1 = " ", espacios2 = "", espacios3=" ";
+	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2, Terreno terreno) {
+
+		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ", espacios4 = "                  ";
 		int longitudNombreJugador = jugador.getNombre().length();
 
 		if (jugador.getNivel() < 9) {
@@ -112,23 +119,73 @@ public class Interfaz {
 			espacios3 = espacios3.concat(" ");
 		}
 		if (jugador.getVida() < 3) {
-			espacios3 = espacios3.concat(" ");
+			espacios3 = espacios3.concat("  ");
 		}
-		
-		for (int i = 0; i < 26; i++) {
+
+		for (int i = 0; i < 25; i++) {
 
 			espacios3 = espacios3.concat(" ");
 
 		}
 		
+		espacios1 = espacios1.concat(espacios3);
+		
+		espacios3 = espacios3.concat(espacios3);
+
 		for (int i = 0; i < 16 - jugador.getNombre().length(); i++) {
 
 			espacios2 = espacios2.concat(" ");
 
 		}
 
-		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1 + "          "
-				+ "Nv: "+NPC2.getNivel()+ " " +NPC2.getNombre() +"\n\nHP: " +jugador.getVida() + espacios3 + NPC2.getVida()+" " +NPC2.getSiguienteAccion();
+		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
+				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
+				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
+				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n\n\n\n" + espacios4 + espacios3
+				+ "Nv: " + NPC2.getNivel() + " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3
+				+ NPC.getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n\n\n\n";
+
+		return contenido;
+	}
+
+	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2, Enemigo NPC3,
+			Terreno terreno) {
+
+		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ", espacios4 = "                  ";
+		int longitudNombreJugador = jugador.getNombre().length();
+
+		if (jugador.getNivel() < 9) {
+			espacios1 = espacios1.concat(" ");
+			espacios3 = espacios3.concat(" ");
+		}
+		if (jugador.getVida() < 3) {
+			espacios3 = espacios3.concat("  ");
+		}
+
+		for (int i = 0; i < 25; i++) {
+
+			espacios3 = espacios3.concat(" ");
+
+		}
+		
+		espacios1 = espacios1.concat(espacios3);
+		
+		espacios3 = espacios3.concat(espacios3);
+
+		for (int i = 0; i < 16 - jugador.getNombre().length(); i++) {
+
+			espacios2 = espacios2.concat(" ");
+
+		}
+
+		contenido = espacios4 + espacios3 + "Nv: " + NPC3.getNivel() + " " + NPC3.getNombre() + "\n\n" + espacios4
+				+ espacios3 + NPC3.getVidaRestante() + "/" + NPC3.getVida() + " " + NPC3.getSiguienteAccion().getNombre()
+				+ "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1 + "          "
+				+ "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: " + terreno.getJugador().getVidaRestante()
+				+ "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante() + "/" + NPC.getVida() + " "
+				+ NPC.getSiguienteAccion().getNombre() + "\n\n\n\n" + espacios4 + espacios3 + "Nv: " + NPC2.getNivel()
+				+ " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3 + NPC2.getVidaRestante() + "/" + NPC2.getVida()
+				+ " " + NPC2.getSiguienteAccion().getNombre() + "\n\n\n\n";
 
 		return contenido;
 	}

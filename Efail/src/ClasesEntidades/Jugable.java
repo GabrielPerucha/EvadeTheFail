@@ -14,7 +14,15 @@ public class Jugable extends Entidad {
 	protected String clase;
 	protected Icon iconoJugador;
 	protected Carta[] Mazo;
+	protected int vidaRestante;
 	
+	public int getVidaRestante() {
+		return vidaRestante;
+	}
+
+	public void setVidaRestante(int vidaRestante) {
+		this.vidaRestante = vidaRestante;
+	}
 
 	public String getClase() {
 		return clase;
@@ -48,9 +56,10 @@ public class Jugable extends Entidad {
 		Mazo = mazo;
 	}
 
-	public Jugable(String nombre, int vida, int velocidad, int ataque, int defensa, int bloqueo, int probCritico,
-			int dañoCritico, int nivel, int mana, String clase, Icon iconoJugador, Carta[] mazo) {
+	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int velocidad, int ataque, int defensa, int bloqueo, int probCritico,
+			int dañoCritico, int mana, String clase, Icon iconoJugador, Carta[] mazo) {
 		super(nombre, vida, velocidad, ataque, defensa, bloqueo, probCritico, dañoCritico, nivel);
+		this.vidaRestante = vidaRestante;
 		this.mana = mana;
 		this.clase = clase;
 		this.iconoJugador = iconoJugador;

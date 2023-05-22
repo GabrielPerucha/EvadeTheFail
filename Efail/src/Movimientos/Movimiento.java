@@ -50,7 +50,6 @@ public class Movimiento {
 	}
 
 	public Movimiento(String descripcion, String nombre, int daño, int curacion) {
-		super();
 		this.descripcion = descripcion;
 		this.nombre = nombre;
 		this.daño = daño;
