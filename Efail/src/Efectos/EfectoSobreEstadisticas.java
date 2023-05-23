@@ -50,6 +50,7 @@ public class EfectoSobreEstadisticas extends Efecto{
 		this.multiplicador = multiplicador;
 		this.sumador = sumador;
 		this.duracion = duracion;
+		this.objetivo = objetivo;
 	}
 	
 	/**
@@ -61,6 +62,7 @@ public class EfectoSobreEstadisticas extends Efecto{
 	public EfectoSobreEstadisticas(int sumador, int duracion, boolean objetivo) {
 		this.sumador = sumador;
 		this.duracion = duracion;
+		this.objetivo = objetivo;
 	}
 	
 	/**
@@ -72,6 +74,7 @@ public class EfectoSobreEstadisticas extends Efecto{
 	public EfectoSobreEstadisticas(double multiplicador, int duracion, boolean objetivo) {
 		this.multiplicador = multiplicador;
 		this.duracion = duracion;
+		this.objetivo = objetivo;
 	}
 	
 	//TO DO Programar más efectos y sus consecuencias una vez sea posible su comprobación.

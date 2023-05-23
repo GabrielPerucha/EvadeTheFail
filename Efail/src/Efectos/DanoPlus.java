@@ -2,9 +2,16 @@ package Efectos;
 
 public class DanoPlus extends EfectoSobreEstadisticas{
 
-	public DanoPlus(int sumador, int duracion) {
-		super(sumador, duracion);
+	/**
+	 * 
+	 * @param multiplicador
+	 * @param duracion
+	 * @param objetivo
+	 */
+	public DanoPlus(double multiplicador, int duracion, boolean objetivo) {
+		super(multiplicador, duracion, objetivo);
 		// TODO Auto-generated constructor stub
 	}
 
+	
 }

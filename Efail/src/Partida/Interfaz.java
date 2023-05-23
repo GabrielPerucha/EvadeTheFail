@@ -7,6 +7,10 @@ import Combate.Terreno;
 
 public class Interfaz {
 
+	/**
+	 * 
+	 * @return
+	 */
 	public static int menuInicial() {
 
 		// Editar para convertir las opciones a botones
@@ -50,6 +54,10 @@ public class Interfaz {
 		return eleccion;
 	}
 
+	/**
+	 * 
+	 * @param eleccion
+	 */
 	public static void seleccionador(int eleccion) {
 
 		switch (eleccion) {
@@ -72,6 +80,13 @@ public class Interfaz {
 
 	}
 
+	/**
+	 * 
+	 * @param jugador
+	 * @param NPC
+	 * @param terreno
+	 * @return
+	 */
 	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Terreno terreno) {
 
 		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ";
@@ -109,6 +124,14 @@ public class Interfaz {
 		return contenido;
 	}
 
+	/**
+	 * 
+	 * @param jugador
+	 * @param NPC
+	 * @param NPC2
+	 * @param terreno
+	 * @return
+	 */
 	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2, Terreno terreno) {
 
 		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ", espacios4 = "                  ";
@@ -148,6 +171,15 @@ public class Interfaz {
 		return contenido;
 	}
 
+	/**
+	 * 
+	 * @param jugador
+	 * @param NPC
+	 * @param NPC2
+	 * @param NPC3
+	 * @param terreno
+	 * @return
+	 */
 	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2, Enemigo NPC3,
 			Terreno terreno) {
 

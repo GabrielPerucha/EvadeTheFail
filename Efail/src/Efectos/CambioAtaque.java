@@ -2,9 +2,16 @@ package Efectos;
 
 public class CambioAtaque extends EfectoSobreEstadisticas{
 
-	public CambioAtaque(double multiplicador, int duracion) {
-		super(multiplicador, duracion);
+	/**
+	 * 
+	 * @param multiplicador
+	 * @param duracion
+	 * @param objetivo
+	 */
+	public CambioAtaque(double multiplicador, int duracion, boolean objetivo) {
+		super(multiplicador, duracion, objetivo);
 		// TODO Auto-generated constructor stub
 	}
 
+	
 }
