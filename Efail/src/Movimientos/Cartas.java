@@ -18,8 +18,8 @@ public class Cartas {
 	 * public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int velocidad, int probCritico,
 			int danoCritico, int bloqueo, int mana, String clase, Icon iconoJugador, Carta[] mazo) {
 	 */
-	Jugable jugador = new Jugable("Default", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null);
-	Enemigo enemigo = new Enemigo("Default", 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
+	Jugable jugador = new Jugable("Default", 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null);
+	Enemigo enemigo = new Enemigo("Default", 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
 	Combate combate = new Combate();
 	
 	int id=0;

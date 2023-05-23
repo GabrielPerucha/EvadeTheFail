@@ -1,9 +1,10 @@
 package Efectos;
 
-public class EfectoEspecial {
+public class EfectoEspecial extends Efecto{
 	
 	protected String descripcion;
 	protected EfectoSobreEstadisticas[] efectos;
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -16,6 +17,7 @@ public class EfectoEspecial {
 	public void setEfectos(EfectoSobreEstadisticas[] efectos) {
 		this.efectos = efectos;
 	}
+	
 	public EfectoEspecial(String descripcion, EfectoSobreEstadisticas[] efectos) {
 		super();
 		this.descripcion = descripcion;

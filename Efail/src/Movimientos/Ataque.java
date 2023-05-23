@@ -1,23 +1,33 @@
 package Movimientos;
 
-import Efectos.EfectoEspecial;
-import Efectos.EfectoSobreEstadisticas;
+import Efectos.*;
 
 public class Ataque extends Movimiento{
 
 	protected int probabilidad;
-	protected EfectoSobreEstadisticas[] efectos;
+	protected int potencia;
+	protected Efecto[] efectos;
 	protected EfectoEspecial efectoEspecial;
 	
+	
+	
+	public int getPotencia() {
+		return potencia;
+	}
+
+	public void setPotencia(int potencia) {
+		this.potencia = potencia;
+	}
+
 	public int getProbabilidad() {
 		return probabilidad;
 	}
 	
-	public EfectoSobreEstadisticas[] getEfectos() {
+	public Efecto[] getEfectos() {
 		return efectos;
 	}
 
-	public void setEfectos(EfectoSobreEstadisticas[] efectos) {
+	public void setEfectos(Efecto[] efectos) {
 		this.efectos = efectos;
 	}
 
@@ -33,21 +43,19 @@ public class Ataque extends Movimiento{
 		this.probabilidad = probabilidad;
 	}
 
-	
 	/**
 	 * 
 	 * @param descripcion
 	 * @param nombre
 	 * @param probabilidad
+	 * @param potencia
 	 * @param efectos
-	 * @param efectoEspecial
 	 */
-	public Ataque(String descripcion, String nombre, int probabilidad, EfectoSobreEstadisticas[] efectos,
-			EfectoEspecial efectoEspecial) {
+	public Ataque(String descripcion, String nombre, int probabilidad, int potencia, Efecto[] efectos) {
 		super(descripcion, nombre);
 		this.probabilidad = probabilidad;
+		this.potencia = potencia;
 		this.efectos = efectos;
-		this.efectoEspecial = efectoEspecial;
 	}
 
 	/**
@@ -55,13 +63,20 @@ public class Ataque extends Movimiento{
 	 * @param descripcion
 	 * @param nombre
 	 * @param probabilidad
+	 * @param potencia
 	 * @param efectos
+	 * @param efectoEspecial
 	 */
-	public Ataque(String descripcion, String nombre, int probabilidad, EfectoSobreEstadisticas[] efectos) {
+	public Ataque(String descripcion, String nombre, int probabilidad, int potencia, Efecto[] efectos,
+			EfectoEspecial efectoEspecial) {
 		super(descripcion, nombre);
 		this.probabilidad = probabilidad;
+		this.potencia = potencia;
 		this.efectos = efectos;
+		this.efectoEspecial = efectoEspecial;
 	}
+
+	
 	
 	//Falta la creación de ataques y ver dónde se crean.
 }
