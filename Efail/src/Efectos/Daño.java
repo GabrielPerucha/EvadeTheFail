@@ -1,8 +1,8 @@
 package Efectos;
 
-public class descanso extends EfectoSobreEstadisticas{
+public class Daño extends EfectoSobreEstadisticas{
 
-	public descanso(int sumador, int duracion) {
+	public Daño(int sumador, int duracion) {
 		super(sumador, duracion);
 		// TODO Auto-generated constructor stub
 	}
