@@ -10,7 +10,6 @@ public class Ataque extends Movimiento{
 	protected EfectoEspecial efectoEspecial;
 	
 	
-	
 	public int getPotencia() {
 		return potencia;
 	}

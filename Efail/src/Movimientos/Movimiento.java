@@ -7,10 +7,7 @@ public class Movimiento {
 	
 	protected int dano;
 	protected int curacion;
-	
-	
-	
-	
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -44,17 +41,8 @@ public class Movimiento {
 	}
 
 	public Movimiento(String descripcion, String nombre) {
-		super();
 		this.descripcion = descripcion;
 		this.nombre = nombre;
 	}
 
-	public Movimiento(String descripcion, String nombre, int dano, int curacion) {
-		this.descripcion = descripcion;
-		this.nombre = nombre;
-		this.dano = dano;
-		this.curacion = curacion;
-	}
-	
-	
 }

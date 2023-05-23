@@ -19,7 +19,6 @@ public class EfectoEspecial extends Efecto{
 	}
 	
 	public EfectoEspecial(String descripcion, EfectoSobreEstadisticas[] efectos) {
-		super();
 		this.descripcion = descripcion;
 		this.efectos = efectos;
 	}
