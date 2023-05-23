@@ -7,7 +7,6 @@ public class Entidad {
 	
 	protected int nivel;
 	
-	protected int velocidad;
 	protected int ataque;
 	
 	protected int defensa;
@@ -35,12 +34,6 @@ public class Entidad {
 	}
 	public void setVida(int vida) {
 		this.vida = vida;
-	}
-	public int getVelocidad() {
-		return velocidad;
-	}
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
 	}
 	public int getAtaque() {
 		return ataque;
@@ -80,16 +73,14 @@ public class Entidad {
 	 * @param vida
 	 * @param ataque
 	 * @param defensa
-	 * @param velocidad
 	 * @param probCritico
 	 * @param danoCritico
 	 * @param bloqueo
 	 */
-	public Entidad(String nombre, int nivel, int vida, int ataque, int defensa, int velocidad, int probCritico,
+	public Entidad(String nombre, int nivel, int vida, int ataque, int defensa, int probCritico,
 			int danoCritico, int bloqueo) {
 		Nombre = nombre;
 		this.vida = vida;
-		this.velocidad = velocidad;
 		this.ataque = ataque;
 		this.defensa = defensa;
 		this.bloqueo = bloqueo;

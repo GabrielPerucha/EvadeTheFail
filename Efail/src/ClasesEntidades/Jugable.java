@@ -64,7 +64,6 @@ public class Jugable extends Entidad {
 	 * @param vidaRestante
 	 * @param ataque
 	 * @param defensa
-	 * @param velocidad
 	 * @param probCritico
 	 * @param danoCritico
 	 * @param bloqueo
@@ -73,9 +72,9 @@ public class Jugable extends Entidad {
 	 * @param iconoJugador
 	 * @param mazo
 	 */
-	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int velocidad, int probCritico,
+	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int probCritico,
 			int danoCritico, int bloqueo, int mana, String clase, Icon iconoJugador, Carta[] mazo) {
-		super(nombre, vida, velocidad, ataque, defensa, bloqueo, probCritico, danoCritico, nivel);
+		super(nombre, vida, ataque, defensa, bloqueo, probCritico, danoCritico, nivel);
 		this.vidaRestante = vidaRestante;
 		this.mana = mana;
 		this.clase = clase;

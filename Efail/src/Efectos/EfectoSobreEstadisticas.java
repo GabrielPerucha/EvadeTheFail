@@ -1,6 +1,6 @@
 package Efectos;
 
-public class EfectoSobreEstadisticas {
+public class EfectoSobreEstadisticas extends Efecto{
 	
 	protected double multiplicador;
 	protected int sumador;
@@ -22,6 +22,7 @@ public class EfectoSobreEstadisticas {
 		this.multiplicador = multiplicador;
 		this.duracion = duracion;
 	}
+	
 	//TO DO Programar más efectos y sus consecuencias una vez sea posible su comprobación.
 	
 }

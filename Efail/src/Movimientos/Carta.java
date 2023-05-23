@@ -1,6 +1,6 @@
 package Movimientos;
 
-import Efectos.EfectoSobreEstadisticas;
+import Efectos.*;
 
 public class Carta extends Movimiento {
 
@@ -10,15 +10,15 @@ public class Carta extends Movimiento {
 	protected int coste;
 	protected String clase;
 	protected int ID;
-	protected EfectoSobreEstadisticas[] efectos;
+	protected Efecto[] efectos;
 	
 	
 
-	public EfectoSobreEstadisticas[] getEfectos() {
+	public Efecto[] getEfectos() {
 		return efectos;
 	}
 
-	public void setEfectos(EfectoSobreEstadisticas[] efectos) {
+	public void setEfectos(Efecto[] efectos) {
 		this.efectos = efectos;
 	}
 
@@ -65,7 +65,7 @@ public class Carta extends Movimiento {
 	 * @param efectos
 	 */
 	public Carta(int ID, String nombre, String descripcion, String elemento, int coste, String clase,
-			EfectoSobreEstadisticas[] efectos) {
+			Efecto[] efectos) {
 		super(descripcion, nombre);
 		this.ID = ID;
 		this.efectos = efectos;
