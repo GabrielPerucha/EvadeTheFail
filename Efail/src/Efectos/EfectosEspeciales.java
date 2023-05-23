@@ -1,7 +1,12 @@
 package Efectos;
 
+import ClasesEntidades.Enemigo;
+import ClasesEntidades.Jugable;
+import Combate.*;
+
 public class EfectosEspeciales {
 
+	
 	//Descripcion y efectos en lineas separadas
 	
 	//SLIMES
@@ -17,7 +22,6 @@ public class EfectosEspeciales {
 	
 	//JUEGO CON TURNOS
 	
-	public EfectoEspecial cargaAtaque = new EfectoEspecial("El enemigo está cargando un ataque poderoso. Su concentración le hace resistir mejor el turno que pierde cargando.",
-			new EfectoSobreEstadisticas[] {new CambioDefensa(1.5, 1, true, 1)});
+
 	
 }

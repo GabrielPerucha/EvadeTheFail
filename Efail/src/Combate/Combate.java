@@ -29,7 +29,7 @@ public class Combate {
 		
 		int total;
 		
-		total = atacante.getAtaque()*(atacante.getNivel()/(5*objetivo.getNivel())) + (atacante.getAtaque()- objetivo.getDefensa()) - objetivo.getBloqueo();
+		total = atacante.getAtaque()*(atacante.getNivel()/(5*objetivo.getNivel()+1)) + (atacante.getAtaque()- objetivo.getDefensa()) - objetivo.getBloqueo();
 		
 		return total;
 		
@@ -45,7 +45,7 @@ public class Combate {
 		
 		int total;
 		
-		total = atacante.getAtaque()*(atacante.getNivel()/(7*objetivo.getNivel())) + (atacante.getAtaque()- objetivo.getDefensa()) - objetivo.getBloqueo();
+		total = atacante.getAtaque()*(atacante.getNivel()/(7*objetivo.getNivel()+1)) + (atacante.getAtaque()- objetivo.getDefensa()) - objetivo.getBloqueo();
 		
 		return total;
 		

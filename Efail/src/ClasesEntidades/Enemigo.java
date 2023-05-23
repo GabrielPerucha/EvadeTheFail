@@ -94,13 +94,10 @@ public class Enemigo  extends Entidad{
 	
 	public static void ajustaParametros(Enemigo enemigo, Enemigo enemigoBase) {
 		
-		for (int i = 0; i < enemigo.getNivel(); i++) {
-			
-			enemigo.setVida(enemigo.getVida()+enemigoBase.getVida());
-			enemigo.setAtaque(enemigo.getAtaque()+enemigoBase.getAtaque());
-			enemigo.setDefensa(enemigo.getDefensa()+enemigoBase.getDefensa());
-			
-		}
+		enemigo.setVida(enemigoBase.getVida()*enemigo.getNivel());
+		enemigo.setVidaRestante(enemigoBase.getVidaRestante()*enemigo.getNivel());
+		enemigo.setAtaque(enemigoBase.getAtaque()*enemigo.getNivel());
+		enemigo.setDefensa(enemigoBase.getDefensa()*enemigo.getNivel());
 		
 	}
 	

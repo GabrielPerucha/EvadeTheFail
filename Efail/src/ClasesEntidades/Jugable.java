@@ -82,6 +82,4 @@ public class Jugable extends Entidad {
 		Mazo = mazo;
 	}
 
-	
-
 }

@@ -111,7 +111,27 @@ public class Ataques {
 	
 	
 	//Goblin con hacha
-	public Ataque hachazo = new Ataque("El duende con su portentosa arma te ataca sin piedad\n", "Hachazo", 35, 200, null);
+	public Ataque hachazoRB = new Ataque("El duende con su portentosa arma te ataca sin piedad\nAumenta la defensa en un 50% un turno"
+			+ "\nPotencia: 200 una vez tras un turno\nProbabilidad: 35", "Hachazo", 35, 200,
+			new Efecto[]{new CambioDefensa(1.5, 1, true, 0), new Dano(Combate.formulaDanoRival(enemigo, jugador)*2, 1, false, 1)});
+	
+	public Ataque hachazoRA = new Ataque("El duende con su portentosa arma te ataca sin piedad\nAumenta la defensa en un 50% un turno"
+			+ "\nPotencia: 250 una vez tras un turno\nProbabilidad: 35", "Hachazo", 35, 250,
+			new Efecto[]{new CambioDefensa(1.5, 1, true, 0), new Dano(Combate.formulaDanoRival(enemigo, jugador)*250/100, 1, false, 1)});
+	
+	
+	//Goblin con espadas
+	public Ataque espadazoRB = new Ataque("Extrañamente una criatura fantastica utiliza mejor la espada que muchas personas reales.\n"
+			+ "Aumenta la probabilidad de critico un 15% y el daño crítico un 20% por 1 turno\n Potencia: 100\nProbabilidad: 35", "Espadazo", 35, 100,
+			new Efecto[] {new CambioProbabilidadCritico(1.15, 1, true, 0), new CambioDanoCritico(1.2, 0, 1, true, 0)});
+	
+	public Ataque espadazoRA = new Ataque("Duende de los criticos (ahora es personal).\n"
+			+ "Aumenta la probabilidad de critico un 25% y el daño crítico un 30% por 1 turno\n Potencia: 100\nProbabilidad: 35", "Espadazo", 35, 100,
+			new Efecto[] {new CambioProbabilidadCritico(1.25, 1, true, 0), new CambioDanoCritico(1.3, 0, 1, true, 0)});
+	
+	//Hacer un ataque de maestro de la espada
+	
+	
 	
 	
 }
