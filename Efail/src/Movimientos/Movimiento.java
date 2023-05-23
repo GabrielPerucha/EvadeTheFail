@@ -42,13 +42,23 @@ public class Movimiento {
 	public void setCuracion(int curacion) {
 		this.curacion = curacion;
 	}
-
+	/**
+	 * 
+	 * @param descripcion
+	 * @param nombre
+	 */
 	public Movimiento(String descripcion, String nombre) {
 		super();
 		this.descripcion = descripcion;
 		this.nombre = nombre;
 	}
-
+	/**
+	 * 
+	 * @param descripcion
+	 * @param nombre
+	 * @param dano
+	 * @param curacion
+	 */
 	public Movimiento(String descripcion, String nombre, int dano, int curacion) {
 		this.descripcion = descripcion;
 		this.nombre = nombre;

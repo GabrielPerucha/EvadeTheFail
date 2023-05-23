@@ -6,18 +6,31 @@ public class EfectoSobreEstadisticas extends Efecto{
 	protected int sumador;
 	protected int duracion;
 	
-	
+	/**
+	 * 
+	 * @param multiplicador
+	 * @param sumador
+	 * @param duracion
+	 */
 	public EfectoSobreEstadisticas(double multiplicador, int sumador, int duracion) {
 		this.multiplicador = multiplicador;
 		this.sumador = sumador;
 		this.duracion = duracion;
 	}
-	
+	/**
+	 * 
+	 * @param sumador
+	 * @param duracion
+	 */
 	public EfectoSobreEstadisticas(int sumador, int duracion) {
 		this.sumador = sumador;
 		this.duracion = duracion;
 	}
-	
+	/**
+	 * 
+	 * @param multiplicador
+	 * @param duracion
+	 */
 	public EfectoSobreEstadisticas(double multiplicador, int duracion) {
 		this.multiplicador = multiplicador;
 		this.duracion = duracion;

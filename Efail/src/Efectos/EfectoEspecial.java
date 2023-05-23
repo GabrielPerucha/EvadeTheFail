@@ -18,6 +18,11 @@ public class EfectoEspecial extends Efecto{
 		this.efectos = efectos;
 	}
 	
+	/**
+	 * 
+	 * @param descripcion
+	 * @param efectos
+	 */
 	public EfectoEspecial(String descripcion, EfectoSobreEstadisticas[] efectos) {
 		super();
 		this.descripcion = descripcion;
