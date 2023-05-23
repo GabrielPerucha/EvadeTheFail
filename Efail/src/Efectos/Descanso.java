@@ -2,17 +2,10 @@ package Efectos;
 
 public class Descanso extends EfectoSobreEstadisticas{
 
-	/**
-	 * 
-	 * @param sumador
-	 * @param duracion
-	 * @param objetivo
-	 */
-	public Descanso(int sumador, int duracion, boolean objetivo) {
-		super(sumador, duracion, objetivo);
+	public Descanso(int sumador, int duracion, boolean objetivo, int retardo) {
+		super(sumador, duracion, objetivo, retardo);
 		// TODO Auto-generated constructor stub
 	}
 
-	
 
 }
