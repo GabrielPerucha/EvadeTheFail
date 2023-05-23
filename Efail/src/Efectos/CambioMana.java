@@ -4,12 +4,12 @@ public class CambioMana extends EfectoSobreEstadisticas{
 
 	/**
 	 * 
-	 * @param multiplicador
+	 * @param sumador
 	 * @param duracion
 	 * @param objetivo
 	 */
-	public CambioMana(double multiplicador, int duracion, boolean objetivo) {
-		super(multiplicador, duracion, objetivo);
+	public CambioMana(int sumador, int duracion, boolean objetivo) {
+		super(sumador, duracion, objetivo);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -4,12 +4,12 @@ public class DanoPlus extends EfectoSobreEstadisticas{
 
 	/**
 	 * 
-	 * @param multiplicador
+	 * @param sumador
 	 * @param duracion
 	 * @param objetivo
 	 */
-	public DanoPlus(double multiplicador, int duracion, boolean objetivo) {
-		super(multiplicador, duracion, objetivo);
+	public DanoPlus(int sumador, int duracion, boolean objetivo) {
+		super(sumador, duracion, objetivo);
 		// TODO Auto-generated constructor stub
 	}
 
