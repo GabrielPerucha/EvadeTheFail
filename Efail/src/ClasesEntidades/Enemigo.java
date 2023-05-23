@@ -71,7 +71,6 @@ public class Enemigo  extends Entidad{
 	 * @param vidaRestante
 	 * @param ataque
 	 * @param defensa
-	 * @param velocidad
 	 * @param probCritico
 	 * @param danoCritico
 	 * @param bloqueo
@@ -81,10 +80,10 @@ public class Enemigo  extends Entidad{
 	 * @param iconoEnemigo
 	 * @param siguienteAccion
 	 */
-	public Enemigo(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int velocidad, int probCritico,
+	public Enemigo(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int probCritico,
 			int danoCritico, int bloqueo, String elemento, String descripcion, Ataque[] ataques, Icon iconoEnemigo,
 			Ataque siguienteAccion) {
-		super(nombre, vida, velocidad, ataque, defensa, bloqueo, probCritico, danoCritico, nivel);
+		super(nombre, vida, ataque, defensa, bloqueo, probCritico, danoCritico, nivel);
 		this.vidaRestante = vidaRestante;
 		this.elemento = elemento;
 		this.descripcion = descripcion;
@@ -100,7 +99,6 @@ public class Enemigo  extends Entidad{
 			enemigo.setVida(enemigo.getVida()+enemigoBase.getVida());
 			enemigo.setAtaque(enemigo.getAtaque()+enemigoBase.getAtaque());
 			enemigo.setDefensa(enemigo.getDefensa()+enemigoBase.getDefensa());
-			enemigo.setVelocidad(enemigo.getVelocidad()+enemigoBase.getVelocidad());
 			
 		}
 		
