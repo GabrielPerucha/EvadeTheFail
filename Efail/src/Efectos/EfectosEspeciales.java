@@ -13,6 +13,4 @@ public class EfectosEspeciales {
 	public EfectoEspecial babaSlimeRM = new EfectoEspecial("Una baba más fuerte a la que el héroe no le tiene miedo.\nDura 3 turnos", 
 			new EfectoSobreEstadisticas[] {new CambioAtaque(0.75,3, false)});
 	
-	
-	
 }
