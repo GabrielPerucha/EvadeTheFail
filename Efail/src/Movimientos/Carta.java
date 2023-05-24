@@ -1,5 +1,8 @@
 package Movimientos;
 
+import java.util.ArrayList;
+
+import Combate.*;
 import Efectos.*;
 
 public class Carta extends Movimiento {
@@ -11,8 +14,6 @@ public class Carta extends Movimiento {
 	protected String clase;
 	protected int ID;
 	protected Efecto[] efectos;
-	
-	
 
 	public Efecto[] getEfectos() {
 		return efectos;
@@ -74,7 +75,49 @@ public class Carta extends Movimiento {
 		this.clase = clase;
 	}
 
-	public static void ejecutarCarta(Carta carta) {
+	public static void ejecutarCarta(Carta carta, Terreno terreno) {
+
+		// nfx = normal effects
+		ArrayList<EfectoSobreEstadisticas> nfx = new ArrayList<EfectoSobreEstadisticas>();
+
+		// spfx = special effects
+		ArrayList<EfectoEspecial> spfx = new ArrayList<EfectoEspecial>();
+
+		for (int i = 0; i < carta.getEfectos().length; i++) {
+
+			/*
+			 * El array de efectos de la carta almacena "Efecto", no
+			 * "EfectoSobreEstadisticas" ni "EfectoEspecial". para poder llamarlos y ver su
+			 * efecto real hubo que hacer dos arrayList y utilizar el try catch de if else.
+			 * Si lanza una excepción es porque el cast no funcionó, por lo que no se trata
+			 * de un EfectoSobreEstadisticas, sino de uno especial
+			 */
+			try {
+
+				nfx.add((EfectoSobreEstadisticas) carta.getEfectos()[i]);
+
+			} catch (Exception e) {
+
+				spfx.add((EfectoEspecial) carta.getEfectos()[i]);
+
+			}
+
+		}
+
+		//A partir de aquí sí ejecutamos los efectos como tal
+		
+		for (int i = 0; i < nfx.size(); i++) {
+
+			if(nfx.get(i).isObjetivo()) {
+				
+				
+			}
+			
+		}
+
+		for (int i = 0; i < spfx.size(); i++) {
+
+		}
 
 	}
 
