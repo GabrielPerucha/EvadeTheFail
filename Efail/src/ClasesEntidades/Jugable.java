@@ -67,6 +67,23 @@ public class Jugable extends Entidad {
 		Mazo = mazo;
 	}
 
+	/**
+	 * 
+	 * @param nombre
+	 * @param nivel
+	 * @param vida
+	 * @param vidaRestante
+	 * @param ataque
+	 * @param defensa
+	 * @param probCritico
+	 * @param danoCritico
+	 * @param bloqueo
+	 * @param mana
+	 * @param manaRestante
+	 * @param clase
+	 * @param iconoJugador
+	 * @param mazo
+	 */
 	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int probCritico, int danoCritico,
 			int bloqueo, int mana, int manaRestante, String clase, Icon iconoJugador, Carta[] mazo) {
 		super(nombre, nivel, vida, ataque, defensa, probCritico, danoCritico, bloqueo);

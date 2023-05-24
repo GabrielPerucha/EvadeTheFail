@@ -2,7 +2,7 @@ package Combate;
 
 import ClasesEntidades.Enemigo;
 import ClasesEntidades.Jugable;
-import Efectos.EfectoSobreEstadisticas;
+import Efectos.*;
 import Movimientos.Carta;
 
 public class Terreno {
@@ -12,44 +12,44 @@ public class Terreno {
 	protected Carta[] Descartes;
 	protected Carta[] MazoRestante;
 
-	protected EfectoSobreEstadisticas[] efectosEnJugador;
+	protected Efecto[] efectosEnJugador;
 
-	protected EfectoSobreEstadisticas[] efectosEnEnemigo1;
-	protected EfectoSobreEstadisticas[] efectosEnEnemigo2;
-	protected EfectoSobreEstadisticas[] efectosEnEnemigo3;
+	protected Efecto[] efectosEnEnemigo1;
+	protected Efecto[] efectosEnEnemigo2;
+	protected Efecto[] efectosEnEnemigo3;
 
 	protected Jugable jugador;
 	protected Enemigo e1, e2, e3;
 
-	public EfectoSobreEstadisticas[] getEfectosEnJugador() {
+	public Efecto[] getEfectosEnJugador() {
 		return efectosEnJugador;
 	}
 
-	public void setEfectosEnJugador(EfectoSobreEstadisticas[] efectosEnJugador) {
+	public void setEfectosEnJugador(Efecto[] efectosEnJugador) {
 		this.efectosEnJugador = efectosEnJugador;
 	}
 
-	public EfectoSobreEstadisticas[] getEfectosEnEnemigo1() {
+	public Efecto[] getEfectosEnEnemigo1() {
 		return efectosEnEnemigo1;
 	}
 
-	public void setEfectosEnEnemigo1(EfectoSobreEstadisticas[] efectosEnEnemigo1) {
+	public void setEfectosEnEnemigo1(Efecto[] efectosEnEnemigo1) {
 		this.efectosEnEnemigo1 = efectosEnEnemigo1;
 	}
 
-	public EfectoSobreEstadisticas[] getEfectosEnEnemigo2() {
+	public Efecto[] getEfectosEnEnemigo2() {
 		return efectosEnEnemigo2;
 	}
 
-	public void setEfectosEnEnemigo2(EfectoSobreEstadisticas[] efectosEnEnemigo2) {
+	public void setEfectosEnEnemigo2(Efecto[] efectosEnEnemigo2) {
 		this.efectosEnEnemigo2 = efectosEnEnemigo2;
 	}
 
-	public EfectoSobreEstadisticas[] getEfectosEnEnemigo3() {
+	public Efecto[] getEfectosEnEnemigo3() {
 		return efectosEnEnemigo3;
 	}
 
-	public void setEfectosEnEnemigo3(EfectoSobreEstadisticas[] efectosEnEnemigo3) {
+	public void setEfectosEnEnemigo3(Efecto[] efectosEnEnemigo3) {
 		this.efectosEnEnemigo3 = efectosEnEnemigo3;
 	}
 
@@ -129,7 +129,7 @@ public class Terreno {
 	 * @param e1
 	 */
 	public Terreno(Carta[] mano, Carta[] destierro, Carta[] descartes, Carta[] mazoRestante,
-			EfectoSobreEstadisticas[] efectosEnJugador, EfectoSobreEstadisticas[] efectosEnEnemigo1, Jugable jugador,
+			Efecto[] efectosEnJugador, Efecto[] efectosEnEnemigo1, Jugable jugador,
 			Enemigo e1) {
 		super();
 		Mano = mano;
@@ -156,8 +156,8 @@ public class Terreno {
 	 * @param e2
 	 */
 	public Terreno(Carta[] mano, Carta[] destierro, Carta[] descartes, Carta[] mazoRestante,
-			EfectoSobreEstadisticas[] efectosEnJugador, EfectoSobreEstadisticas[] efectosEnEnemigo1,
-			EfectoSobreEstadisticas[] efectosEnEnemigo2, Jugable jugador, Enemigo e1, Enemigo e2) {
+			Efecto[] efectosEnJugador, Efecto[] efectosEnEnemigo1,
+			Efecto[] efectosEnEnemigo2, Jugable jugador, Enemigo e1, Enemigo e2) {
 		super();
 		Mano = mano;
 		Destierro = destierro;
@@ -187,8 +187,8 @@ public class Terreno {
 	 * @param e3
 	 */
 	public Terreno(Carta[] mano, Carta[] destierro, Carta[] descartes, Carta[] mazoRestante,
-			EfectoSobreEstadisticas[] efectosEnJugador, EfectoSobreEstadisticas[] efectosEnEnemigo1,
-			EfectoSobreEstadisticas[] efectosEnEnemigo2, EfectoSobreEstadisticas[] efectosEnEnemigo3, Jugable jugador,
+			Efecto[] efectosEnJugador, Efecto[] efectosEnEnemigo1,
+			Efecto[] efectosEnEnemigo2, Efecto[] efectosEnEnemigo3, Jugable jugador,
 			Enemigo e1, Enemigo e2, Enemigo e3) {
 		super();
 		Mano = mano;

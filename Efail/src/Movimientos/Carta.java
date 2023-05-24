@@ -113,17 +113,263 @@ public class Carta extends Movimiento {
 			// Si el objetivo del efecto eres tú:
 			if (nfx.get(i).isObjetivo()) {
 
-				if (terreno.getJugador().getClass().) {
+				switch (nfx.get(i).getEstadistica()) {
+
+				case "ataque":
 					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setAtaque((int)(
+							terreno.getJugador().getAtaque()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					
+					break;
+					
+				case "defensa":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setDefensa((int)(
+							terreno.getJugador().getDefensa()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					break;
+					
+				case "vida":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setVida((int)(
+							terreno.getJugador().getVida()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					
+					break;
+					
+				case "vidaRestante":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setVidaRestante((int)(
+							terreno.getJugador().getVidaRestante()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					
+					break;
+					
+				case "manaRestante":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setManaRestante((int)(
+							terreno.getJugador().getManaRestante()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					
+					break;
+					
+				case "bloqueo":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setBloqueo((int)(
+							terreno.getJugador().getBloqueo()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					
+					break;
+					
+				case "probCritico":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setProbCritico((int)(
+							terreno.getJugador().getProbCritico()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					
+					break;
+					
+				case "danoCritico":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setDanoCritico((int)(
+							terreno.getJugador().getDanoCritico()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					
+					break;
+					
+				case "dano":
+					
+					if(nfx.get(i).getRetardo()==0) {
+						
+						terreno.getJugador().setVidaRestante((int)(
+							terreno.getJugador().getVidaRestante()*nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						
+						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length+1];
+						
+						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+							
+							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							
+						}
+						
+						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i); 
+						
+						terreno.setEfectosEnJugador(efectosEnJug);
+						
+					} else {
+						
+						//RETARDO --
+						
+					}
+					
+					break;
+
 				}
-				
-				nfx.get(i).getEstadistica();
-				
-				
+
 				// Si el objetivo del efecto es el enemigo
 			} else {
-				
-				
+
 			}
 
 		}

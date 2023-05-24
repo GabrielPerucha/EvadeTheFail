@@ -82,10 +82,6 @@ public class EfectoSobreEstadisticas extends Efecto{
 	}
 
 	
-	
-	
-	
-	
 	//TO DO Programar más efectos y sus consecuencias una vez sea posible su comprobación.
 	
 }
