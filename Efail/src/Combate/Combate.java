@@ -29,7 +29,7 @@ public class Combate {
 		
 		int total;
 		
-		total = atacante.getAtaque()*(atacante.getNivel()/(5*objetivo.getNivel()+1)) + (atacante.getAtaque()- objetivo.getDefensa()) - objetivo.getBloqueo();
+		total = atacante.getAtaque()*(atacante.getNivel()/(5*objetivo.getNivel()+1)) + (atacante.getAtaque() - objetivo.getDefensa()) - objetivo.getBloqueo();
 		
 		return total;
 		
@@ -185,12 +185,16 @@ public class Combate {
 			opciones[opciones.length-1] = "?";
 			
 
-			int eleccion = JOptionPane.showOptionDialog(null, Interfaz.creaInterfazBatalla(jugador, NPC, terreno),
-					"Combate contra " + NPC.getNombre(), 0, 0, null, opciones, "Preseleccionado");
+			int eleccionCarta = JOptionPane.showOptionDialog(null, Interfaz.creaInterfazBatalla(jugador, NPC, terreno),
+					"Combate contra " + NPC.getNombre(), 0, 0, null, opciones, "?");
 			
-			// Falta llevar a un JOption Pane con la ejecucion de cada eleccion
+			//if (cartasMano.get(eleccionCarta)
 			
-			Carta.ejecutarCarta(cartasMano.get(eleccion));
+			int eleccionObjetivo = JOptionPane.showOptionDialog(null, "Elige un objetivo para tu carta", "Combate contra " + NPC.getNombre(),
+					numCartas, eleccionCarta, null, new String[] {NPC.getNombre()}, cartasMano);
+			
+			
+			Carta.ejecutarCarta(cartasMano.get(eleccionCarta), terreno);
 			
 			terreno.setDescartes(barajeo(terreno.getDescartes()));
 

@@ -119,7 +119,7 @@ public class Interfaz {
 		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
 				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
 				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
-				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n\n\n\n";
+				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " +jugador.getMana() + "/" + jugador.getManaRestante() + "\n\n\n";
 
 		return contenido;
 	}
@@ -164,7 +164,8 @@ public class Interfaz {
 		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
 				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
 				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
-				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n\n\n\n" + espacios4 + espacios3
+				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " +jugador.getMana()
+				+ "/" + jugador.getManaRestante() + "\n\n\n" + espacios4 + espacios3
 				+ "Nv: " + NPC2.getNivel() + " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3
 				+ NPC.getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n\n\n\n";
 
@@ -215,7 +216,8 @@ public class Interfaz {
 				+ "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1 + "          "
 				+ "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: " + terreno.getJugador().getVidaRestante()
 				+ "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante() + "/" + NPC.getVida() + " "
-				+ NPC.getSiguienteAccion().getNombre() + "\n\n\n\n" + espacios4 + espacios3 + "Nv: " + NPC2.getNivel()
+				+ NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " +jugador.getMana() + "/" + jugador.getManaRestante()
+				+ "\n\n\n" + espacios4 + espacios3 + "Nv: " + NPC2.getNivel()
 				+ " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3 + NPC2.getVidaRestante() + "/" + NPC2.getVida()
 				+ " " + NPC2.getSiguienteAccion().getNombre() + "\n\n\n\n";
 

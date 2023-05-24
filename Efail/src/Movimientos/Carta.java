@@ -1,6 +1,7 @@
 package Movimientos;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Combate.*;
 import Efectos.*;
@@ -104,15 +105,27 @@ public class Carta extends Movimiento {
 
 		}
 
-		//A partir de aquí sí ejecutamos los efectos como tal
-		
+		// A partir de aquí sí ejecutamos los efectos como tal
+
+		// Recorrer los efectos normales
 		for (int i = 0; i < nfx.size(); i++) {
 
-			if(nfx.get(i).isObjetivo()) {
+			// Si el objetivo del efecto eres tú:
+			if (nfx.get(i).isObjetivo()) {
+
+				if (terreno.getJugador().getClass().) {
+					
+				}
+				
+				nfx.get(i).getEstadistica();
+				
+				
+				// Si el objetivo del efecto es el enemigo
+			} else {
 				
 				
 			}
-			
+
 		}
 
 		for (int i = 0; i < spfx.size(); i++) {

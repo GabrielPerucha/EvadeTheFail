@@ -11,11 +11,22 @@ public class Jugable extends Entidad {
 	 */
 
 	protected int mana;
+	protected int manaRestante;
 	protected String clase;
 	protected Icon iconoJugador;
 	protected Carta[] Mazo;
 	protected int vidaRestante;
 	
+	
+	
+	public int getManaRestante() {
+		return manaRestante;
+	}
+
+	public void setManaRestante(int manaRestante) {
+		this.manaRestante = manaRestante;
+	}
+
 	public int getVidaRestante() {
 		return vidaRestante;
 	}
@@ -56,30 +67,17 @@ public class Jugable extends Entidad {
 		Mazo = mazo;
 	}
 
-	/**
-	 * 
-	 * @param nombre
-	 * @param nivel
-	 * @param vida
-	 * @param vidaRestante
-	 * @param ataque
-	 * @param defensa
-	 * @param probCritico
-	 * @param danoCritico
-	 * @param bloqueo
-	 * @param mana
-	 * @param clase
-	 * @param iconoJugador
-	 * @param mazo
-	 */
-	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int probCritico,
-			int danoCritico, int bloqueo, int mana, String clase, Icon iconoJugador, Carta[] mazo) {
-		super(nombre, vida, ataque, defensa, bloqueo, probCritico, danoCritico, nivel);
-		this.vidaRestante = vidaRestante;
+	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int probCritico, int danoCritico,
+			int bloqueo, int mana, int manaRestante, String clase, Icon iconoJugador, Carta[] mazo) {
+		super(nombre, nivel, vida, ataque, defensa, probCritico, danoCritico, bloqueo);
 		this.mana = mana;
+		this.manaRestante = manaRestante;
 		this.clase = clase;
 		this.iconoJugador = iconoJugador;
 		Mazo = mazo;
+		this.vidaRestante = vidaRestante;
 	}
+
+	
 
 }

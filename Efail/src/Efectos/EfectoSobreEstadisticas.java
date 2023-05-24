@@ -11,7 +11,7 @@ public class EfectoSobreEstadisticas extends Efecto{
 	protected int duracion;
 	protected boolean objetivo;
 	protected int retardo;
-	
+	protected String estadistica;
 	
 	
 	public int getRetardo() {
@@ -54,6 +54,14 @@ public class EfectoSobreEstadisticas extends Efecto{
 		this.objetivo = objetivo;
 	}
 
+	public String getEstadistica() {
+		return estadistica;
+	}
+
+	public void setEstadistica(String estadistica) {
+		this.estadistica = estadistica;
+	}
+
 	/**
 	 * 
 	 * @param multiplicador
@@ -61,46 +69,20 @@ public class EfectoSobreEstadisticas extends Efecto{
 	 * @param duracion
 	 * @param objetivo
 	 * @param retardo
+	 * @param estadistica
 	 */
-	public EfectoSobreEstadisticas(double multiplicador, int sumador, int duracion, boolean objetivo, int retardo) {
+	public EfectoSobreEstadisticas(String estadistica, double multiplicador, int sumador, int duracion, int retardo, boolean objetivo) {
 		super();
 		this.multiplicador = multiplicador;
 		this.sumador = sumador;
 		this.duracion = duracion;
 		this.objetivo = objetivo;
 		this.retardo = retardo;
+		this.estadistica = estadistica;
 	}
 
-	/**
-	 * 
-	 * @param multiplicador
-	 * @param duracion
-	 * @param objetivo
-	 * @param retardo
-	 */
-	public EfectoSobreEstadisticas(double multiplicador, int duracion, boolean objetivo, int retardo) {
-		super();
-		this.multiplicador = multiplicador;
-		this.duracion = duracion;
-		this.objetivo = objetivo;
-		this.retardo = retardo;
-	}
-
-	/**
-	 * 
-	 * @param sumador
-	 * @param duracion
-	 * @param objetivo
-	 * @param retardo
-	 */
-	public EfectoSobreEstadisticas(int sumador, int duracion, boolean objetivo, int retardo) {
-		super();
-		this.sumador = sumador;
-		this.duracion = duracion;
-		this.objetivo = objetivo;
-		this.retardo = retardo;
-	}
-
+	
+	
 	
 	
 	
