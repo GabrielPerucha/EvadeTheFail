@@ -25,7 +25,7 @@ public class BarraVidaColores {
 		int vida; //valor final que sale por la pantalla, reconvertido de double a int
 		double vidaporcent;
 		double vidamax = 50;
-		double vidad;//vida convertida de double a int para poder operar con la vida max
+		double vidaD;//vida convertida de double a int para poder operar con la vida max
 		
 		while (vida1>vidamax | vida1 < 0){
 			

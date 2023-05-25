@@ -105,9 +105,9 @@ public class Interfaz {
 			espacios3 = espacios3.concat(" ");
 
 		}
-		
+
 		espacios1 = espacios1.concat(espacios3);
-		
+
 		espacios3 = espacios3.concat(espacios3);
 
 		for (int i = 0; i < 16 - jugador.getNombre().length(); i++) {
@@ -118,8 +118,9 @@ public class Interfaz {
 
 		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
 				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
-				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
-				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " +jugador.getMana() + "/" + jugador.getManaRestante() + "\n\n\n";
+				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3
+				+ terreno.getE1().getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre()
+				+ "\n" + "Maná: " + jugador.getMana() + "/" + jugador.getManaRestante() + "\n\n\n";
 
 		return contenido;
 	}
@@ -150,9 +151,9 @@ public class Interfaz {
 			espacios3 = espacios3.concat(" ");
 
 		}
-		
+
 		espacios1 = espacios1.concat(espacios3);
-		
+
 		espacios3 = espacios3.concat(espacios3);
 
 		for (int i = 0; i < 16 - jugador.getNombre().length(); i++) {
@@ -164,10 +165,10 @@ public class Interfaz {
 		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
 				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
 				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
-				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " +jugador.getMana()
-				+ "/" + jugador.getManaRestante() + "\n\n\n" + espacios4 + espacios3
-				+ "Nv: " + NPC2.getNivel() + " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3
-				+ NPC.getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n\n\n\n";
+				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " + jugador.getMana()
+				+ "/" + jugador.getManaRestante() + "\n\n\n" + espacios4 + espacios3 + "Nv: " + NPC2.getNivel() + " "
+				+ NPC2.getNombre() + "\n\n" + espacios4 + espacios3 + NPC.getVidaRestante() + "/" + NPC.getVida() + " "
+				+ NPC.getSiguienteAccion().getNombre() + "\n\n\n\n";
 
 		return contenido;
 	}
@@ -200,9 +201,9 @@ public class Interfaz {
 			espacios3 = espacios3.concat(" ");
 
 		}
-		
+
 		espacios1 = espacios1.concat(espacios3);
-		
+
 		espacios3 = espacios3.concat(espacios3);
 
 		for (int i = 0; i < 16 - jugador.getNombre().length(); i++) {
@@ -212,16 +213,76 @@ public class Interfaz {
 		}
 
 		contenido = espacios4 + espacios3 + "Nv: " + NPC3.getNivel() + " " + NPC3.getNombre() + "\n\n" + espacios4
-				+ espacios3 + NPC3.getVidaRestante() + "/" + NPC3.getVida() + " " + NPC3.getSiguienteAccion().getNombre()
-				+ "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1 + "          "
-				+ "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: " + terreno.getJugador().getVidaRestante()
-				+ "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante() + "/" + NPC.getVida() + " "
-				+ NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " +jugador.getMana() + "/" + jugador.getManaRestante()
-				+ "\n\n\n" + espacios4 + espacios3 + "Nv: " + NPC2.getNivel()
-				+ " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3 + NPC2.getVidaRestante() + "/" + NPC2.getVida()
-				+ " " + NPC2.getSiguienteAccion().getNombre() + "\n\n\n\n";
+				+ espacios3 + NPC3.getVidaRestante() + "/" + NPC3.getVida() + " "
+				+ NPC3.getSiguienteAccion().getNombre() + "\n\n\n\nNv: " + jugador.getNivel() + " "
+				+ jugador.getNombre() + espacios2 + espacios1 + "          " + "Nv: " + NPC.getNivel() + " "
+				+ NPC.getNombre() + "\n\nHP: " + terreno.getJugador().getVidaRestante() + "/" + jugador.getVida()
+				+ espacios3 + NPC.getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre()
+				+ "\n" + "Maná: " + jugador.getMana() + "/" + jugador.getManaRestante() + "\n\n\n" + espacios4
+				+ espacios3 + "Nv: " + NPC2.getNivel() + " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3
+				+ NPC2.getVidaRestante() + "/" + NPC2.getVida() + " " + NPC2.getSiguienteAccion().getNombre()
+				+ "\n\n\n\n";
 
 		return contenido;
+	}
+
+	public static void informacionGeneral(Terreno terreno, Jugable jugador) {
+
+		String[] opciones = new String[] { "Estado", "Mazo", "Enemigos", "Atrás" };
+
+		switch (JOptionPane.showOptionDialog(null, "-Creo que necesito pensarme mejor mi movimiento...",
+				"Ventana de información: Selección", 0, 0, null, opciones, "Atrás")) {
+
+		case 0:
+			
+			informacionJugador(terreno, jugador);
+			informacionGeneral(terreno, jugador);
+			break;
+
+		case 1:
+			
+			informacionMazo(terreno);
+			informacionGeneral(terreno, jugador);
+			break;
+
+		case 2:
+			
+			informacionEnemigo(terreno);
+			informacionGeneral(terreno, jugador);
+			break;
+
+		case 3:
+
+			break;
+			
+		default:
+			
+		}
+
+	}
+
+	public static void informacionJugador(Terreno terreno, Jugable jugador) {
+
+		int espaciosN = 16-jugador.getNombre().length();
+		String espaciosNombre = " ";
+		
+		for (int i = 0; i < espaciosN; i++) {
+			espaciosNombre.concat(" ");
+		}
+		
+		JOptionPane.showMessageDialog(null,
+				jugador.getNombre()+ espaciosNombre + "\n\n", 
+				jugador.getNombre() + " el " + jugador.getClase(), 0, null);
+		
+		
+	}
+
+	public static void informacionMazo(Terreno terreno) {
+
+	}
+
+	public static void informacionEnemigo(Terreno terreno) {
+
 	}
 
 }

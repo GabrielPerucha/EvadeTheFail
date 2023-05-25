@@ -12,15 +12,15 @@ public class Terreno {
 	protected Carta[] Descartes;
 	protected Carta[] MazoRestante;
 
-	protected Efecto[] efectosEnJugador;
-
+	protected Jugable jugador;
+	protected Enemigo e1, e2, e3;
+	
 	protected Efecto[] efectosEnEnemigo1;
 	protected Efecto[] efectosEnEnemigo2;
 	protected Efecto[] efectosEnEnemigo3;
 
-	protected Jugable jugador;
-	protected Enemigo e1, e2, e3;
-
+	protected Efecto[] efectosEnJugador;
+	
 	public Efecto[] getEfectosEnJugador() {
 		return efectosEnJugador;
 	}

@@ -14,6 +14,7 @@ public class MainPrueba {
 
 	public static void main(String[] args) {
 		
+		
 		System.out.println(Jugable.class.arrayType());
 		
 		Cartas crs = new Cartas();
@@ -30,6 +31,7 @@ public class MainPrueba {
 		
 		Combate.inicioCombate(Slime);
 		Combate.menuCombate(jugador, Slime);
+		
 		
 	}
 

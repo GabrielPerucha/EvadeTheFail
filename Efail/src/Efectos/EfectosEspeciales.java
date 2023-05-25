@@ -9,6 +9,11 @@ public class EfectosEspeciales {
 	
 	//Descripcion y efectos en lineas separadas
 	
+	public EfectoEspecial tesonDeGerrero = new EfectoEspecial("Un guerrero nunca se cansa. Todos los turnos recarga tu maná", new EfectoSobreEstadisticas [] {new EfectoSobreEstadisticas("manaRestante", 1, 4, 100, 0, true)});
+	
+	public EfectoEspecial tensionDeEnemigo = new EfectoEspecial("Te pones nervioso al ver a un enemigo, quién sabe si él será quien acabe con tu vida", new EfectoSobreEstadisticas [] {new EfectoSobreEstadisticas("vida", 1, 0, 100, 0, true)});
+	
+	
 	//SLIMES
 	public EfectoEspecial babaSlimeRB = new EfectoEspecial("Baba de Slime pegajosa que te vuelve más torpe al atacar.\nDura 2 turnos",
 			new EfectoSobreEstadisticas[] {new EfectoSobreEstadisticas("ataque", 0.9, 0, 2, 0, false)});

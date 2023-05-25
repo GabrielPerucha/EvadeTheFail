@@ -64,12 +64,12 @@ public class EfectoSobreEstadisticas extends Efecto{
 
 	/**
 	 * 
+	 * @param estadistica
 	 * @param multiplicador
 	 * @param sumador
 	 * @param duracion
-	 * @param objetivo
 	 * @param retardo
-	 * @param estadistica
+	 * @param objetivo
 	 */
 	public EfectoSobreEstadisticas(String estadistica, double multiplicador, int sumador, int duracion, int retardo, boolean objetivo) {
 		super();
