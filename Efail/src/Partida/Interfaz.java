@@ -481,6 +481,7 @@ public class Interfaz {
 			if (!salir)
 			informacionEfectos(efectos, pagina);
 		}
+		//
 	}
 
 }
