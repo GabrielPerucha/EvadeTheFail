@@ -236,13 +236,9 @@ public class Combate {
 		boolean finTurno = false, tiroCarta = false;
 		Carta[] mazoAux, mano;
 
-		Terreno terreno = new Terreno(null, null, null, null, null, null, null, null, jugador, NPC, NPC, NPC);
+		Terreno terreno = new Terreno(null, new Carta[jugador.getMazo().length], new Carta[jugador.getMazo().length],
+				barajeo(jugador.getMazo()), jugador.getPasivas(), new Efecto[] {sp.tensionDeEnemigo}, jugador, NPC);
 
-		terreno.setDescartes(new Carta[jugador.getMazo().length]);
-		terreno.setDestierro(new Carta[jugador.getMazo().length]);
-		terreno.setMazoRestante(barajeo(jugador.getMazo()));
-		terreno.setEfectosEnJugador(jugador.getPasivas());
-		terreno.setEfectosEnEnemigo1(new Efecto[] {sp.tensionDeEnemigo});
 
 		int numCartas = 5;
 

@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import ClasesEntidades.*;
 import Combate.*;
 import Efectos.*;
+import Movimientos.*;
 
 public class Interfaz {
 
@@ -282,6 +283,32 @@ public class Interfaz {
 
 	}
 
+	public static String displayCarta(Carta carta) {
+
+		String display = "";
+
+		display = display + "\nNombre: " + carta.getNombre();
+
+		display = display + "\nClase: " + carta.getClase();
+
+		display = display + "\nCoste: " + carta.getCoste();
+
+		display = display + "\nElemento: " + carta.getElemento();
+
+		display = display + "\nEfectos: \n\n";
+
+		for (int i = 0; i < carta.getEfectos().length; i++) {
+
+			display = display + displayEfectos(Combate.castEfectos(carta.getEfectos())[i]);
+
+		}
+
+		display = display + "\n\n\n \"" + carta.getDescripcion() + "\"";
+
+		return display;
+
+	}
+
 	public static void informacionGeneral(Terreno terreno) {
 
 		String[] opciones = new String[] { "Estado", "Mazo", "Enemigos", "Atrás" };
@@ -297,7 +324,7 @@ public class Interfaz {
 
 		case 1:
 
-			informacionMazo(terreno);
+			informacionMazo(terreno.getJugador().getMazo(), 1);
 			informacionGeneral(terreno);
 			break;
 
@@ -336,7 +363,7 @@ public class Interfaz {
 
 		}
 
-		if (JOptionPane.showOptionDialog(null,
+		switch (JOptionPane.showOptionDialog(null,
 				terreno.getJugador().getNombre() + espaciosNombre + "Nv: " + terreno.getJugador().getNivel() + "\n\n" +
 
 						"Maná:                                          " + terreno.getJugador().getMana() + "\n\n"
@@ -349,20 +376,68 @@ public class Interfaz {
 
 						efectos + "\n\n",
 				terreno.getJugador().getNombre() + " el " + terreno.getJugador().getClase(), 0, 0, null,
-				new String[] { "Efectos", "Atrás" }, espaciosNombre) == 0) {
+				new String[] { "Efectos", "Atrás" }, espaciosNombre)) {
 
+		case 0:
+			
 			informacionEfectos(efJug, 0);
+			informacionJugador(terreno);
+			break;
+		
+		case 1:
+			informacionMazo(terreno.getJugador().getMazo(), 1);
 
 		}
 
 	}
 
-	public static void informacionMazo(Terreno terreno) {
+	public static void informacionMazo(Carta[] mazo, int posicionEnMazo) {
+
+		String[] opciones = new String[3];
+
+		opciones[0] = "<<";
+		opciones[1] = "Atrás";
+		opciones[2] = ">>";
+
+		switch (JOptionPane.showOptionDialog(null,
+				"\n\n\nPosicion: " + posicionEnMazo + "\n\n" + displayCarta(mazo[posicionEnMazo]) + "\n\n\n",
+				"Carta nº " + mazo[posicionEnMazo].getID() + ", " + mazo[posicionEnMazo].getNombre(),
+				 0, 0, null, opciones, "Atrás")) {
+
+		case 0:
+
+			if (posicionEnMazo == 1) {
+				posicionEnMazo = mazo.length;
+			}
+			
+			posicionEnMazo--;
+			
+			informacionMazo(mazo, posicionEnMazo);
+			break;
+
+		case 1:
+
+			break;
+
+		case 2:
+
+			if (posicionEnMazo == mazo.length - 1) {
+				posicionEnMazo = 0;
+			}
+			
+			posicionEnMazo++;
+			
+			informacionMazo(mazo, posicionEnMazo);
+			break;
+
+		}
 
 	}
 
 	public static void informacionEnemigo(Terreno terreno) {
 
+		
+		
 	}
 
 	public static void informacionEfectos(EfectoSobreEstadisticas[] efectos, int pagina) {
@@ -387,48 +462,47 @@ public class Interfaz {
 
 			modoPaginas = true;
 			opciones = new String[6];
-			if(efectos.length > (pagina+1)*3) {
-				
-				opciones[1] = displayEfectos(efectos[1*(pagina+1)]);
-				opciones[2] = displayEfectos(efectos[2*(pagina+1)]);
-				opciones[3] = displayEfectos(efectos[3*(pagina+1)]);
-				
+			if (efectos.length > (pagina + 1) * 3) {
+
+				opciones[1] = displayEfectos(efectos[1 * (pagina + 1)]);
+				opciones[2] = displayEfectos(efectos[2 * (pagina + 1)]);
+				opciones[3] = displayEfectos(efectos[3 * (pagina + 1)]);
+
 			} else {
-				
-				switch ((efectos.length-3*(pagina))) {
-				
+
+				switch ((efectos.length - 3 * (pagina))) {
+
 				case 1:
 
 					opciones = new String[4];
 					opciones[1] = displayEfectos(efectos[1]);
-					
+
 					break;
-					
+
 				case 2:
 
 					opciones = new String[5];
 					opciones[1] = displayEfectos(efectos[1]);
 					opciones[2] = displayEfectos(efectos[2]);
-					
+
 					break;
-						
+
 				case 3:
 
 					opciones = new String[6];
-					opciones[1] = displayEfectos(efectos[1*(pagina+1)]);
-					opciones[2] = displayEfectos(efectos[2*(pagina+1)]);
-					opciones[3] = displayEfectos(efectos[3*(pagina+1)]);
-					
+					opciones[1] = displayEfectos(efectos[1 * (pagina + 1)]);
+					opciones[2] = displayEfectos(efectos[2 * (pagina + 1)]);
+					opciones[3] = displayEfectos(efectos[3 * (pagina + 1)]);
+
 					break;
-					
+
 				}
-				
+
 			}
-			
-			
+
 			opciones[0] = "<<";
-			opciones[opciones.length-2] = ">>";
-			opciones[opciones.length-1] = "Atrás";
+			opciones[opciones.length - 2] = ">>";
+			opciones[opciones.length - 1] = "Atrás";
 
 		}
 
@@ -446,8 +520,7 @@ public class Interfaz {
 				}
 				pagina--;
 
-
-			} else if (eleccion == opciones.length-2) {
+			} else if (eleccion == opciones.length - 2) {
 
 				if (pagina == paginasTotales) {
 
@@ -457,10 +530,10 @@ public class Interfaz {
 
 				pagina++;
 
-			} else if (eleccion == opciones.length-1) {
-				
+			} else if (eleccion == opciones.length - 1) {
+
 				salir = true;
-				
+
 			} else if (esStat(efectos[eleccion])) {
 
 				JOptionPane.showOptionDialog(null,
@@ -472,16 +545,15 @@ public class Interfaz {
 
 			} else {
 
-			JOptionPane.showOptionDialog(null,
-					efectos[eleccion].getEstadistica().toUpperCase() + "\nAplica la etiqueta "
-							+ efectos[eleccion].getEstadistica() + "\nDura " + efectos[eleccion].getDuracion()
-							+ " turnos.\nTarda " + efectos[eleccion].getRetardo() + " turnos en activarse",
-					displayEfectos(efectos[eleccion]), 0, 0, null, new String[] { "Atrás" }, "Atrás");
+				JOptionPane.showOptionDialog(null,
+						efectos[eleccion].getEstadistica().toUpperCase() + "\nAplica la etiqueta "
+								+ efectos[eleccion].getEstadistica() + "\nDura " + efectos[eleccion].getDuracion()
+								+ " turnos.\nTarda " + efectos[eleccion].getRetardo() + " turnos en activarse",
+						displayEfectos(efectos[eleccion]), 0, 0, null, new String[] { "Atrás" }, "Atrás");
 			}
 			if (!salir)
-			informacionEfectos(efectos, pagina);
+				informacionEfectos(efectos, pagina);
 		}
-		//XD
 	}
 
 }
