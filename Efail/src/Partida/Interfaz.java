@@ -338,7 +338,7 @@ public class Interfaz {
 
 	public static void informacionEfectos(Efecto[] efectos) {
 
-		
+		//
 		
 	}
 	
