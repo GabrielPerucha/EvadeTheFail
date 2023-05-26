@@ -81,6 +81,20 @@ public class Interfaz {
 
 	}
 
+	public static boolean esStat(EfectoSobreEstadisticas efecto) {
+
+		if (efecto.getEstadistica().equals("ataque") || efecto.getEstadistica().equals("defensa")
+				|| efecto.getEstadistica().equals("bloqueo") || efecto.getEstadistica().equals("vida")
+				|| efecto.getEstadistica().equals("probCritico") || efecto.getEstadistica().equals("danoCritico")
+				|| efecto.getEstadistica().equals("vidaRestante") || efecto.getEstadistica().equals("manaRestante")) {
+
+			return true;
+
+		} else
+
+			return false;
+	}
+
 	/**
 	 * 
 	 * @param jugador
@@ -227,6 +241,47 @@ public class Interfaz {
 		return contenido;
 	}
 
+	/**
+	 * 
+	 * @param efecto
+	 * @param display
+	 */
+	public static String displayEfectos(EfectoSobreEstadisticas efecto) {
+
+		String display = "";
+
+		display = display + "\n" + efecto.getEstadistica();
+
+		if (!esStat(efecto)) {
+			display = display + " (Efecto especial)";
+		} else if (efecto.getMultiplicador() < 1 || efecto.getSumador() < 0) {
+
+			display = display + ("-");
+
+		} else if (efecto.getMultiplicador() > 1 || efecto.getSumador() > 0) {
+
+			display = display + ("+");
+
+		}
+
+		if (efecto.getRetardo() > 1 && efecto.getRetardo() != 0) {
+
+			display = display + ("      en " + efecto.getRetardo() + " turnos");
+
+		} else if (efecto.getRetardo() != 0) {
+
+			display = display + ("      en " + efecto.getRetardo() + " turno");
+
+		} else {
+
+			display = display + ("      duración: " + efecto.getRetardo());
+
+		}
+
+		return display;
+
+	}
+
 	public static void informacionGeneral(Terreno terreno) {
 
 		String[] opciones = new String[] { "Estado", "Mazo", "Enemigos", "Atrás" };
@@ -235,19 +290,19 @@ public class Interfaz {
 				"Ventana de información: Selección", 0, 0, null, opciones, "Atrás")) {
 
 		case 0:
-			
+
 			informacionJugador(terreno);
 			informacionGeneral(terreno);
 			break;
 
 		case 1:
-			
+
 			informacionMazo(terreno);
 			informacionGeneral(terreno);
 			break;
 
 		case 2:
-			
+
 			informacionEnemigo(terreno);
 			informacionGeneral(terreno);
 			break;
@@ -255,77 +310,51 @@ public class Interfaz {
 		case 3:
 
 			break;
-			
+
 		default:
-			
+
 		}
 
 	}
 
 	public static void informacionJugador(Terreno terreno) {
 
-		int espaciosN = 16-terreno.getJugador().getNombre().length();
+		int espaciosN = 16 - terreno.getJugador().getNombre().length();
 		String espaciosNombre = " ";
-		
+
 		for (int i = 0; i < espaciosN; i++) {
 			espaciosNombre.concat(" ");
 		}
-		
+
 		String efectos = "Efectos: ";
-		
+
 		EfectoSobreEstadisticas[] efJug = Combate.castEfectos(terreno.getEfectosEnJugador());
-		
+
 		for (int i = 0; i < efJug.length; i++) {
-			
-			efectos = efectos + "\n" + efJug[i].getEstadistica();
 
-			if (efJug[i].getMultiplicador() < 1 || efJug[i].getSumador() < 0) {
-				
-				efectos = efectos + ("-");
-				
-			} else if (efJug[i].getMultiplicador() > 1 || efJug[i].getSumador() > 0) {
-				
-				efectos = efectos + ("+");
-				
-			} else {
-				efectos = efectos + (" (Efecto especial)");
-			}
-			
-			if (efJug[i].getRetardo() > 1 && efJug[i].getRetardo() != 0) {
-				
-				efectos = efectos + ("      en " + efJug[i].getRetardo() + " turnos");
-				
-			} else if (efJug[i].getRetardo() != 0){
-				
-				efectos = efectos + ("      en " + efJug[i].getRetardo() + " turno");
-				
-			} else {
-				
-				efectos = efectos + ("      duración: " + efJug[i].getRetardo());
-				
-			}
+			efectos = efectos + displayEfectos(efJug[i]) + "\n";
+
 		}
-		
-		 if (JOptionPane.showOptionDialog(null,
-				terreno.getJugador().getNombre()+ espaciosNombre + "Nv: " +terreno.getJugador().getNivel() + "\n\n" +
 
-						"Maná:                                          " + terreno.getJugador().getMana() +        "\n\n" +
-						"Ataque:                                       " + terreno.getJugador().getAtaque() +      "\n\n" +
-						"Defensa:                                     " + terreno.getJugador().getDefensa() +     "\n\n" +
-						"Bloqueo:                                      " + terreno.getJugador().getBloqueo() +     "\n\n" +
-						"Probabilidad de critico:           " + terreno.getJugador().getAtaque() +      "\n\n" +
-						"Daño crítico:                               " + terreno.getJugador().getAtaque() +  "\n\n\n\n" +
-						
-						
-						efectos + "\n\n"
-						, 
-				terreno.getJugador().getNombre() + " el " + terreno.getJugador().getClase(), 0, 0, null, new String[] {"Efectos", "Atrás"}, espaciosNombre) == 0) {
-			 
-			 informacionEfectos(efJug);
-			 
-		 }
-		
-		
+		if (JOptionPane.showOptionDialog(null,
+				terreno.getJugador().getNombre() + espaciosNombre + "Nv: " + terreno.getJugador().getNivel() + "\n\n" +
+
+						"Maná:                                          " + terreno.getJugador().getMana() + "\n\n"
+						+ "Ataque:                                       " + terreno.getJugador().getAtaque() + "\n\n"
+						+ "Defensa:                                     " + terreno.getJugador().getDefensa() + "\n\n"
+						+ "Bloqueo:                                      " + terreno.getJugador().getBloqueo() + "\n\n"
+						+ "Probabilidad de critico:           " + terreno.getJugador().getAtaque() + "\n\n"
+						+ "Daño crítico:                               " + terreno.getJugador().getAtaque() + "\n\n\n\n"
+						+
+
+						efectos + "\n\n",
+				terreno.getJugador().getNombre() + " el " + terreno.getJugador().getClase(), 0, 0, null,
+				new String[] { "Efectos", "Atrás" }, espaciosNombre) == 0) {
+
+			informacionEfectos(efJug, 0);
+
+		}
+
 	}
 
 	public static void informacionMazo(Terreno terreno) {
@@ -336,10 +365,122 @@ public class Interfaz {
 
 	}
 
-	public static void informacionEfectos(Efecto[] efectos) {
+	public static void informacionEfectos(EfectoSobreEstadisticas[] efectos, int pagina) {
 
-		//
-		
+		boolean modoPaginas = false, salir = false;
+
+		int paginasTotales = efectos.length / 3;
+
+		String[] opciones;
+
+		if (efectos.length < 4) {
+
+			opciones = new String[efectos.length];
+
+			for (int i = 0; i < opciones.length; i++) {
+
+				opciones[i] = displayEfectos(efectos[i]);
+
+			}
+
+		} else {
+
+			modoPaginas = true;
+			opciones = new String[6];
+			if(efectos.length > (pagina+1)*3) {
+				
+				opciones[1] = displayEfectos(efectos[1*(pagina+1)]);
+				opciones[2] = displayEfectos(efectos[2*(pagina+1)]);
+				opciones[3] = displayEfectos(efectos[3*(pagina+1)]);
+				
+			} else {
+				
+				switch ((efectos.length-3*(pagina))) {
+				
+				case 1:
+
+					opciones = new String[4];
+					opciones[1] = displayEfectos(efectos[1]);
+					
+					break;
+					
+				case 2:
+
+					opciones = new String[5];
+					opciones[1] = displayEfectos(efectos[1]);
+					opciones[2] = displayEfectos(efectos[2]);
+					
+					break;
+						
+				case 3:
+
+					opciones = new String[6];
+					opciones[1] = displayEfectos(efectos[1*(pagina+1)]);
+					opciones[2] = displayEfectos(efectos[2*(pagina+1)]);
+					opciones[3] = displayEfectos(efectos[3*(pagina+1)]);
+					
+					break;
+					
+				}
+				
+			}
+			
+			
+			opciones[0] = "<<";
+			opciones[opciones.length-2] = ">>";
+			opciones[opciones.length-1] = "Atrás";
+
+		}
+
+		int eleccion = JOptionPane.showOptionDialog(null, "\n\n\n\nElige el efecto que quieras comprobar\n\n\n\n",
+				"Selección de efectos: Página " + pagina, 0, 0, null, opciones, "Atrás");
+
+		if (modoPaginas) {
+
+			if (eleccion == 0) {
+
+				if (pagina == 0) {
+
+					pagina = paginasTotales + 1;
+
+				}
+				pagina--;
+
+
+			} else if (eleccion == opciones.length-2) {
+
+				if (pagina == paginasTotales) {
+
+					pagina = -1;
+
+				}
+
+				pagina++;
+
+			} else if (eleccion == opciones.length-1) {
+				
+				salir = true;
+				
+			} else if (esStat(efectos[eleccion])) {
+
+				JOptionPane.showOptionDialog(null,
+						efectos[eleccion].getEstadistica().toUpperCase() + "\nMultiplica por "
+								+ efectos[eleccion].getMultiplicador() + "\nModifica directamente "
+								+ efectos[eleccion].getSumador() + "\n\n" + "Dura " + efectos[eleccion].getDuracion()
+								+ " turnos.\nTarda " + efectos[eleccion].getRetardo() + " turnos en activarse",
+						displayEfectos(efectos[eleccion]), 0, 0, null, new String[] { "Atrás" }, "Atrás");
+
+			} else {
+
+			JOptionPane.showOptionDialog(null,
+					efectos[eleccion].getEstadistica().toUpperCase() + "\nAplica la etiqueta "
+							+ efectos[eleccion].getEstadistica() + "\nDura " + efectos[eleccion].getDuracion()
+							+ " turnos.\nTarda " + efectos[eleccion].getRetardo() + " turnos en activarse",
+					displayEfectos(efectos[eleccion]), 0, 0, null, new String[] { "Atrás" }, "Atrás");
+			}
+			if (!salir)
+			informacionEfectos(efectos, pagina);
+		}
 	}
-	
+
 }

@@ -23,7 +23,9 @@ public class MainPrueba {
 		
 		Enemigo Slime = ens.SlimeRB;
 		
-		Jugable jugador = new Jugable("Héroe", 20, 65, 65, 0, 0, 0, 0, 0, 0, 0, null, null, new Carta[] {crs.ofensa1, crs.defensa1, crs.defensa2, crs.ofensa4, crs.defensa4}, new Efecto[]{spfx.tesonDeGerrero});
+		Jugable jugador = new Jugable("Héroe", 20, 65, 65, 0, 0, 0, 0, 0, 0, 0, null, null,
+				new Carta[] {crs.ofensa1, crs.defensa1, crs.defensa2, crs.ofensa4, crs.defensa4},
+				new Efecto[]{spfx.tesonDeGerrero, spfx.tesonDeGerrero, spfx.tesonDeGerrero, spfx.tesonDeGerrero, spfx.tesonDeGerrero});
 		
 		Slime.setNivel(15);
 		Slime.setSiguienteAccion(Slime.getAtaques()[3]);

@@ -135,7 +135,7 @@ public class Combate {
 
 			Efecto efectosAux[] = spfx.get(i).getEfectos();
 
-			for (int j = 0; j < spfx.size(); j++) {
+			for (int j = 0; j < spfx.get(i).getEfectos().length; j++) {
 
 				nfx.add(castEfectos(efectosAux)[j]);
 			}
@@ -241,8 +241,8 @@ public class Combate {
 		terreno.setDescartes(new Carta[jugador.getMazo().length]);
 		terreno.setDestierro(new Carta[jugador.getMazo().length]);
 		terreno.setMazoRestante(barajeo(jugador.getMazo()));
-		terreno.setEfectosEnJugador(new Efecto[] { sp.tesonDeGerrero });
-		terreno.setEfectosEnEnemigo1(new Efecto[] { sp.tensionDeEnemigo });
+		terreno.setEfectosEnJugador(jugador.getPasivas());
+		terreno.setEfectosEnEnemigo1(new Efecto[] {sp.tensionDeEnemigo});
 
 		int numCartas = 5;
 
