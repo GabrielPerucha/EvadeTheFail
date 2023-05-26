@@ -1,3 +1,9 @@
 package Efectos;
 
-public class Efecto {}
+import java.util.ArrayList;
+
+public class Efecto {
+
+	
+
+}

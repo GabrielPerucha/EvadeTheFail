@@ -9,7 +9,7 @@ public class EfectosEspeciales {
 	
 	//Descripcion y efectos en lineas separadas
 	
-	public EfectoEspecial tesonDeGerrero = new EfectoEspecial("Un guerrero nunca se cansa. Todos los turnos recarga tu maná", new EfectoSobreEstadisticas [] {new EfectoSobreEstadisticas("manaRestante", 1, 4, 100, 0, true)});
+	public EfectoEspecial tesonDeGerrero = new EfectoEspecial("Un guerrero nunca se cansa. Todos los turnos recarga tu maná", new EfectoSobreEstadisticas [] {new EfectoSobreEstadisticas("Tesón", 1, 4, 100, 0, true)});
 	
 	public EfectoEspecial tensionDeEnemigo = new EfectoEspecial("Te pones nervioso al ver a un enemigo, quién sabe si él será quien acabe con tu vida", new EfectoSobreEstadisticas [] {new EfectoSobreEstadisticas("vida", 1, 0, 100, 0, true)});
 	

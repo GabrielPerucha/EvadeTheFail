@@ -3,7 +3,8 @@ package Partida;
 import javax.swing.JOptionPane;
 
 import ClasesEntidades.*;
-import Combate.Terreno;
+import Combate.*;
+import Efectos.*;
 
 public class Interfaz {
 
@@ -226,7 +227,7 @@ public class Interfaz {
 		return contenido;
 	}
 
-	public static void informacionGeneral(Terreno terreno, Jugable jugador) {
+	public static void informacionGeneral(Terreno terreno) {
 
 		String[] opciones = new String[] { "Estado", "Mazo", "Enemigos", "Atrás" };
 
@@ -235,20 +236,20 @@ public class Interfaz {
 
 		case 0:
 			
-			informacionJugador(terreno, jugador);
-			informacionGeneral(terreno, jugador);
+			informacionJugador(terreno);
+			informacionGeneral(terreno);
 			break;
 
 		case 1:
 			
 			informacionMazo(terreno);
-			informacionGeneral(terreno, jugador);
+			informacionGeneral(terreno);
 			break;
 
 		case 2:
 			
 			informacionEnemigo(terreno);
-			informacionGeneral(terreno, jugador);
+			informacionGeneral(terreno);
 			break;
 
 		case 3:
@@ -261,18 +262,68 @@ public class Interfaz {
 
 	}
 
-	public static void informacionJugador(Terreno terreno, Jugable jugador) {
+	public static void informacionJugador(Terreno terreno) {
 
-		int espaciosN = 16-jugador.getNombre().length();
+		int espaciosN = 16-terreno.getJugador().getNombre().length();
 		String espaciosNombre = " ";
 		
 		for (int i = 0; i < espaciosN; i++) {
 			espaciosNombre.concat(" ");
 		}
 		
-		JOptionPane.showMessageDialog(null,
-				jugador.getNombre()+ espaciosNombre + "\n\n", 
-				jugador.getNombre() + " el " + jugador.getClase(), 0, null);
+		String efectos = "Efectos: ";
+		
+		EfectoSobreEstadisticas[] efJug = Combate.castEfectos(terreno.getEfectosEnJugador());
+		
+		for (int i = 0; i < efJug.length; i++) {
+			
+			efectos = efectos + "\n" + efJug[i].getEstadistica();
+
+			if (efJug[i].getMultiplicador() < 1 || efJug[i].getSumador() < 0) {
+				
+				efectos = efectos + ("-");
+				
+			} else if (efJug[i].getMultiplicador() > 1 || efJug[i].getSumador() > 0) {
+				
+				efectos = efectos + ("+");
+				
+			} else {
+				efectos = efectos + (" (Efecto especial)");
+			}
+			
+			if (efJug[i].getRetardo() > 1 && efJug[i].getRetardo() != 0) {
+				
+				efectos = efectos + ("      en " + efJug[i].getRetardo() + " turnos");
+				
+			} else if (efJug[i].getRetardo() != 0){
+				
+				efectos = efectos + ("      en " + efJug[i].getRetardo() + " turno");
+				
+			} else {
+				
+				efectos = efectos + ("      duración: " + efJug[i].getRetardo());
+				
+			}
+		}
+		
+		 if (JOptionPane.showOptionDialog(null,
+				terreno.getJugador().getNombre()+ espaciosNombre + "Nv: " +terreno.getJugador().getNivel() + "\n\n" +
+
+						"Maná:                                          " + terreno.getJugador().getMana() +        "\n\n" +
+						"Ataque:                                       " + terreno.getJugador().getAtaque() +      "\n\n" +
+						"Defensa:                                     " + terreno.getJugador().getDefensa() +     "\n\n" +
+						"Bloqueo:                                      " + terreno.getJugador().getBloqueo() +     "\n\n" +
+						"Probabilidad de critico:           " + terreno.getJugador().getAtaque() +      "\n\n" +
+						"Daño crítico:                               " + terreno.getJugador().getAtaque() +  "\n\n\n\n" +
+						
+						
+						efectos + "\n\n"
+						, 
+				terreno.getJugador().getNombre() + " el " + terreno.getJugador().getClase(), 0, 0, null, new String[] {"Efectos", "Atrás"}, espaciosNombre) == 0) {
+			 
+			 informacionEfectos(efJug);
+			 
+		 }
 		
 		
 	}
@@ -285,4 +336,10 @@ public class Interfaz {
 
 	}
 
+	public static void informacionEfectos(Efecto[] efectos) {
+
+		
+		
+	}
+	
 }

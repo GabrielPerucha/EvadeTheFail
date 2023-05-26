@@ -2,6 +2,7 @@ package ClasesEntidades;
 
 import javax.swing.Icon;
 
+import Efectos.Efecto;
 import Movimientos.Carta;
 
 public class Jugable extends Entidad {
@@ -16,9 +17,17 @@ public class Jugable extends Entidad {
 	protected Icon iconoJugador;
 	protected Carta[] Mazo;
 	protected int vidaRestante;
+	protected Efecto[] pasivas;
 	
 	
-	
+	public Efecto[] getPasivas() {
+		return pasivas;
+	}
+
+	public void setPasivas(Efecto[] pasivas) {
+		this.pasivas = pasivas;
+	}
+
 	public int getManaRestante() {
 		return manaRestante;
 	}
@@ -83,9 +92,10 @@ public class Jugable extends Entidad {
 	 * @param clase
 	 * @param iconoJugador
 	 * @param mazo
+	 * @param pasivas
 	 */
 	public Jugable(String nombre, int nivel, int vida, int vidaRestante, int ataque, int defensa, int probCritico, int danoCritico,
-			int bloqueo, int mana, int manaRestante, String clase, Icon iconoJugador, Carta[] mazo) {
+			int bloqueo, int mana, int manaRestante, String clase, Icon iconoJugador, Carta[] mazo, Efecto[] pasivas) {
 		super(nombre, nivel, vida, ataque, defensa, probCritico, danoCritico, bloqueo);
 		this.mana = mana;
 		this.manaRestante = manaRestante;
@@ -93,6 +103,7 @@ public class Jugable extends Entidad {
 		this.iconoJugador = iconoJugador;
 		Mazo = mazo;
 		this.vidaRestante = vidaRestante;
+		this.pasivas = pasivas;
 	}
 
 	

@@ -8,17 +8,17 @@ import Efectos.*;
 public class Ataques {
 
 	Enemigo enemigo = new Enemigo("Default", 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
-	Jugable jugador = new Jugable("Default", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null);
+	Jugable jugador = new Jugable("Default", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null);
 	EfectosEspeciales ef = new EfectosEspeciales(); 
 	
 	//Sintaxis de efectos: Salto de linea cuando no cabe en pantalla y la declaracion de efectos en una linea aparte
 	
 	//Golpe genérico
 	public Ataque golpeRB = new Ataque("Un golpe con la mano abierta, siempre confiable.\nPotencia: 100\nProbabilidad: 20", "Golpe", 20, 100, 
-			new Efecto[]{new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
 	
 	public Ataque golpeRA = new Ataque("Es un golpe tan simple que cada vez lo ves menos.\nPotencia: 100\nProbabilidad: 10", "Golpe", 10, 100,
-			new Efecto[]{new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
 
 	//En RM no hay "Golpe"
 	
@@ -103,13 +103,13 @@ public class Ataques {
 	
 	//Goblin desarmado
 	public Ataque desarmeRB = new Ataque("¡Un duende desarmado te ataca y te tira el arma!\nBaja el ataque un 30% un turno\nPotencia: 70\nProbabilidad 35", "Desarme", 35, 70,
-			new Efecto[] {new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador)*7/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.7, 0, 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador)*7/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.7, 0, 1, 0, false)});
 	
 	public Ataque desarmeRA = new Ataque("¡Un duende desarmado te ataca y te tira el arma!\nBaja el ataque un 50% un turno\nPotencia: 90\nProbabilidad 35", "Desarme", 35, 90,
-			new Efecto[] {new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador)*9/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.5, 0, 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador)*9/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.5, 0, 1, 0, false)});
 	
 	public Ataque desarmeRM= new Ataque("¡Un duende desarmado te ataca y te tira el arma!\nBaja el ataque un 50% un turno\nPotencia: 110\nProbabilidad 35", "Desarme", 35, 110,
-			new Efecto[] {new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador)*11/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.9, 0, 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador)*11/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.9, 0, 1, 0, false)});
 	
 	
 	//Goblin con hacha
@@ -125,11 +125,11 @@ public class Ataques {
 	//Goblin con espadas
 	public Ataque espadazoRB = new Ataque("Extrañamente una criatura fantastica utiliza mejor la espada que muchas personas reales.\n"
 			+ "Aumenta la probabilidad de critico un 15% y el daño crítico un 20% por 1 turno\n Potencia: 100\nProbabilidad: 35", "Espadazo", 35, 100,
-			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.15, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.2, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.15, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.2, 0, 1, 0, true), new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
 	
 	public Ataque espadazoRA = new Ataque("Duende de los criticos (ahora es personal).\n"
 			+ "Aumenta la probabilidad de critico un 25% y el daño crítico un 30% por 1 turno\n Potencia: 100\nProbabilidad: 35", "Espadazo", 35, 100,
-			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.25, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.3, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.25, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.3, 0, 1, 0, true), new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
 	
 	//Hacer un ataque de maestro de la espada
 	

@@ -96,6 +96,63 @@ public class Combate {
 
 	}
 
+	/**
+	 * 
+	 * @param efectos
+	 * @return
+	 */
+
+	public static EfectoSobreEstadisticas[] castEfectos(Efecto[] efectos) {
+
+		// nfx = normal effects
+		ArrayList<EfectoSobreEstadisticas> nfx = new ArrayList<EfectoSobreEstadisticas>();
+
+		// spfx = special effects
+		ArrayList<EfectoEspecial> spfx = new ArrayList<EfectoEspecial>();
+
+		for (int i = 0; i < efectos.length; i++) {
+
+			/*
+			 * El array de efectos de la carta almacena "Efecto", no
+			 * "EfectoSobreEstadisticas" ni "EfectoEspecial". para poder llamarlos y ver su
+			 * efecto real hubo que hacer dos arrayList y utilizar el try catch de if else.
+			 * Si lanza una excepción es porque el cast no funcionó, por lo que no se trata
+			 * de un EfectoSobreEstadisticas, sino de uno especial
+			 */
+			try {
+
+				nfx.add((EfectoSobreEstadisticas) efectos[i]);
+
+			} catch (Exception e) {
+
+				spfx.add((EfectoEspecial) efectos[i]);
+
+			}
+
+		}
+
+		for (int i = 0; i < spfx.size(); i++) {
+
+			Efecto efectosAux[] = spfx.get(i).getEfectos();
+
+			for (int j = 0; j < spfx.size(); j++) {
+
+				nfx.add(castEfectos(efectosAux)[j]);
+			}
+		}
+
+		EfectoSobreEstadisticas[] efectosTotales = new EfectoSobreEstadisticas[nfx.size()];
+
+		for (int i = 0; i < nfx.size(); i++) {
+
+			efectosTotales[i] = nfx.get(i);
+
+		}
+
+		return efectosTotales;
+
+	}
+
 	public static boolean puedeElegirRival(Carta carta) {
 
 		boolean sePuedeElegirRival = false;
@@ -265,17 +322,15 @@ public class Combate {
 
 				if (eleccionCarta == opciones.length - 2) {
 
-					//TO DO FINALIZAR TURNO - - - - - - - -  - - - - -  - --  
-					
-					
-					
-					
+					// TO DO FINALIZAR TURNO - - - - - - - - - - - - - - --
+
 				} else if (eleccionCarta == opciones.length - 1) {
 
-					//"?" --------------------------------------------------------------------------------------------------------------------
-					
-					Interfaz.informacionGeneral(terreno, jugador);
-					
+					// "?"
+					// --------------------------------------------------------------------------------------------------------------------
+
+					Interfaz.informacionGeneral(terreno);
+
 				} else {
 
 					if (puedeElegirRival(cartasMano.get(eleccionCarta))) {
