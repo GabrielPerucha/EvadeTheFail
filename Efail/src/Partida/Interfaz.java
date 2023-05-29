@@ -342,7 +342,7 @@ public class Interfaz {
 
 		display = display + "\n\nDaño crítico: " + enemigo.getDanoCritico();
 
-		display = display + "\n\nSiguiente acción: \n -" + enemigo.getSiguienteAccion().getNombre()
+		display = display + "\n\nSiguiente acción: \n -" + enemigo.getSiguienteAccion().getNombre() + "\n\n"
 				+ enemigo.getSiguienteAccion().getDescripcion();
 
 		display = display + "\nEfectos: \n\n";

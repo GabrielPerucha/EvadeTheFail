@@ -72,16 +72,16 @@ public class Ataques {
 	public Ataque babaRB = new Ataque("Ataque propio de Slimes, curiosamente pese a desprenderse de parte de su cuerpo, no parece dolerles."
 			+ "\nPor suerte el moco aunque incómodo está bastante calentito"
 			+ "\nGolpea y baja un 10% el ataque\nPotencia: 120\nProbabilidad: 30.", "Baba de Slime", 30, 120, 
-			new Efecto[]{new EfectoSobreEstadisticas("vidaRestante", 1, (Combate.formulaDanoRival(enemigo, jugador)*130/100), 1, 0, false), ef.babaSlimeRB});
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(130/100)*Combate.formulaDanoRival(enemigo, jugador), 1, 0, false), ef.babaSlimeRB});
 	
 	public Ataque babaRA = new Ataque("Ataque propio de Slimes, curiosamente pese a desprenderse de parte de su cuerpo, no parece dolerles."
 			+ ". Poco a poco te vaas cansando de la textura de la baba, mas incluso que antes"
-			+ "\nGolpea y baja un 20% el ataque\nPotencia: 130\nProbabilidad: 20", "Baba de Slime", 20, 130, 
-			new Efecto[]{new EfectoSobreEstadisticas("vidaRestante", 1, (Combate.formulaDanoRival(enemigo, jugador)*130/100), 1, 0, false), ef.babaSlimeRA});
+			+ "\nGolpea y baja un 20% el ataque\nPotencia: 135\nProbabilidad: 20", "Baba de Slime", 20, 135, 
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDanoRival(enemigo, jugador)*135/100), 1, 0, false), ef.babaSlimeRA});
 	
 	public Ataque babaRM = new Ataque("Ataque propio de Slimes, curiosamente pese a desprenderse de parte de su cuerpo.", "Baba de Slime"
-			+ "\nGolpea y baja un 25% el ataque\nPotencia: 130\nProbabilidad: 10", 10, 130, 
-			new Efecto[]{new EfectoSobreEstadisticas("vidaRestante", 1, (Combate.formulaDanoRival(enemigo, jugador)*130/100), 1, 0, false), ef.babaSlimeRM});
+			+ "\nGolpea y baja un 25% el ataque\nPotencia: 135\nProbabilidad: 10", 10, 135, 
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDanoRival(enemigo, jugador)*135/100), 1, 0, false), ef.babaSlimeRM});
 	
 	
 	//Buff basico de slimes
@@ -115,11 +115,11 @@ public class Ataques {
 	//Goblin con hacha
 	public Ataque hachazoRB = new Ataque("El duende con su portentosa arma te ataca sin piedad\nAumenta la defensa en un 50% un turno"
 			+ "\nPotencia: 200 una vez tras un turno\nProbabilidad: 35", "Hachazo", 35, 200,
-			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador)*2, 1, 1, false)});
+			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, -Combate.formulaDanoRival(enemigo, jugador)*2, 1, 1, false)});
 	
 	public Ataque hachazoRA = new Ataque("El duende con su portentosa arma te ataca sin piedad\nAumenta la defensa en un 50% un turno"
 			+ "\nPotencia: 250 una vez tras un turno\nProbabilidad: 35", "Hachazo", 35, 250,
-			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, Combate.formulaDanoRival(enemigo, jugador)*25/10, 1, 1, false)});
+			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, -Combate.formulaDanoRival(enemigo, jugador)*25/10, 1, 1, false)});
 	
 	
 	//Goblin con espadas

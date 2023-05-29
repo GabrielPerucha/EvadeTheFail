@@ -32,8 +32,8 @@ public class Combate {
 
 		int total;
 
-		total = atacante.getAtaque() * (atacante.getNivel() / (5 * objetivo.getNivel() + 1))
-				+ (atacante.getAtaque() - objetivo.getDefensa()) - objetivo.getBloqueo();
+		total = atacante.getAtaque() * (atacante.getNivel() / (2 * objetivo.getNivel() + 1))
+				+ (atacante.getAtaque() * (atacante.getAtaque()+1)/(objetivo.getDefensa()+1)) - objetivo.getBloqueo();
 
 		return total;
 
@@ -49,8 +49,8 @@ public class Combate {
 
 		int total;
 
-		total = atacante.getAtaque() * (atacante.getNivel() / (7 * objetivo.getNivel() + 1))
-				+ (atacante.getAtaque() - objetivo.getDefensa()) - objetivo.getBloqueo();
+		total = atacante.getAtaque() * (atacante.getNivel() / (3 * objetivo.getNivel() + 1))
+				+ (atacante.getAtaque() * (atacante.getAtaque()+1)/(objetivo.getDefensa()+1)) - objetivo.getBloqueo();
 
 		return total;
 
@@ -224,61 +224,61 @@ public class Combate {
 	 * @return
 	 */
 	public static Ataque eleccionSiguienteAccion(Terreno terreno, int enemigoAtacante) {
-		
-		int ataqueEnemigo;
-		int [] probabilidades = new int [100];
 
-		ataqueEnemigo = (int) (Math.random()*99.99);
-		
+		int ataqueEnemigo;
+		int[] probabilidades = new int[100];
+
+		ataqueEnemigo = (int) (Math.random() * 99.99);
+
 		Ataque ataqueEjecutado = new Ataque(null, null, ataqueEnemigo, ataqueEnemigo, null);
-		
+
 		switch (enemigoAtacante) {
-		
+
 		case 1:
-			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
-				
+			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++) {
+
 				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
-					
-					probabilidades[k] = j;
-					
+
+					probabilidades[k] = i;
+
 				}
-				
+
 			}
 			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
 			break;
-			
-		case 2: 
+
+		case 2:
 			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
-				
+
 				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
-					
+
 					probabilidades[k] = j;
-					
+
 				}
-				
+
 			}
 			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
 			break;
-			
+
 		case 3:
 			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
-				
+
 				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
-					
+
 					probabilidades[k] = j;
-					
+
 				}
-				
+
 			}
 			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
 			break;
-		
+
 		}
-		
+
 		return ataqueEjecutado;
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param NPC
@@ -313,60 +313,58 @@ public class Combate {
 
 		do {
 
-			do {
+			/*
+			 * Este complicado if-else se encarga de dos cosas. Repartir cartas que tiene el
+			 * jugador y definir el mazo restante del turno. Para ello, si la longitud es
+			 * mayor del numero de cartas que se roban el siguiente mazo se crea con esa
+			 * longitud restada y sin las cartas robadas. En caso contrario se reciclan las
+			 * cartas descartadas ya barajadas, se repone el mazo y la mano con las cartas
+			 * restantes del mazo con el paso intermedio de eliminar de descartes las cartas
+			 * "recicladas".
+			 */
 
-				/*
-				 * Este complicado if-else se encarga de dos cosas. Repartir cartas que tiene el
-				 * jugador y definir el mazo restante del turno. Para ello, si la longitud es
-				 * mayor del numero de cartas que se roban el siguiente mazo se crea con esa
-				 * longitud restada y sin las cartas robadas. En caso contrario se reciclan las
-				 * cartas descartadas ya barajadas, se repone el mazo y la mano con las cartas
-				 * restantes del mazo con el paso intermedio de eliminar de descartes las cartas
-				 * "recicladas". NO PROBADA
-				 */
+			if (terreno.getMazoRestante().length <= numCartas) {
 
-				if (terreno.getMazoRestante().length <= numCartas) {
+				if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
+					mazoAux = new Carta[terreno.getDescartes().length - terreno.getMazoRestante().length];
 
-					if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
-						mazoAux = new Carta[terreno.getDescartes().length - terreno.getMazoRestante().length];
-
-					for (int i = 0; i < terreno.getMazoRestante().length; i++) {
-						mano[i] = terreno.getMazoRestante()[i];
-
-					}
-
-					for (int i = terreno.getMazoRestante().length; i < numCartas
-							- terreno.getMazoRestante().length; i++) {
-						mano[i] = terreno.getDescartes()[i];
-					}
-
-					if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
-						for (int i = 0; i < mazoAux.length; i++) {
-							mazoAux[i] = terreno.getDescartes()[i + terreno.getMazoRestante().length];
-						}
-
-					if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
-						terreno.setDescartes(mazoAux);
-					terreno.setMazoRestante(terreno.getDescartes());
-					terreno.setDescartes(new Carta[] {});
-
-				} else {
-
-					mazoAux = new Carta[terreno.getMazoRestante().length - 5];
-
-					for (int i = 0; i < mazoAux.length; i++) {
-						mazoAux[i] = terreno.getMazoRestante()[i + 5];
-						mano[i] = terreno.getMazoRestante()[i + 5];
-
-					}
-
-					terreno.setMazoRestante(mazoAux);
+				for (int i = 0; i < terreno.getMazoRestante().length; i++) {
+					mano[i] = terreno.getMazoRestante()[i];
 
 				}
 
-				terreno.setMano(mano);
+				for (int i = terreno.getMazoRestante().length; i < numCartas - terreno.getMazoRestante().length; i++) {
+					mano[i] = terreno.getDescartes()[i];
+				}
 
-				// Reparto completado en este punto
+				if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
+					for (int i = 0; i < mazoAux.length; i++) {
+						mazoAux[i] = terreno.getDescartes()[i + terreno.getMazoRestante().length];
+					}
+
+				if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
+					terreno.setDescartes(mazoAux);
+				terreno.setMazoRestante(terreno.getDescartes());
+				terreno.setDescartes(new Carta[] {});
+
+			} else {
+
+				mazoAux = new Carta[terreno.getMazoRestante().length - 5];
+
+				for (int i = 0; i < mazoAux.length; i++) {
+					mazoAux[i] = terreno.getMazoRestante()[i + 5];
+					mano[i] = terreno.getMazoRestante()[i + 5];
+
+				}
+
+				terreno.setMazoRestante(mazoAux);
+
+			}
+
+			terreno.setMano(mano);
+			// Reparto completado en este punto
+
+			do {
 
 				String opciones[] = new String[terreno.getMano().length + 2];
 				ArrayList<Carta> cartasMano = new ArrayList<Carta>();
@@ -420,6 +418,7 @@ public class Combate {
 
 						}
 
+						// Este if se encarga de mandar a descartes las cartas según las vayas usando
 						if (eleccionObjetivo != 0) {
 
 							Carta[] descartesAux = new Carta[terreno.getDescartes().length + 1];
@@ -453,9 +452,27 @@ public class Combate {
 				terreno.setDescartes(barajeo(terreno.getDescartes()));
 
 			} while (!finTurno);
+
+			Carta[] descartesAux = new Carta[terreno.getDescartes().length + terreno.getMano().length];
+
+			for (int j = 0; j < terreno.getDescartes().length; j++) {
+
+				descartesAux[j] = terreno.getDescartes()[j];
+
+			}
+
+			for (int j = 0; j < terreno.getMano().length; j++) {
+
+				descartesAux[j + terreno.getDescartes().length] = terreno.getMano()[j];
+
+			}
+
+			terreno.setMano(new Carta[0]);
+			terreno.setDescartes(descartesAux);
+			terreno.setDescartes(barajeo(terreno.getDescartes()));
 			
-			
-			
+			Enemigo.ejecutarAtaque(terreno, 1);
+
 			terreno.getE1().setSiguienteAccion(eleccionSiguienteAccion(terreno, 1));
 		} while (!finCombate);
 	}
