@@ -29,12 +29,8 @@ public class MainPrueba {
 				new Carta[] {crs.ofensa1, crs.defensa1, crs.defensa2, crs.ofensa4, crs.defensa4},
 				new Efecto[]{spfx.tesonDeGerrero, spfx.tesonDeGerrero, spfx.tesonDeGerrero, spfx.tesonDeGerrero, spfx.tesonDeGerrero});
 		
-		Slime.setNivel(15);
-		
-		Enemigo.ajustaParametros(Slime, ens.SlimeRB);
-		
 		Combate.inicioCombate(Slime);
-		Combate.menuCombate(jugador, Slime);
+		Combate.menuCombate(jugador, "SlimeRB", 15);
 		
 		
 	}

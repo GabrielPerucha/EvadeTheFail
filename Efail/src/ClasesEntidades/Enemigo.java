@@ -682,9 +682,7 @@ public class Enemigo extends Entidad {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						Terreno.terreno.getJugador().setVidaRestante(
-								(int) (Terreno.terreno.getJugador().getVidaRestante() * nfx.get(i).getMultiplicador()
-										+ nfx.get(i).getSumador()));
+						Combate.dañarJugador(enemigo);
 
 					} else {
 

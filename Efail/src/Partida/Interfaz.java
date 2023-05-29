@@ -274,7 +274,7 @@ public class Interfaz {
 
 		} else {
 
-			display = display + ("      duración: " + efecto.getRetardo());
+			display = display + ("      duración: " + efecto.getDuracion());
 
 		}
 

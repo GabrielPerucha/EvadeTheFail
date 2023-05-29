@@ -27,20 +27,20 @@ public class Cartas {
 	
 	//Cartas de ejemplo, una de ataque y una de defensa.
 	
-	public Carta ofensa = new Carta(id++, "Ofensa", "Ataca con fiereza al rival\nDano: " + Combate.formulaDano(jugador, enemigo) + "+ 3", "Neutro", 1, "Neutro",
-			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDano(jugador, enemigo) + 3), 1, 0, false)});
+	public Carta ofensa = new Carta(id++, "Ofensa", "Ataca con fiereza al rival\nAplica + 3 de daño adicional a un golpe normal", "Neutro", 1, "Neutro",
+			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -3, 1, 0, false)});
 	
-	public Carta ofensa1 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDano: " + Combate.formulaDano(jugador, enemigo) + "+ 3", "Neutro", 1, "Neutro",
-			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDano(jugador, enemigo) + 3), 1, 0, false)});
+	public Carta ofensa1 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nAplica + 3 de daño adicional a un golpe normal", "Neutro", 1, "Neutro",
+			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -3, 1, 0, false)});
 	
-	public Carta ofensa2 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDano: " + Combate.formulaDano(jugador, enemigo) + "+ 3", "Neutro", 1, "Neutro",
-			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDano(jugador, enemigo) + 3), 1, 0, false)});
+	public Carta ofensa2 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nAplica + 3 de daño adicional a un golpe normal", "Neutro", 1, "Neutro",
+			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -3, 1, 0, false)});
 	
-	public Carta ofensa3 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDano: " + Combate.formulaDano(jugador, enemigo) + "+ 3", "Neutro", 1, "Neutro",
-			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDano(jugador, enemigo) + 3), 1, 0, false)});
+	public Carta ofensa3 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nAplica + 3 de daño adicional a un golpe normal", "Neutro", 1, "Neutro",
+			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -3, 1, 0, false)});
 	
-	public Carta ofensa4 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nDano: " + Combate.formulaDano(jugador, enemigo) + "+ 3", "Neutro", 1, "Neutro",
-			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDano(jugador, enemigo) + 3), 1, 0, false)});
+	public Carta ofensa4 = new Carta(id, "Ofensa", "Ataca con fiereza al rival\nAplica + 3 de daño adicional a un golpe normal", "Neutro", 1, "Neutro",
+			new EfectoSobreEstadisticas[]{new EfectoSobreEstadisticas("dano", 1, -3, 1, 0, false)});
 
 	
 	public Carta defensa = new Carta(id++, "Defensa", "Defiende la fiereza del rival\nBloqueo: " + jugador.getDefensa()/5 + 2, "Neutro", 1, "Neutro",

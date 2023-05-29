@@ -666,9 +666,7 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						enemigoAfectado.setVidaRestante(
-								(int) (enemigoAfectado.getVidaRestante() * nfx.get(i).getMultiplicador()
-										+ nfx.get(i).getSumador()));
+						Combate.dañarEnemigo(objetivo);
 
 					} else {
 
