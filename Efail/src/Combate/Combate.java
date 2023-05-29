@@ -153,6 +153,11 @@ public class Combate {
 
 	}
 
+	/**
+	 * 
+	 * @param carta
+	 * @return
+	 */
 	public static boolean puedeElegirRival(Carta carta) {
 
 		boolean sePuedeElegirRival = false;
@@ -212,7 +217,68 @@ public class Combate {
 
 	}
 
-	// Método terminado
+	/**
+	 * 
+	 * @param terreno
+	 * @param enemigoAtacante
+	 * @return
+	 */
+	public static Ataque eleccionSiguienteAccion(Terreno terreno, int enemigoAtacante) {
+		
+		int ataqueEnemigo;
+		int [] probabilidades = new int [100];
+
+		ataqueEnemigo = (int) (Math.random()*99.99);
+		
+		Ataque ataqueEjecutado = new Ataque(null, null, ataqueEnemigo, ataqueEnemigo, null);
+		
+		switch (enemigoAtacante) {
+		
+		case 1:
+			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
+				
+				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
+					
+					probabilidades[k] = j;
+					
+				}
+				
+			}
+			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
+			break;
+			
+		case 2: 
+			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
+				
+				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
+					
+					probabilidades[k] = j;
+					
+				}
+				
+			}
+			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
+			break;
+			
+		case 3:
+			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
+				
+				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
+					
+					probabilidades[k] = j;
+					
+				}
+				
+			}
+			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
+			break;
+		
+		}
+		
+		return ataqueEjecutado;
+		
+	}
+	
 	/**
 	 * 
 	 * @param NPC
@@ -233,12 +299,11 @@ public class Combate {
 	public static void menuCombate(Jugable jugador, Enemigo NPC) {
 
 		EfectosEspeciales sp = new EfectosEspeciales();
-		boolean finTurno = false, tiroCarta = false;
-		Carta[] mazoAux, mano;
+		boolean finTurno = false, tiroCarta = false, finCombate = false;
+		Carta[] mazoAux = null, mano;
 
-		Terreno terreno = new Terreno(null, new Carta[jugador.getMazo().length], new Carta[jugador.getMazo().length],
-				barajeo(jugador.getMazo()), jugador.getPasivas(), new Efecto[] {sp.tensionDeEnemigo}, jugador, NPC);
-
+		Terreno terreno = new Terreno(null, new Carta[0], new Carta[0], barajeo(jugador.getMazo()),
+				jugador.getPasivas(), new Efecto[] { sp.tensionDeEnemigo }, jugador, NPC);
 
 		int numCartas = 5;
 
@@ -246,145 +311,153 @@ public class Combate {
 
 		mano = new Carta[numCartas];
 
-		/*
-		 * Este complicado if-else se encarga de dos cosas. Repartir cartas que tiene el
-		 * jugador y definir el mazo restante del turno. Para ello, si la longitud es
-		 * mayor del numero de cartas que se roban el siguiente mazo se crea con esa
-		 * longitud restada y sin las cartas robadas. En caso contrario se reciclan las
-		 * cartas descartadas ya barajadas, se repone el mazo y la mano con las cartas
-		 * restantes del mazo con el paso intermedio de eliminar de descartes las cartas
-		 * "recicladas". NO PROBADA
-		 */
-
-		if (terreno.getMazoRestante().length <= numCartas) {
-
-			mazoAux = new Carta[terreno.getDescartes().length - terreno.getMazoRestante().length];
-
-			for (int i = 0; i < terreno.getMazoRestante().length; i++) {
-				mano[i] = terreno.getMazoRestante()[i];
-
-			}
-
-			for (int i = terreno.getMazoRestante().length; i < numCartas - terreno.getMazoRestante().length; i++) {
-				mano[i] = terreno.getDescartes()[i];
-			}
-
-			for (int i = 0; i < mazoAux.length; i++) {
-				mazoAux[i] = terreno.getDescartes()[i + terreno.getMazoRestante().length];
-			}
-
-			terreno.setDescartes(mazoAux);
-			terreno.setMazoRestante(terreno.getDescartes());
-			terreno.setDescartes(new Carta[] {});
-
-		} else {
-
-			mazoAux = new Carta[terreno.getMazoRestante().length - 5];
-
-			for (int i = 0; i < mazoAux.length; i++) {
-				mazoAux[i] = terreno.getMazoRestante()[i + 5];
-				mano[i] = terreno.getMazoRestante()[i + 5];
-
-			}
-
-			terreno.setMazoRestante(mazoAux);
-
-		}
-
-		terreno.setMano(mano);
-
 		do {
-
-			String opciones[] = new String[terreno.getMano().length + 2];
-			ArrayList<Carta> cartasMano = new ArrayList<Carta>();
-
-			for (int i = 0; i < opciones.length - 2; i++) {
-
-				opciones[i] = terreno.getMano()[i].getNombre();
-				cartasMano.add(terreno.getMano()[i]);
-
-			}
-
-			opciones[opciones.length - 2] = "Finalizar turno";
-			opciones[opciones.length - 1] = "?";
 
 			do {
 
-				int eleccionCarta = JOptionPane.showOptionDialog(null,
-						Interfaz.creaInterfazBatalla(jugador, NPC, terreno), "Combate contra " + NPC.getNombre(), 0, 0,
-						null, opciones, "?");
+				/*
+				 * Este complicado if-else se encarga de dos cosas. Repartir cartas que tiene el
+				 * jugador y definir el mazo restante del turno. Para ello, si la longitud es
+				 * mayor del numero de cartas que se roban el siguiente mazo se crea con esa
+				 * longitud restada y sin las cartas robadas. En caso contrario se reciclan las
+				 * cartas descartadas ya barajadas, se repone el mazo y la mano con las cartas
+				 * restantes del mazo con el paso intermedio de eliminar de descartes las cartas
+				 * "recicladas". NO PROBADA
+				 */
 
-				int eleccionObjetivo;
+				if (terreno.getMazoRestante().length <= numCartas) {
 
-				if (eleccionCarta == opciones.length - 2) {
+					if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
+						mazoAux = new Carta[terreno.getDescartes().length - terreno.getMazoRestante().length];
 
-					// TO DO FINALIZAR TURNO - - - - - - - - - - - - - - --
+					for (int i = 0; i < terreno.getMazoRestante().length; i++) {
+						mano[i] = terreno.getMazoRestante()[i];
 
-				} else if (eleccionCarta == opciones.length - 1) {
+					}
 
-					// "?"
-					// --------------------------------------------------------------------------------------------------------------------
+					for (int i = terreno.getMazoRestante().length; i < numCartas
+							- terreno.getMazoRestante().length; i++) {
+						mano[i] = terreno.getDescartes()[i];
+					}
 
-					Interfaz.informacionGeneral(terreno);
+					if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
+						for (int i = 0; i < mazoAux.length; i++) {
+							mazoAux[i] = terreno.getDescartes()[i + terreno.getMazoRestante().length];
+						}
+
+					if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
+						terreno.setDescartes(mazoAux);
+					terreno.setMazoRestante(terreno.getDescartes());
+					terreno.setDescartes(new Carta[] {});
 
 				} else {
 
-					if (puedeElegirRival(cartasMano.get(eleccionCarta))) {
+					mazoAux = new Carta[terreno.getMazoRestante().length - 5];
 
-						eleccionObjetivo = JOptionPane.showOptionDialog(null, "Elige un objetivo para tu carta",
-								"Combate contra " + NPC.getNombre(), 0, 0, null,
-								new String[] { "Atrás", NPC.getNombre() }, "Atrás");
-
-						Carta.ejecutarCarta(cartasMano.get(eleccionCarta), terreno, eleccionObjetivo);
-
-					} else {
-
-						eleccionObjetivo = JOptionPane.showOptionDialog(null, "Elige un objetivo para tu carta",
-								"Combate contra " + NPC.getNombre(), 0, 0, null, new String[] { "Atrás", "Tú" },
-								"Atrás");
-
-						if (eleccionObjetivo != 0) {
-							Carta.ejecutarCarta(cartasMano.get(eleccionCarta), terreno, -1);
-						}
+					for (int i = 0; i < mazoAux.length; i++) {
+						mazoAux[i] = terreno.getMazoRestante()[i + 5];
+						mano[i] = terreno.getMazoRestante()[i + 5];
 
 					}
 
-					if (eleccionObjetivo != 0) {
-
-						// COMPROBAR SI LA CARTA SE DESTIERRA
-						// ---------------------------------------------
-
-						Carta[] descartesAux = new Carta[terreno.getDescartes().length + 1];
-
-						for (int j = 0; j < terreno.getDescartes().length; j++) {
-
-							descartesAux[j] = terreno.getDescartes()[j];
-
-						}
-						descartesAux[terreno.getDescartes().length] = cartasMano.get(eleccionCarta);
-
-						cartasMano.remove(eleccionCarta);
-						tiroCarta = true;
-					}
+					terreno.setMazoRestante(mazoAux);
 
 				}
 
-			} while (!tiroCarta);
+				terreno.setMano(mano);
 
-			mano = new Carta[cartasMano.size()];
+				// Reparto completado en este punto
 
-			for (int i = 0; i < cartasMano.size(); i++) {
+				String opciones[] = new String[terreno.getMano().length + 2];
+				ArrayList<Carta> cartasMano = new ArrayList<Carta>();
 
-				mano[i] = cartasMano.get(i);
+				for (int i = 0; i < opciones.length - 2; i++) {
 
-			}
+					opciones[i] = terreno.getMano()[i].getNombre();
+					cartasMano.add(terreno.getMano()[i]);
 
-			terreno.setMano(mano);
+				}
 
-			terreno.setDescartes(barajeo(terreno.getDescartes()));
+				opciones[opciones.length - 2] = "Finalizar turno";
+				opciones[opciones.length - 1] = "?";
 
-		} while (!finTurno);
+				do {
 
+					int eleccionCarta = JOptionPane.showOptionDialog(null,
+							Interfaz.creaInterfazBatalla(jugador, NPC, terreno), "Combate contra " + NPC.getNombre(), 0,
+							0, null, opciones, "?");
+
+					int eleccionObjetivo;
+
+					if (eleccionCarta == opciones.length - 2) {
+
+						finTurno = true;
+						tiroCarta = true;
+
+					} else if (eleccionCarta == opciones.length - 1) {
+
+						Interfaz.informacionGeneral(terreno);
+
+					} else {
+
+						if (puedeElegirRival(cartasMano.get(eleccionCarta))) {
+
+							eleccionObjetivo = JOptionPane.showOptionDialog(null, "Elige un objetivo para tu carta",
+									"Combate contra " + NPC.getNombre(), 0, 0, null,
+									new String[] { "Atrás", NPC.getNombre() }, "Atrás");
+							if (eleccionObjetivo != 0)
+								Carta.ejecutarCarta(cartasMano.get(eleccionCarta), terreno, eleccionObjetivo);
+
+						} else {
+
+							eleccionObjetivo = JOptionPane.showOptionDialog(null, "Elige un objetivo para tu carta",
+									"Combate contra " + NPC.getNombre(), 0, 0, null, new String[] { "Atrás", "Tú" },
+									"Atrás");
+
+							if (eleccionObjetivo != 0) {
+								Carta.ejecutarCarta(cartasMano.get(eleccionCarta), terreno, -1);
+							}
+
+						}
+
+						if (eleccionObjetivo != 0) {
+
+							Carta[] descartesAux = new Carta[terreno.getDescartes().length + 1];
+
+							for (int j = 0; j < terreno.getDescartes().length; j++) {
+
+								descartesAux[j] = terreno.getDescartes()[j];
+
+							}
+							descartesAux[terreno.getDescartes().length] = cartasMano.get(eleccionCarta);
+							terreno.setDescartes(descartesAux);
+
+							cartasMano.remove(eleccionCarta);
+							tiroCarta = true;
+						}
+
+					}
+
+				} while (!tiroCarta);
+
+				mano = new Carta[cartasMano.size()];
+
+				for (int i = 0; i < cartasMano.size(); i++) {
+
+					mano[i] = cartasMano.get(i);
+
+				}
+
+				terreno.setMano(mano);
+
+				terreno.setDescartes(barajeo(terreno.getDescartes()));
+
+			} while (!finTurno);
+			
+			
+			
+			terreno.getE1().setSiguienteAccion(eleccionSiguienteAccion(terreno, 1));
+		} while (!finCombate);
 	}
 
 }

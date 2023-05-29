@@ -283,6 +283,11 @@ public class Interfaz {
 
 	}
 
+	/**
+	 * 
+	 * @param carta
+	 * @return
+	 */
 	public static String displayCarta(Carta carta) {
 
 		String display = "";
@@ -309,9 +314,57 @@ public class Interfaz {
 
 	}
 
+	/**
+	 * 
+	 * @param enemigo
+	 * @param efectos
+	 * @return
+	 */
+	public static String displayEnemigo(Enemigo enemigo, Efecto[] efectos) {
+
+		String display = "";
+
+		display = display + "\nNombre: " + enemigo.getNombre();
+
+		display = display + "\nNivel: " + enemigo.getNivel();
+
+		display = display + "\nVida: " + enemigo.getVidaRestante() + " / " + enemigo.getVida();
+
+		display = display + "\n\nElemento: " + enemigo.getElemento();
+
+		display = display + "\nAtaque: " + enemigo.getAtaque();
+
+		display = display + "\nDefensa: " + enemigo.getDefensa();
+
+		display = display + "\nBloqueo: " + enemigo.getBloqueo();
+
+		display = display + "\n\nProbabilidad de crítico: " + enemigo.getProbCritico();
+
+		display = display + "\n\nDaño crítico: " + enemigo.getDanoCritico();
+
+		display = display + "\n\nSiguiente acción: \n -" + enemigo.getSiguienteAccion().getNombre()
+				+ enemigo.getSiguienteAccion().getDescripcion();
+
+		display = display + "\nEfectos: \n\n";
+
+		for (int i = 0; i < efectos.length; i++) {
+
+			display = display + displayEfectos(Combate.castEfectos(efectos)[i]);
+
+		}
+
+		display = display + "\n\n\n \"" + enemigo.getDescripcion() + "\"";
+
+		return display;
+	}
+
+	/**
+	 * 
+	 * @param terreno
+	 */
 	public static void informacionGeneral(Terreno terreno) {
 
-		String[] opciones = new String[] { "Estado", "Mazo", "Enemigos", "Atrás" };
+		String[] opciones = new String[] { "Estado", "Cartas", "Enemigos", "Atrás" };
 
 		switch (JOptionPane.showOptionDialog(null, "-Creo que necesito pensarme mejor mi movimiento...",
 				"Ventana de información: Selección", 0, 0, null, opciones, "Atrás")) {
@@ -324,13 +377,13 @@ public class Interfaz {
 
 		case 1:
 
-			informacionMazo(terreno.getJugador().getMazo(), 1);
+			informacionCartas(terreno);
 			informacionGeneral(terreno);
 			break;
 
 		case 2:
 
-			informacionEnemigo(terreno);
+			informacionEnemigo(terreno, 0);
 			informacionGeneral(terreno);
 			break;
 
@@ -344,6 +397,10 @@ public class Interfaz {
 
 	}
 
+	/**
+	 * 
+	 * @param terreno
+	 */
 	public static void informacionJugador(Terreno terreno) {
 
 		int espaciosN = 16 - terreno.getJugador().getNombre().length();
@@ -379,18 +436,73 @@ public class Interfaz {
 				new String[] { "Efectos", "Atrás" }, espaciosNombre)) {
 
 		case 0:
-			
+
 			informacionEfectos(efJug, 0);
 			informacionJugador(terreno);
 			break;
-		
-		case 1:
-			informacionMazo(terreno.getJugador().getMazo(), 1);
+
+		default:
 
 		}
 
 	}
 
+	/**
+	 * 
+	 * @param terreno
+	 */
+	public static void informacionCartas(Terreno terreno) {
+
+		String[] opciones = new String[] { "Mano", "Mazo", "En Espera",
+				"Descartes (" + terreno.getDescartes().length + ")",
+				"Desterradas (" + terreno.getDestierro().length + ")", "Atrás" };
+
+		switch (JOptionPane.showOptionDialog(null, "-Voy a revisar dónde están mis cartas...",
+				"Ventana de información de cartas: Selección", 0, 0, null, opciones, "Atrás")) {
+
+		case 0:
+
+			informacionMazo(terreno.getMano(), 1);
+			informacionCartas(terreno);
+			break;
+
+		case 1:
+
+			informacionMazo(terreno.getJugador().getMazo(), 1);
+			informacionCartas(terreno);
+			break;
+
+		case 2:
+
+			informacionMazo(terreno.getMazoRestante(), 1);
+			informacionCartas(terreno);
+			break;
+
+		case 3:
+
+			informacionMazo(terreno.getDescartes(), 1);
+			informacionCartas(terreno);
+			break;
+			
+		case 4:
+
+			informacionMazo(terreno.getDestierro(), 1);
+			informacionCartas(terreno);
+			break;
+			
+		
+
+		default:
+
+		}
+
+	}
+
+	/**
+	 * 
+	 * @param mazo
+	 * @param posicionEnMazo
+	 */
 	public static void informacionMazo(Carta[] mazo, int posicionEnMazo) {
 
 		String[] opciones = new String[3];
@@ -399,47 +511,158 @@ public class Interfaz {
 		opciones[1] = "Atrás";
 		opciones[2] = ">>";
 
-		switch (JOptionPane.showOptionDialog(null,
-				"\n\n\nPosicion: " + posicionEnMazo + "\n\n" + displayCarta(mazo[posicionEnMazo]) + "\n\n\n",
-				"Carta nº " + mazo[posicionEnMazo].getID() + ", " + mazo[posicionEnMazo].getNombre(),
-				 0, 0, null, opciones, "Atrás")) {
+		if (mazo.length == 0) {
 
-		case 0:
+			JOptionPane.showMessageDialog(null, "No hay cartas aquí...", "Vacío", 0);
+			
+		} else
 
-			if (posicionEnMazo == 1) {
-				posicionEnMazo = mazo.length;
+			switch (JOptionPane.showOptionDialog(null,
+					"\n\n\nPosicion: " + posicionEnMazo + "\n\n" + displayCarta(mazo[posicionEnMazo-1]) + "\n\n\n",
+					"Carta nº " + mazo[posicionEnMazo-1].getID() + ", " + mazo[posicionEnMazo-1].getNombre(), 0, 0, null,
+					opciones, "Atrás")) {
+
+			case 0:
+
+				if (posicionEnMazo == 1) {
+					posicionEnMazo = mazo.length;
+				}
+
+				posicionEnMazo--;
+
+				informacionMazo(mazo, posicionEnMazo);
+				break;
+
+			case 1:
+
+				break;
+
+			case 2:
+
+				if (posicionEnMazo == mazo.length ) {
+					posicionEnMazo = 0;
+				}
+
+				posicionEnMazo++;
+
+				informacionMazo(mazo, posicionEnMazo);
+				break;
+
 			}
-			
-			posicionEnMazo--;
-			
-			informacionMazo(mazo, posicionEnMazo);
-			break;
 
-		case 1:
+	}
 
-			break;
+	/**
+	 * 
+	 * @param terreno
+	 * @param puntero
+	 */
+	public static void informacionEnemigo(Terreno terreno, int puntero) {
 
-		case 2:
+		boolean e2 = true, e3 = true;
 
-			if (posicionEnMazo == mazo.length - 1) {
-				posicionEnMazo = 0;
+		// esto comprueba si hay un segunodo o un tercer enemigo
+		try {
+
+			terreno.getE2();
+
+		} catch (Exception e) {
+
+			e2 = false;
+			e3 = false;
+
+		}
+
+		try {
+
+			terreno.getE3();
+
+		} catch (Exception e) {
+
+			e3 = false;
+
+		}
+
+		String[] opciones = new String[3];
+
+		opciones[0] = "<<";
+		opciones[1] = "Atrás";
+		opciones[2] = ">>";
+
+		int eleccion = 0;
+
+		if (puntero == 0) {
+
+			eleccion = JOptionPane.showOptionDialog(null,
+					displayEnemigo(terreno.getE1(), terreno.getEfectosEnEnemigo1()), terreno.getE1().getNombre(), 0, 0,
+					null, opciones, "Atrás");
+
+			if (eleccion != 1)
+				informacionEnemigo(terreno, 0);
+
+		}
+
+		if (!e2) {
+
+			if (eleccion != 1)
+				informacionEnemigo(terreno, 0);
+
+		} else if (e2 && !e3) {
+
+			if (eleccion != 1)
+				eleccion = JOptionPane.showOptionDialog(null,
+						displayEnemigo(terreno.getE2(), terreno.getEfectosEnEnemigo2()), terreno.getE2().getNombre(), 0,
+						0, null, opciones, "Atrás");
+
+			if (eleccion != 1)
+				informacionEnemigo(terreno, 0);
+
+		} else {
+
+			if (puntero == 1) {
+
+				eleccion = JOptionPane.showOptionDialog(null,
+						displayEnemigo(terreno.getE1(), terreno.getEfectosEnEnemigo1()), terreno.getE1().getNombre(), 0,
+						0, null, opciones, "Atrás");
+
+				if (eleccion == 0)
+					informacionEnemigo(terreno, 3);
+				else if (eleccion == 2)
+					informacionEnemigo(terreno, 2);
+
+			} else if (puntero == 2) {
+
+				eleccion = JOptionPane.showOptionDialog(null,
+						displayEnemigo(terreno.getE2(), terreno.getEfectosEnEnemigo2()), terreno.getE2().getNombre(), 0,
+						0, null, opciones, "Atrás");
+
+				if (eleccion == 0)
+					informacionEnemigo(terreno, 1);
+				else if (eleccion == 2)
+					informacionEnemigo(terreno, 3);
+
+			} else if (puntero == 3) {
+
+				eleccion = JOptionPane.showOptionDialog(null,
+						displayEnemigo(terreno.getE3(), terreno.getEfectosEnEnemigo3()), terreno.getE3().getNombre(), 0,
+						0, null, opciones, "Atrás");
+
+				if (eleccion == 0)
+					informacionEnemigo(terreno, 2);
+				else if (eleccion == 2)
+					informacionEnemigo(terreno, 1);
+
 			}
-			
-			posicionEnMazo++;
-			
-			informacionMazo(mazo, posicionEnMazo);
-			break;
 
 		}
 
 	}
 
-	public static void informacionEnemigo(Terreno terreno) {
-
-		
-		
-	}
-
+	/**
+	 * 
+	 * @param efectos
+	 * @param pagina
+	 */
 	public static void informacionEfectos(EfectoSobreEstadisticas[] efectos, int pagina) {
 
 		boolean modoPaginas = false, salir = false;
