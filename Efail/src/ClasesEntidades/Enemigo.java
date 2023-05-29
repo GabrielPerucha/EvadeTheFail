@@ -112,7 +112,7 @@ public class Enemigo extends Entidad {
 
 	}
 
-	public static void ejecutarAtaque(Terreno terreno, int atacante) {
+	public static void ejecutarAtaque(int atacante) {
 
 		Enemigo enemigo = new Enemigo("", 0, 0, 0, 0, 0, 0, 0, 0, "", "", null, null, null);
 		Efecto [] efectosDelEnemigo = new Efecto[0];
@@ -120,16 +120,16 @@ public class Enemigo extends Entidad {
 		switch (atacante) {
 
 		case 1:
-			enemigo = terreno.getE1();
-			efectosDelEnemigo = terreno.getEfectosEnEnemigo1();
+			enemigo = Terreno.terreno.getE1();
+			efectosDelEnemigo = Terreno.terreno.getEfectosEnEnemigo1();
 			break;
 		case 2:
-			enemigo = terreno.getE2();
-			efectosDelEnemigo = terreno.getEfectosEnEnemigo1();
+			enemigo = Terreno.terreno.getE2();
+			efectosDelEnemigo = Terreno.terreno.getEfectosEnEnemigo1();
 			break;
 		case 3:
-			enemigo = terreno.getE3();
-			efectosDelEnemigo = terreno.getEfectosEnEnemigo1();
+			enemigo = Terreno.terreno.getE3();
+			efectosDelEnemigo = Terreno.terreno.getEfectosEnEnemigo1();
 			break;
 		}
 
@@ -461,16 +461,16 @@ public class Enemigo extends Entidad {
 				switch (atacante) {
 
 				case 1:
-					terreno.setE1(enemigo);
-					terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
+					Terreno.terreno.setE1(enemigo);
+					Terreno.terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
 					break;
 				case 2:
-					terreno.setE2(enemigo);
-					terreno.setEfectosEnEnemigo2(efectosDelEnemigo);
+					Terreno.terreno.setE2(enemigo);
+					Terreno.terreno.setEfectosEnEnemigo2(efectosDelEnemigo);
 					break;
 				case 3:
-					terreno.setE3(enemigo);
-					terreno.setEfectosEnEnemigo3(efectosDelEnemigo);
+					Terreno.terreno.setE3(enemigo);
+					Terreno.terreno.setEfectosEnEnemigo3(efectosDelEnemigo);
 				}
 				
 				// Si el objetivo del efecto es el jugador
@@ -482,32 +482,32 @@ public class Enemigo extends Entidad {
 					
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setAtaque((int) (terreno.getJugador().getAtaque() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setAtaque((int) (Terreno.terreno.getJugador().getAtaque() * nfx.get(i).getMultiplicador()
 								+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j]; 
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j]; 
 						}
 
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosAux);
+						Terreno.terreno.setEfectosEnJugador(efectosAux);
 
 					} else {
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo() - 1);
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
 					}
 
@@ -517,33 +517,33 @@ public class Enemigo extends Entidad {
 					
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setDefensa((int) (terreno.getJugador().getDefensa() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setDefensa((int) (Terreno.terreno.getJugador().getDefensa() * nfx.get(i).getMultiplicador()
 								+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosAux);
+						Terreno.terreno.setEfectosEnJugador(efectosAux);
 
 					} else {
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo() - 1);
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 					}
 
 					break;
@@ -552,33 +552,33 @@ public class Enemigo extends Entidad {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setVida((int) (terreno.getJugador().getVida() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setVida((int) (Terreno.terreno.getJugador().getVida() * nfx.get(i).getMultiplicador()
 								+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosAux);
+						Terreno.terreno.setEfectosEnJugador(efectosAux);
 
 					} else {
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo() - 1);
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 					}
 
 					break;
@@ -587,21 +587,21 @@ public class Enemigo extends Entidad {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setVidaRestante((int) (terreno.getJugador().getVidaRestante()
-								+ terreno.getJugador().getVida() * nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
+						Terreno.terreno.getJugador().setVidaRestante((int) (Terreno.terreno.getJugador().getVidaRestante()
+								+ Terreno.terreno.getJugador().getVida() * nfx.get(i).getMultiplicador() + nfx.get(i).getSumador()));
 
 					} else {
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo() - 1);
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 					}
 
 					break;
@@ -610,34 +610,34 @@ public class Enemigo extends Entidad {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador()
-								.setProbCritico((int) (terreno.getJugador().getProbCritico() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador()
+								.setProbCritico((int) (Terreno.terreno.getJugador().getProbCritico() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosAux);
+						Terreno.terreno.setEfectosEnJugador(efectosAux);
 
 					} else {
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo() - 1);
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 					}
 
 					break;
@@ -646,34 +646,34 @@ public class Enemigo extends Entidad {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador()
-								.setDanoCritico((int) (terreno.getJugador().getDanoCritico() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador()
+								.setDanoCritico((int) (Terreno.terreno.getJugador().getDanoCritico() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosAux);
+						Terreno.terreno.setEfectosEnJugador(efectosAux);
 
 					} else {
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo() - 1);
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 					}
 
 					break;
@@ -682,22 +682,22 @@ public class Enemigo extends Entidad {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setVidaRestante(
-								(int) (terreno.getJugador().getVidaRestante() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setVidaRestante(
+								(int) (Terreno.terreno.getJugador().getVidaRestante() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
 					} else {
 
-						Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosAux[j] = terreno.getEfectosEnJugador()[j];
+							efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo() - 1);
-						efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 					}
 
 					break;
@@ -706,15 +706,15 @@ public class Enemigo extends Entidad {
 				// es un tipo de efecto especial por programar
 				default:
 
-					Efecto[] efectosAux = new Efecto[terreno.getEfectosEnJugador().length + 1];
+					Efecto[] efectosAux = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-					for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+					for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-						efectosAux[j] = terreno.getEfectosEnJugador()[j];
+						efectosAux[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 					}
 
-					efectosAux[terreno.getEfectosEnJugador().length] = nfx.get(i);
+					efectosAux[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
 				}
 
@@ -732,20 +732,20 @@ public class Enemigo extends Entidad {
 			switch (atacante) {
 
 			case 1:
-				terreno.getE1().setSiguienteAccion(ataqueAux);
+				Terreno.terreno.getE1().setSiguienteAccion(ataqueAux);
 				break;
 			case 2:
-				terreno.getE2().setSiguienteAccion(ataqueAux);
+				Terreno.terreno.getE2().setSiguienteAccion(ataqueAux);
 				break;
 			case 3:
-				terreno.getE3().setSiguienteAccion(ataqueAux);
+				Terreno.terreno.getE3().setSiguienteAccion(ataqueAux);
 			}
 			
 			/*
 			 * Esta sentencia recursiva vuelve a llamar al metodo de ejecutar carta, que al
 			 * principio separa los efectos especiales de los normales
 			 */
-			ejecutarAtaque(terreno, atacante);
+			ejecutarAtaque(atacante);
 
 		}
 

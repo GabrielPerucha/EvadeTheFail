@@ -77,7 +77,7 @@ public class Carta extends Movimiento {
 		this.clase = clase;
 	}
 
-	public static void ejecutarCarta(Carta carta, Terreno terreno, int objetivo) {
+	public static void ejecutarCarta(Carta carta, int objetivo) {
 
 		// nfx = normal effects
 		ArrayList<EfectoSobreEstadisticas> nfx = new ArrayList<EfectoSobreEstadisticas>();
@@ -120,34 +120,34 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador()
-								.setAtaque((int) (terreno.getJugador().getAtaque() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador()
+								.setAtaque((int) (Terreno.terreno.getJugador().getAtaque() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosEnJug);
+						Terreno.terreno.setEfectosEnJugador(efectosEnJug);
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -157,34 +157,34 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador()
-								.setDefensa((int) (terreno.getJugador().getDefensa() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador()
+								.setDefensa((int) (Terreno.terreno.getJugador().getDefensa() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosEnJug);
+						Terreno.terreno.setEfectosEnJugador(efectosEnJug);
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -194,34 +194,34 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador()
-								.setVida((int) (terreno.getJugador().getVida() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador()
+								.setVida((int) (Terreno.terreno.getJugador().getVida() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosEnJug);
+						Terreno.terreno.setEfectosEnJugador(efectosEnJug);
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -231,22 +231,22 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setVidaRestante(
-								(int) (terreno.getJugador().getVidaRestante() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setVidaRestante(
+								(int) (Terreno.terreno.getJugador().getVidaRestante() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -256,22 +256,22 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setManaRestante(
-								(int) (terreno.getJugador().getManaRestante() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setManaRestante(
+								(int) (Terreno.terreno.getJugador().getManaRestante() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -281,34 +281,34 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador()
-								.setBloqueo((int) (terreno.getJugador().getBloqueo() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador()
+								.setBloqueo((int) (Terreno.terreno.getJugador().getBloqueo() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosEnJug);
+						Terreno.terreno.setEfectosEnJugador(efectosEnJug);
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -318,34 +318,34 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setProbCritico(
-								(int) (terreno.getJugador().getProbCritico() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setProbCritico(
+								(int) (Terreno.terreno.getJugador().getProbCritico() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosEnJug);
+						Terreno.terreno.setEfectosEnJugador(efectosEnJug);
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -355,34 +355,34 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setDanoCritico(
-								(int) (terreno.getJugador().getDanoCritico() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setDanoCritico(
+								(int) (Terreno.terreno.getJugador().getDanoCritico() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
-						terreno.setEfectosEnJugador(efectosEnJug);
+						Terreno.terreno.setEfectosEnJugador(efectosEnJug);
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -392,23 +392,23 @@ public class Carta extends Movimiento {
 
 					if (nfx.get(i).getRetardo() == 0) {
 
-						terreno.getJugador().setVidaRestante(
-								(int) (terreno.getJugador().getVidaRestante() * nfx.get(i).getMultiplicador()
+						Terreno.terreno.getJugador().setVidaRestante(
+								(int) (Terreno.terreno.getJugador().getVidaRestante() * nfx.get(i).getMultiplicador()
 										+ nfx.get(i).getSumador()));
 
 
 					} else {
 
-						Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+						Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-						for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+						for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-							efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+							efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 						}
 
 						nfx.get(i).setRetardo(nfx.get(i).getRetardo()-1);
-						efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+						efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 						
 					}
 
@@ -418,15 +418,15 @@ public class Carta extends Movimiento {
 				// es un tipo de efecto especial por programar
 				default:
 
-					Efecto[] efectosEnJug = new Efecto[terreno.getEfectosEnJugador().length + 1];
+					Efecto[] efectosEnJug = new Efecto[Terreno.terreno.getEfectosEnJugador().length + 1];
 
-					for (int j = 0; j < terreno.getEfectosEnJugador().length; j++) {
+					for (int j = 0; j < Terreno.terreno.getEfectosEnJugador().length; j++) {
 
-						efectosEnJug[j] = terreno.getEfectosEnJugador()[j];
+						efectosEnJug[j] = Terreno.terreno.getEfectosEnJugador()[j];
 
 					}
 
-					efectosEnJug[terreno.getEfectosEnJugador().length] = nfx.get(i);
+					efectosEnJug[Terreno.terreno.getEfectosEnJugador().length] = nfx.get(i);
 
 				}
 
@@ -439,23 +439,23 @@ public class Carta extends Movimiento {
 				switch (objetivo) {
 
 				case 1:
-					enemigoAfectado = terreno.getE1();
-					efectosDelEnemigo = terreno.getEfectosEnEnemigo1();
+					enemigoAfectado = Terreno.terreno.getE1();
+					efectosDelEnemigo = Terreno.terreno.getEfectosEnEnemigo1();
 					break;
 				case 2:
-					enemigoAfectado = terreno.getE2();
-					efectosDelEnemigo = terreno.getEfectosEnEnemigo2();
+					enemigoAfectado = Terreno.terreno.getE2();
+					efectosDelEnemigo = Terreno.terreno.getEfectosEnEnemigo2();
 
 					break;
 				case 3:
-					enemigoAfectado = terreno.getE3();
-					efectosDelEnemigo = terreno.getEfectosEnEnemigo3();
+					enemigoAfectado = Terreno.terreno.getE3();
+					efectosDelEnemigo = Terreno.terreno.getEfectosEnEnemigo3();
 
 					break;
 				default:
 					//Inicializar variables aquí para evitar que el programa pete
-					enemigoAfectado = terreno.getE1();
-					efectosDelEnemigo = terreno.getEfectosEnEnemigo1();
+					enemigoAfectado = Terreno.terreno.getE1();
+					efectosDelEnemigo = Terreno.terreno.getEfectosEnEnemigo1();
 				}
 
 				switch (nfx.get(i).getEstadistica()) {
@@ -705,17 +705,17 @@ public class Carta extends Movimiento {
 				switch (objetivo) {
 
 				case 1:
-					terreno.setE1(enemigoAfectado);
-					terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
+					Terreno.terreno.setE1(enemigoAfectado);
+					Terreno.terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
 					break;
 				case 2:
-					terreno.setE1(enemigoAfectado);
-					terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
+					Terreno.terreno.setE1(enemigoAfectado);
+					Terreno.terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
 
 					break;
 				case 3:
-					terreno.setE1(enemigoAfectado);
-					terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
+					Terreno.terreno.setE1(enemigoAfectado);
+					Terreno.terreno.setEfectosEnEnemigo1(efectosDelEnemigo);
 
 					break;
 				
@@ -738,7 +738,7 @@ public class Carta extends Movimiento {
 			 * Esta sentencia recursiva vuelve a llamar al metodo de ejecutar carta, que al
 			 * principio separa los efectos especiales de los normales
 			 */
-			ejecutarCarta(cartaAux, terreno, objetivo);
+			ejecutarCarta(cartaAux, objetivo);
 
 		}
 

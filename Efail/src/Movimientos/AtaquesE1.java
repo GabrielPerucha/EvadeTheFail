@@ -5,20 +5,18 @@ import ClasesEntidades.Jugable;
 import Combate.*;
 import Efectos.*;
 
-public class Ataques {
+public class AtaquesE1 {
 
-	Enemigo enemigo = new Enemigo("Default", 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null, null);
-	Jugable jugador = new Jugable("Default", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, null, null, null, null);
 	EfectosEspeciales ef = new EfectosEspeciales(); 
 	
 	//Sintaxis de efectos: Salto de linea cuando no cabe en pantalla y la declaracion de efectos en una linea aparte
 	
 	//Golpe genérico
-	public Ataque golpeRB = new Ataque("Un golpe con la mano abierta, siempre confiable.\nPotencia: 100\nProbabilidad: 20", "Golpe", 20, 100, 
-			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+	public static Ataque golpeRB = new Ataque("Un golpe con la mano abierta, siempre confiable.\nPotencia: 100\nProbabilidad: 20", "Golpe", 20, 100, 
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador()), 1, 0, false)});
 	
 	public Ataque golpeRA = new Ataque("Es un golpe tan simple que cada vez lo ves menos.\nPotencia: 100\nProbabilidad: 10", "Golpe", 10, 100,
-			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador()), 1, 0, false)});
 
 	//En RM no hay "Golpe"
 	
@@ -72,16 +70,16 @@ public class Ataques {
 	public Ataque babaRB = new Ataque("Ataque propio de Slimes, curiosamente pese a desprenderse de parte de su cuerpo, no parece dolerles."
 			+ "\nPor suerte el moco aunque incómodo está bastante calentito"
 			+ "\nGolpea y baja un 10% el ataque\nPotencia: 120\nProbabilidad: 30.", "Baba de Slime", 30, 120, 
-			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(130/100)*Combate.formulaDanoRival(enemigo, jugador), 1, 0, false), ef.babaSlimeRB});
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(130/100)*Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador()), 1, 0, false), ef.babaSlimeRB});
 	
 	public Ataque babaRA = new Ataque("Ataque propio de Slimes, curiosamente pese a desprenderse de parte de su cuerpo, no parece dolerles."
 			+ ". Poco a poco te vaas cansando de la textura de la baba, mas incluso que antes"
 			+ "\nGolpea y baja un 20% el ataque\nPotencia: 135\nProbabilidad: 20", "Baba de Slime", 20, 135, 
-			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDanoRival(enemigo, jugador)*135/100), 1, 0, false), ef.babaSlimeRA});
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador())*135/100), 1, 0, false), ef.babaSlimeRA});
 	
 	public Ataque babaRM = new Ataque("Ataque propio de Slimes, curiosamente pese a desprenderse de parte de su cuerpo.", "Baba de Slime"
 			+ "\nGolpea y baja un 25% el ataque\nPotencia: 135\nProbabilidad: 10", 10, 135, 
-			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDanoRival(enemigo, jugador)*135/100), 1, 0, false), ef.babaSlimeRM});
+			new Efecto[]{new EfectoSobreEstadisticas("dano", 1, -(Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador())*135/100), 1, 0, false), ef.babaSlimeRM});
 	
 	
 	//Buff basico de slimes
@@ -103,33 +101,33 @@ public class Ataques {
 	
 	//Goblin desarmado
 	public Ataque desarmeRB = new Ataque("¡Un duende desarmado te ataca y te tira el arma!\nBaja el ataque un 30% un turno\nPotencia: 70\nProbabilidad 35", "Desarme", 35, 70,
-			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador)*7/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.7, 0, 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador())*7/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.7, 0, 1, 0, false)});
 	
 	public Ataque desarmeRA = new Ataque("¡Un duende desarmado te ataca y te tira el arma!\nBaja el ataque un 50% un turno\nPotencia: 90\nProbabilidad 35", "Desarme", 35, 90,
-			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador)*9/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.5, 0, 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador())*9/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.5, 0, 1, 0, false)});
 	
 	public Ataque desarmeRM= new Ataque("¡Un duende desarmado te ataca y te tira el arma!\nBaja el ataque un 50% un turno\nPotencia: 110\nProbabilidad 35", "Desarme", 35, 110,
-			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador)*11/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.9, 0, 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador())*11/10, 1, 0, false), new EfectoSobreEstadisticas("ataque", 0.9, 0, 1, 0, false)});
 	
 	
 	//Goblin con hacha
 	public Ataque hachazoRB = new Ataque("El duende con su portentosa arma te ataca sin piedad\nAumenta la defensa en un 50% un turno"
 			+ "\nPotencia: 200 una vez tras un turno\nProbabilidad: 35", "Hachazo", 35, 200,
-			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, -Combate.formulaDanoRival(enemigo, jugador)*2, 1, 1, false)});
+			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador())*2, 1, 1, false)});
 	
 	public Ataque hachazoRA = new Ataque("El duende con su portentosa arma te ataca sin piedad\nAumenta la defensa en un 50% un turno"
 			+ "\nPotencia: 250 una vez tras un turno\nProbabilidad: 35", "Hachazo", 35, 250,
-			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, -Combate.formulaDanoRival(enemigo, jugador)*25/10, 1, 1, false)});
+			new Efecto[]{new EfectoSobreEstadisticas("defensa", 1.5, 0, 1, 0, true), new EfectoSobreEstadisticas("vidaRestante", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador())*25/10, 1, 1, false)});
 	
 	
 	//Goblin con espadas
 	public Ataque espadazoRB = new Ataque("Extrañamente una criatura fantastica utiliza mejor la espada que muchas personas reales.\n"
 			+ "Aumenta la probabilidad de critico un 15% y el daño crítico un 20% por 1 turno\n Potencia: 100\nProbabilidad: 35", "Espadazo", 35, 100,
-			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.15, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.2, 0, 1, 0, true), new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.15, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.2, 0, 1, 0, true), new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador()), 1, 0, false)});
 	
 	public Ataque espadazoRA = new Ataque("Duende de los criticos (ahora es personal).\n"
 			+ "Aumenta la probabilidad de critico un 25% y el daño crítico un 30% por 1 turno\n Potencia: 100\nProbabilidad: 35", "Espadazo", 35, 100,
-			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.25, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.3, 0, 1, 0, true), new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(enemigo, jugador), 1, 0, false)});
+			new Efecto[] {new EfectoSobreEstadisticas("probCritico", 1.25, 0, 1, 0, true), new EfectoSobreEstadisticas("danoCritico", 1.3, 0, 1, 0, true), new EfectoSobreEstadisticas("dano", 1, -Combate.formulaDanoRival(Terreno.terreno.getE1(), Terreno.terreno.getJugador()), 1, 0, false)});
 	
 	//Hacer un ataque de maestro de la espada
 	

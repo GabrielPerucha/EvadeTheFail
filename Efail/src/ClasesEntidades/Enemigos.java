@@ -1,12 +1,12 @@
 package ClasesEntidades;
 
 import Movimientos.Ataque;
-import Movimientos.Ataques;
+import Movimientos.AtaquesE1;
 
 public class Enemigos {
 
 	//Existen tres tipos de enemigos distintos por cada enemigo, marcando los stats de dicho enemigo a lo largo del juego.
-	Ataques at = new Ataques ();
+	AtaquesE1 at = new AtaquesE1 ();
 
 	public Enemigo SlimeRB = new Enemigo("Slime", 1, 5, 5, 2, 1, 5, 50, 0, "Neutro", "Una pegajosa y poco amigable bola de moco que intenta matarte",
 			new Ataque[] {at.golpeRB, at.endurecerRB, at.babaRB, at.rugidoRB, at.descansoRB}, null, at.babaRB);

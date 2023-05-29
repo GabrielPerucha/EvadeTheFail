@@ -13,7 +13,7 @@ import Partida.Interfaz;
 
 //int eleccion = JOptionPane.showOptionDialog(null, "Contenido", "Título", 0, 0, null, opciones, "Preseleccionado");
 
-public class Combate {
+public class Combate{
 
 	/*
 	 * Hay dos metodos de dano, uno para cuando el jugador ataca y otro para cuando
@@ -219,11 +219,11 @@ public class Combate {
 
 	/**
 	 * 
-	 * @param terreno
+	 * @param Terreno.terreno
 	 * @param enemigoAtacante
 	 * @return
 	 */
-	public static Ataque eleccionSiguienteAccion(Terreno terreno, int enemigoAtacante) {
+	public static Ataque eleccionSiguienteAccion(int enemigoAtacante) {
 
 		int ataqueEnemigo;
 		int[] probabilidades = new int[100];
@@ -235,42 +235,42 @@ public class Combate {
 		switch (enemigoAtacante) {
 
 		case 1:
-			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++) {
+			for (int i = 0, k = 0; i < Terreno.terreno.getE1().getAtaques().length; i++) {
 
-				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
+				for (int j = 0; j < Terreno.terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
 
 					probabilidades[k] = i;
 
 				}
 
 			}
-			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
+			ataqueEjecutado = Terreno.terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
 			break;
 
 		case 2:
-			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
+			for (int i = 0, k = 0; i < Terreno.terreno.getE1().getAtaques().length; i++, k++) {
 
-				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
+				for (int j = 0; j < Terreno.terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
 
 					probabilidades[k] = j;
 
 				}
 
 			}
-			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
+			ataqueEjecutado = Terreno.terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
 			break;
 
 		case 3:
-			for (int i = 0, k = 0; i < terreno.getE1().getAtaques().length; i++, k++) {
+			for (int i = 0, k = 0; i < Terreno.terreno.getE1().getAtaques().length; i++, k++) {
 
-				for (int j = 0; j < terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
+				for (int j = 0; j < Terreno.terreno.getE1().getAtaques()[i].getProbabilidad(); j++, k++) {
 
 					probabilidades[k] = j;
 
 				}
 
 			}
-			ataqueEjecutado = terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
+			ataqueEjecutado = Terreno.terreno.getE1().getAtaques()[probabilidades[ataqueEnemigo]];
 			break;
 
 		}
@@ -302,12 +302,10 @@ public class Combate {
 		boolean finTurno = false, tiroCarta = false, finCombate = false;
 		Carta[] mazoAux = null, mano;
 
-		Terreno terreno = new Terreno(null, new Carta[0], new Carta[0], barajeo(jugador.getMazo()),
+		Terreno.terreno = new Terreno(null, new Carta[0], new Carta[0], barajeo(jugador.getMazo()),
 				jugador.getPasivas(), new Efecto[] { sp.tensionDeEnemigo }, jugador, NPC);
 
 		int numCartas = 5;
-
-		int contadorDescarte = 0;
 
 		mano = new Carta[numCartas];
 
@@ -323,56 +321,56 @@ public class Combate {
 			 * "recicladas".
 			 */
 
-			if (terreno.getMazoRestante().length <= numCartas) {
+			if (Terreno.terreno.getMazoRestante().length <= numCartas) {
 
-				if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
-					mazoAux = new Carta[terreno.getDescartes().length - terreno.getMazoRestante().length];
+				if (Terreno.terreno.getDescartes().length >= Terreno.terreno.getMazoRestante().length)
+					mazoAux = new Carta[Terreno.terreno.getDescartes().length - Terreno.terreno.getMazoRestante().length];
 
-				for (int i = 0; i < terreno.getMazoRestante().length; i++) {
-					mano[i] = terreno.getMazoRestante()[i];
+				for (int i = 0; i < Terreno.terreno.getMazoRestante().length; i++) {
+					mano[i] = Terreno.terreno.getMazoRestante()[i];
 
 				}
 
-				for (int i = terreno.getMazoRestante().length; i < numCartas - terreno.getMazoRestante().length; i++) {
-					mano[i] = terreno.getDescartes()[i];
+				for (int i = Terreno.terreno.getMazoRestante().length; i < numCartas - Terreno.terreno.getMazoRestante().length; i++) {
+					mano[i] = Terreno.terreno.getDescartes()[i];
 				}
 
-				if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
+				if (Terreno.terreno.getDescartes().length >= Terreno.terreno.getMazoRestante().length)
 					for (int i = 0; i < mazoAux.length; i++) {
-						mazoAux[i] = terreno.getDescartes()[i + terreno.getMazoRestante().length];
+						mazoAux[i] = Terreno.terreno.getDescartes()[i + Terreno.terreno.getMazoRestante().length];
 					}
 
-				if (terreno.getDescartes().length >= terreno.getMazoRestante().length)
-					terreno.setDescartes(mazoAux);
-				terreno.setMazoRestante(terreno.getDescartes());
-				terreno.setDescartes(new Carta[] {});
+				if (Terreno.terreno.getDescartes().length >= Terreno.terreno.getMazoRestante().length)
+					Terreno.terreno.setDescartes(mazoAux);
+				Terreno.terreno.setMazoRestante(Terreno.terreno.getDescartes());
+				Terreno.terreno.setDescartes(new Carta[] {});
 
 			} else {
 
-				mazoAux = new Carta[terreno.getMazoRestante().length - 5];
+				mazoAux = new Carta[Terreno.terreno.getMazoRestante().length - 5];
 
 				for (int i = 0; i < mazoAux.length; i++) {
-					mazoAux[i] = terreno.getMazoRestante()[i + 5];
-					mano[i] = terreno.getMazoRestante()[i + 5];
+					mazoAux[i] = Terreno.terreno.getMazoRestante()[i + 5];
+					mano[i] = Terreno.terreno.getMazoRestante()[i + 5];
 
 				}
 
-				terreno.setMazoRestante(mazoAux);
+				Terreno.terreno.setMazoRestante(mazoAux);
 
 			}
 
-			terreno.setMano(mano);
+			Terreno.terreno.setMano(mano);
 			// Reparto completado en este punto
 
 			do {
 
-				String opciones[] = new String[terreno.getMano().length + 2];
+				String opciones[] = new String[Terreno.terreno.getMano().length + 2];
 				ArrayList<Carta> cartasMano = new ArrayList<Carta>();
 
 				for (int i = 0; i < opciones.length - 2; i++) {
 
-					opciones[i] = terreno.getMano()[i].getNombre();
-					cartasMano.add(terreno.getMano()[i]);
+					opciones[i] = Terreno.terreno.getMano()[i].getNombre();
+					cartasMano.add(Terreno.terreno.getMano()[i]);
 
 				}
 
@@ -382,7 +380,7 @@ public class Combate {
 				do {
 
 					int eleccionCarta = JOptionPane.showOptionDialog(null,
-							Interfaz.creaInterfazBatalla(jugador, NPC, terreno), "Combate contra " + NPC.getNombre(), 0,
+							Interfaz.creaInterfazBatalla(jugador, NPC), "Combate contra " + NPC.getNombre(), 0,
 							0, null, opciones, "?");
 
 					int eleccionObjetivo;
@@ -394,7 +392,7 @@ public class Combate {
 
 					} else if (eleccionCarta == opciones.length - 1) {
 
-						Interfaz.informacionGeneral(terreno);
+						Interfaz.informacionGeneral();
 
 					} else {
 
@@ -404,7 +402,7 @@ public class Combate {
 									"Combate contra " + NPC.getNombre(), 0, 0, null,
 									new String[] { "Atrás", NPC.getNombre() }, "Atrás");
 							if (eleccionObjetivo != 0)
-								Carta.ejecutarCarta(cartasMano.get(eleccionCarta), terreno, eleccionObjetivo);
+								Carta.ejecutarCarta(cartasMano.get(eleccionCarta), eleccionObjetivo);
 
 						} else {
 
@@ -413,7 +411,7 @@ public class Combate {
 									"Atrás");
 
 							if (eleccionObjetivo != 0) {
-								Carta.ejecutarCarta(cartasMano.get(eleccionCarta), terreno, -1);
+								Carta.ejecutarCarta(cartasMano.get(eleccionCarta), -1);
 							}
 
 						}
@@ -421,15 +419,15 @@ public class Combate {
 						// Este if se encarga de mandar a descartes las cartas según las vayas usando
 						if (eleccionObjetivo != 0) {
 
-							Carta[] descartesAux = new Carta[terreno.getDescartes().length + 1];
+							Carta[] descartesAux = new Carta[Terreno.terreno.getDescartes().length + 1];
 
-							for (int j = 0; j < terreno.getDescartes().length; j++) {
+							for (int j = 0; j < Terreno.terreno.getDescartes().length; j++) {
 
-								descartesAux[j] = terreno.getDescartes()[j];
+								descartesAux[j] = Terreno.terreno.getDescartes()[j];
 
 							}
-							descartesAux[terreno.getDescartes().length] = cartasMano.get(eleccionCarta);
-							terreno.setDescartes(descartesAux);
+							descartesAux[Terreno.terreno.getDescartes().length] = cartasMano.get(eleccionCarta);
+							Terreno.terreno.setDescartes(descartesAux);
 
 							cartasMano.remove(eleccionCarta);
 							tiroCarta = true;
@@ -447,33 +445,54 @@ public class Combate {
 
 				}
 
-				terreno.setMano(mano);
+				Terreno.terreno.setMano(mano);
 
-				terreno.setDescartes(barajeo(terreno.getDescartes()));
+				Terreno.terreno.setDescartes(barajeo(Terreno.terreno.getDescartes()));
 
 			} while (!finTurno);
 
-			Carta[] descartesAux = new Carta[terreno.getDescartes().length + terreno.getMano().length];
+			Carta[] descartesAux = new Carta[Terreno.terreno.getDescartes().length + Terreno.terreno.getMano().length];
 
-			for (int j = 0; j < terreno.getDescartes().length; j++) {
+			for (int j = 0; j < Terreno.terreno.getDescartes().length; j++) {
 
-				descartesAux[j] = terreno.getDescartes()[j];
-
-			}
-
-			for (int j = 0; j < terreno.getMano().length; j++) {
-
-				descartesAux[j + terreno.getDescartes().length] = terreno.getMano()[j];
+				descartesAux[j] = Terreno.terreno.getDescartes()[j];
 
 			}
 
-			terreno.setMano(new Carta[0]);
-			terreno.setDescartes(descartesAux);
-			terreno.setDescartes(barajeo(terreno.getDescartes()));
+			for (int j = 0; j < Terreno.terreno.getMano().length; j++) {
+
+				descartesAux[j + Terreno.terreno.getDescartes().length] = Terreno.terreno.getMano()[j];
+
+			}
 			
-			Enemigo.ejecutarAtaque(terreno, 1);
+			for (int i = 0; i < Terreno.terreno.getE1().getAtaques().length; i++) {
+				
+				Terreno.terreno.getE1().getAtaques()[i].getEfectos();
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				// ------------------------------------------------------------------------------------------------------------------------------------------------------
+				
+				
+				
+			}
+			
+			
 
-			terreno.getE1().setSiguienteAccion(eleccionSiguienteAccion(terreno, 1));
+			Terreno.terreno.setMano(new Carta[0]);
+			Terreno.terreno.setDescartes(descartesAux);
+			Terreno.terreno.setDescartes(barajeo(Terreno.terreno.getDescartes()));
+			
+			Enemigo.ejecutarAtaque(1);
+
+			Terreno.terreno.getE1().setSiguienteAccion(eleccionSiguienteAccion(1));
 		} while (!finCombate);
 	}
 

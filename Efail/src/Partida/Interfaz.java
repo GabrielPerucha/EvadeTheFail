@@ -100,10 +100,10 @@ public class Interfaz {
 	 * 
 	 * @param jugador
 	 * @param NPC
-	 * @param terreno
+	 * @param Terreno.terreno
 	 * @return
 	 */
-	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Terreno terreno) {
+	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC) {
 
 		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ";
 		int longitudNombreJugador = jugador.getNombre().length();
@@ -134,8 +134,8 @@ public class Interfaz {
 
 		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
 				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
-				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3
-				+ terreno.getE1().getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre()
+				+ Terreno.terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3
+				+ Terreno.terreno.getE1().getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre()
 				+ "\n" + "Maná: " + jugador.getMana() + "/" + jugador.getManaRestante() + "\n\n\n";
 
 		return contenido;
@@ -146,10 +146,10 @@ public class Interfaz {
 	 * @param jugador
 	 * @param NPC
 	 * @param NPC2
-	 * @param terreno
+	 * @param Terreno.terreno
 	 * @return
 	 */
-	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2, Terreno terreno) {
+	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2) {
 
 		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ", espacios4 = "                  ";
 		int longitudNombreJugador = jugador.getNombre().length();
@@ -180,7 +180,7 @@ public class Interfaz {
 
 		contenido = "\n\n\n\nNv: " + jugador.getNivel() + " " + jugador.getNombre() + espacios2 + espacios1
 				+ "          " + "Nv: " + NPC.getNivel() + " " + NPC.getNombre() + "\n\nHP: "
-				+ terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
+				+ Terreno.terreno.getJugador().getVidaRestante() + "/" + jugador.getVida() + espacios3 + NPC.getVidaRestante()
 				+ "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre() + "\n" + "Maná: " + jugador.getMana()
 				+ "/" + jugador.getManaRestante() + "\n\n\n" + espacios4 + espacios3 + "Nv: " + NPC2.getNivel() + " "
 				+ NPC2.getNombre() + "\n\n" + espacios4 + espacios3 + NPC.getVidaRestante() + "/" + NPC.getVida() + " "
@@ -195,11 +195,10 @@ public class Interfaz {
 	 * @param NPC
 	 * @param NPC2
 	 * @param NPC3
-	 * @param terreno
+	 * @param Terreno.terreno
 	 * @return
 	 */
-	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2, Enemigo NPC3,
-			Terreno terreno) {
+	public static String creaInterfazBatalla(Jugable jugador, Enemigo NPC, Enemigo NPC2, Enemigo NPC3) {
 
 		String contenido = "", espacios1 = " ", espacios2 = "", espacios3 = " ", espacios4 = "                  ";
 		int longitudNombreJugador = jugador.getNombre().length();
@@ -232,7 +231,7 @@ public class Interfaz {
 				+ espacios3 + NPC3.getVidaRestante() + "/" + NPC3.getVida() + " "
 				+ NPC3.getSiguienteAccion().getNombre() + "\n\n\n\nNv: " + jugador.getNivel() + " "
 				+ jugador.getNombre() + espacios2 + espacios1 + "          " + "Nv: " + NPC.getNivel() + " "
-				+ NPC.getNombre() + "\n\nHP: " + terreno.getJugador().getVidaRestante() + "/" + jugador.getVida()
+				+ NPC.getNombre() + "\n\nHP: " + Terreno.terreno.getJugador().getVidaRestante() + "/" + jugador.getVida()
 				+ espacios3 + NPC.getVidaRestante() + "/" + NPC.getVida() + " " + NPC.getSiguienteAccion().getNombre()
 				+ "\n" + "Maná: " + jugador.getMana() + "/" + jugador.getManaRestante() + "\n\n\n" + espacios4
 				+ espacios3 + "Nv: " + NPC2.getNivel() + " " + NPC2.getNombre() + "\n\n" + espacios4 + espacios3
@@ -360,9 +359,9 @@ public class Interfaz {
 
 	/**
 	 * 
-	 * @param terreno
+	 * @param Terreno.terreno
 	 */
-	public static void informacionGeneral(Terreno terreno) {
+	public static void informacionGeneral() {
 
 		String[] opciones = new String[] { "Estado", "Cartas", "Enemigos", "Atrás" };
 
@@ -371,20 +370,20 @@ public class Interfaz {
 
 		case 0:
 
-			informacionJugador(terreno);
-			informacionGeneral(terreno);
+			informacionJugador();
+			informacionGeneral();
 			break;
 
 		case 1:
 
-			informacionCartas(terreno);
-			informacionGeneral(terreno);
+			informacionCartas();
+			informacionGeneral();
 			break;
 
 		case 2:
 
-			informacionEnemigo(terreno, 0);
-			informacionGeneral(terreno);
+			informacionEnemigo(0);
+			informacionGeneral();
 			break;
 
 		case 3:
@@ -399,11 +398,11 @@ public class Interfaz {
 
 	/**
 	 * 
-	 * @param terreno
+	 * @param Terreno.terreno
 	 */
-	public static void informacionJugador(Terreno terreno) {
+	public static void informacionJugador() {
 
-		int espaciosN = 16 - terreno.getJugador().getNombre().length();
+		int espaciosN = 16 - Terreno.terreno.getJugador().getNombre().length();
 		String espaciosNombre = " ";
 
 		for (int i = 0; i < espaciosN; i++) {
@@ -412,7 +411,7 @@ public class Interfaz {
 
 		String efectos = "Efectos: ";
 
-		EfectoSobreEstadisticas[] efJug = Combate.castEfectos(terreno.getEfectosEnJugador());
+		EfectoSobreEstadisticas[] efJug = Combate.castEfectos(Terreno.terreno.getEfectosEnJugador());
 
 		for (int i = 0; i < efJug.length; i++) {
 
@@ -421,24 +420,24 @@ public class Interfaz {
 		}
 
 		switch (JOptionPane.showOptionDialog(null,
-				terreno.getJugador().getNombre() + espaciosNombre + "Nv: " + terreno.getJugador().getNivel() + "\n\n" +
+				Terreno.terreno.getJugador().getNombre() + espaciosNombre + "Nv: " + Terreno.terreno.getJugador().getNivel() + "\n\n" +
 
-						"Maná:                                          " + terreno.getJugador().getMana() + "\n\n"
-						+ "Ataque:                                       " + terreno.getJugador().getAtaque() + "\n\n"
-						+ "Defensa:                                     " + terreno.getJugador().getDefensa() + "\n\n"
-						+ "Bloqueo:                                      " + terreno.getJugador().getBloqueo() + "\n\n"
-						+ "Probabilidad de critico:           " + terreno.getJugador().getAtaque() + "\n\n"
-						+ "Daño crítico:                               " + terreno.getJugador().getAtaque() + "\n\n\n\n"
+						"Maná:                                          " + Terreno.terreno.getJugador().getMana() + "\n\n"
+						+ "Ataque:                                       " + Terreno.terreno.getJugador().getAtaque() + "\n\n"
+						+ "Defensa:                                     " + Terreno.terreno.getJugador().getDefensa() + "\n\n"
+						+ "Bloqueo:                                      " + Terreno.terreno.getJugador().getBloqueo() + "\n\n"
+						+ "Probabilidad de critico:           " + Terreno.terreno.getJugador().getAtaque() + "\n\n"
+						+ "Daño crítico:                               " + Terreno.terreno.getJugador().getAtaque() + "\n\n\n\n"
 						+
 
 						efectos + "\n\n",
-				terreno.getJugador().getNombre() + " el " + terreno.getJugador().getClase(), 0, 0, null,
+				Terreno.terreno.getJugador().getNombre() + " el " + Terreno.terreno.getJugador().getClase(), 0, 0, null,
 				new String[] { "Efectos", "Atrás" }, espaciosNombre)) {
 
 		case 0:
 
 			informacionEfectos(efJug, 0);
-			informacionJugador(terreno);
+			informacionJugador();
 			break;
 
 		default:
@@ -449,45 +448,45 @@ public class Interfaz {
 
 	/**
 	 * 
-	 * @param terreno
+	 * @param Terreno.terreno
 	 */
-	public static void informacionCartas(Terreno terreno) {
+	public static void informacionCartas() {
 
 		String[] opciones = new String[] { "Mano", "Mazo", "En Espera",
-				"Descartes (" + terreno.getDescartes().length + ")",
-				"Desterradas (" + terreno.getDestierro().length + ")", "Atrás" };
+				"Descartes (" + Terreno.terreno.getDescartes().length + ")",
+				"Desterradas (" + Terreno.terreno.getDestierro().length + ")", "Atrás" };
 
 		switch (JOptionPane.showOptionDialog(null, "-Voy a revisar dónde están mis cartas...",
 				"Ventana de información de cartas: Selección", 0, 0, null, opciones, "Atrás")) {
 
 		case 0:
 
-			informacionMazo(terreno.getMano(), 1);
-			informacionCartas(terreno);
+			informacionMazo(Terreno.terreno.getMano(), 1);
+			informacionCartas();
 			break;
 
 		case 1:
 
-			informacionMazo(terreno.getJugador().getMazo(), 1);
-			informacionCartas(terreno);
+			informacionMazo(Terreno.terreno.getJugador().getMazo(), 1);
+			informacionCartas();
 			break;
 
 		case 2:
 
-			informacionMazo(terreno.getMazoRestante(), 1);
-			informacionCartas(terreno);
+			informacionMazo(Terreno.terreno.getMazoRestante(), 1);
+			informacionCartas();
 			break;
 
 		case 3:
 
-			informacionMazo(terreno.getDescartes(), 1);
-			informacionCartas(terreno);
+			informacionMazo(Terreno.terreno.getDescartes(), 1);
+			informacionCartas();
 			break;
 			
 		case 4:
 
-			informacionMazo(terreno.getDestierro(), 1);
-			informacionCartas(terreno);
+			informacionMazo(Terreno.terreno.getDestierro(), 1);
+			informacionCartas();
 			break;
 			
 		
@@ -554,17 +553,17 @@ public class Interfaz {
 
 	/**
 	 * 
-	 * @param terreno
+	 * @param Terreno.terreno
 	 * @param puntero
 	 */
-	public static void informacionEnemigo(Terreno terreno, int puntero) {
+	public static void informacionEnemigo(int puntero) {
 
 		boolean e2 = true, e3 = true;
 
 		// esto comprueba si hay un segunodo o un tercer enemigo
 		try {
 
-			terreno.getE2();
+			Terreno.terreno.getE2();
 
 		} catch (Exception e) {
 
@@ -575,7 +574,7 @@ public class Interfaz {
 
 		try {
 
-			terreno.getE3();
+			Terreno.terreno.getE3();
 
 		} catch (Exception e) {
 
@@ -594,63 +593,63 @@ public class Interfaz {
 		if (puntero == 0) {
 
 			eleccion = JOptionPane.showOptionDialog(null,
-					displayEnemigo(terreno.getE1(), terreno.getEfectosEnEnemigo1()), terreno.getE1().getNombre(), 0, 0,
+					displayEnemigo(Terreno.terreno.getE1(), Terreno.terreno.getEfectosEnEnemigo1()), Terreno.terreno.getE1().getNombre(), 0, 0,
 					null, opciones, "Atrás");
 
 			if (eleccion != 1)
-				informacionEnemigo(terreno, 0);
+				informacionEnemigo(0);
 
 		}
 
 		if (!e2) {
 
 			if (eleccion != 1)
-				informacionEnemigo(terreno, 0);
+				informacionEnemigo(0);
 
 		} else if (e2 && !e3) {
 
 			if (eleccion != 1)
 				eleccion = JOptionPane.showOptionDialog(null,
-						displayEnemigo(terreno.getE2(), terreno.getEfectosEnEnemigo2()), terreno.getE2().getNombre(), 0,
+						displayEnemigo(Terreno.terreno.getE2(), Terreno.terreno.getEfectosEnEnemigo2()), Terreno.terreno.getE2().getNombre(), 0,
 						0, null, opciones, "Atrás");
 
 			if (eleccion != 1)
-				informacionEnemigo(terreno, 0);
+				informacionEnemigo(0);
 
 		} else {
 
 			if (puntero == 1) {
 
 				eleccion = JOptionPane.showOptionDialog(null,
-						displayEnemigo(terreno.getE1(), terreno.getEfectosEnEnemigo1()), terreno.getE1().getNombre(), 0,
+						displayEnemigo(Terreno.terreno.getE1(), Terreno.terreno.getEfectosEnEnemigo1()), Terreno.terreno.getE1().getNombre(), 0,
 						0, null, opciones, "Atrás");
 
 				if (eleccion == 0)
-					informacionEnemigo(terreno, 3);
+					informacionEnemigo(3);
 				else if (eleccion == 2)
-					informacionEnemigo(terreno, 2);
+					informacionEnemigo(2);
 
 			} else if (puntero == 2) {
 
 				eleccion = JOptionPane.showOptionDialog(null,
-						displayEnemigo(terreno.getE2(), terreno.getEfectosEnEnemigo2()), terreno.getE2().getNombre(), 0,
+						displayEnemigo(Terreno.terreno.getE2(), Terreno.terreno.getEfectosEnEnemigo2()), Terreno.terreno.getE2().getNombre(), 0,
 						0, null, opciones, "Atrás");
 
 				if (eleccion == 0)
-					informacionEnemigo(terreno, 1);
+					informacionEnemigo(1);
 				else if (eleccion == 2)
-					informacionEnemigo(terreno, 3);
+					informacionEnemigo(3);
 
 			} else if (puntero == 3) {
 
 				eleccion = JOptionPane.showOptionDialog(null,
-						displayEnemigo(terreno.getE3(), terreno.getEfectosEnEnemigo3()), terreno.getE3().getNombre(), 0,
+						displayEnemigo(Terreno.terreno.getE3(), Terreno.terreno.getEfectosEnEnemigo3()), Terreno.terreno.getE3().getNombre(), 0,
 						0, null, opciones, "Atrás");
 
 				if (eleccion == 0)
-					informacionEnemigo(terreno, 2);
+					informacionEnemigo(2);
 				else if (eleccion == 2)
-					informacionEnemigo(terreno, 1);
+					informacionEnemigo(1);
 
 			}
 

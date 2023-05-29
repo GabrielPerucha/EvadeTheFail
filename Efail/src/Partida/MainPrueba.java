@@ -18,7 +18,9 @@ public class MainPrueba {
 		System.out.println(Jugable.class.arrayType());
 		
 		Cartas crs = new Cartas();
+		
 		Enemigos ens = new Enemigos();
+		
 		EfectosEspeciales spfx = new EfectosEspeciales();
 		
 		Enemigo Slime = ens.SlimeRB;
