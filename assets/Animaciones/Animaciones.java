@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.*;
@@ -27,7 +26,7 @@ public class Animaciones{
     			Titulo = "Titulo";
     			Mensaje = "Mensaje";
     			Time = 5000;
-    			String RutaIcon = "assets/Run.gif";
+    			String RutaIcon = "assets/Gifs/WizardIlde.gif";
     			TimepoSprites(RutaIcon, Titulo, Mensaje, Time);
 
     	        break;
