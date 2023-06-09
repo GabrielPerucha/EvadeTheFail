@@ -57,7 +57,7 @@ public class Interfaz {
 			
 		} else {
 			
-			
+			nombre = null;
 
 			
 		}
