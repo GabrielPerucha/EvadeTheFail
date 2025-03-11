@@ -1,4 +1,3 @@
 # EvadeTheFail
-EFail. A classroom project based on defeating monsters, humans and other things using different skills and abilities to achieve it.
-
+EFail. A old school project based on Slay The Spire, just the first version of someone who suck at programming.
 COMPLETED
